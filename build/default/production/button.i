@@ -2259,7 +2259,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 34 "button.c"
+# 35 "button.c"
 volatile uint8_t Button_State = 0;
 
 void Button_Init(void){
@@ -2286,7 +2286,7 @@ return Button_State;
 
 uint8_t Button_Interrupt_Fired(void){
 uint8_t status = 0;
-if(INTCON && (0x01<<0x00U)){
+if(INTCON & (0x01<<0x00U)){
 if(IOCAF & (0x01<<0x00U)){
 status =1;
 }
@@ -2299,7 +2299,7 @@ if(Button_Interrupt_Fired()){
 
 
 
-for(uint16_t i=0; i<10000;i++){
+for(uint16_t i=0; i<1000;i++){
 __nop();
 }
 

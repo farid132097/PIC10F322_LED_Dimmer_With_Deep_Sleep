@@ -68,6 +68,12 @@ void Sleep_Disable_ADC(void){
     ADC_CONTROL_REG &=~ ADC_CONTROL_ADON_bm;
 }
 
+void Sleep_Unused_GPIO_Config(void){
+    TRISA &=~ (1<<2);
+    ANSELA &=~ (1<<2);
+    LATA &=~ (1<<2);
+}
+
 void Sleep_Init(void){
     Sleep_Select_Internal_8MHz_Oscillator();
     Sleep_Disable_Reference_Clock_Output();
@@ -75,4 +81,5 @@ void Sleep_Init(void){
     Sleep_Disable_ADC();
     Sleep_Disable_FVR();
     Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode();
+    Sleep_Unused_GPIO_Config();
 }

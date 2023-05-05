@@ -1,6 +1,6 @@
 
 Memory Summary:
-    Program space        used    BDh (   189) of   200h words   ( 36.9%)
+    Program space        used    E0h (   224) of   200h words   ( 43.8%)
     Data space           used     Ah (    10) of    40h bytes   ( 15.6%)
     EEPROM space         None available
     Configuration bits   used     1h (     1) of     1h word    (100.0%)

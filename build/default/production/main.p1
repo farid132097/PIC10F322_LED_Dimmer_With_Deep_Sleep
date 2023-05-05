@@ -4,11 +4,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Button_Init `(v ~T0 @X0 0 ef ]
 "8 pwm.h
 [v _PWM_Init `(v ~T0 @X0 0 ef ]
-"14 sleep.h
+"15 sleep.h
 [v _Sleep_Init `(v ~T0 @X0 0 ef ]
 "9 button.h
 [v _Button_Get_State `(uc ~T0 @X0 0 ef ]
+"12 pwm.h
+[v _PWM_Off `(v ~T0 @X0 0 ef ]
+"9
+[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
+"10
+[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
 "11
+[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
+"11 button.h
 [v _Button_ISR_Executables `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
@@ -1404,11 +1412,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sleep.h: 11: void Sleep_Disable_FVR(void);
 [; ;sleep.h: 12: void Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode(void);
 [; ;sleep.h: 13: void Sleep_Disable_ADC(void);
-[; ;sleep.h: 14: void Sleep_Init(void);
+[; ;sleep.h: 14: void Sleep_Unused_GPIO_Config(void);
+[; ;sleep.h: 15: void Sleep_Init(void);
 [; ;pwm.h: 8: void PWM_Init(void);
-[; ;pwm.h: 9: void PWM_On_50_Percent_Duty_Cycle(void);
-[; ;pwm.h: 10: void PWM_On_100_Percent_Duty_Cycle(void);
-[; ;pwm.h: 11: void PWM_Off(void);
+[; ;pwm.h: 9: void PWM_On_20_Percent_Duty_Cycle(void);
+[; ;pwm.h: 10: void PWM_On_50_Percent_Duty_Cycle(void);
+[; ;pwm.h: 11: void PWM_On_100_Percent_Duty_Cycle(void);
+[; ;pwm.h: 12: void PWM_Off(void);
 [v $root$_main `(v ~T0 @X0 0 e ]
 "16 main.c
 [v _main `(v ~T0 @X0 1 ef ]
@@ -1433,6 +1443,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "24
 [e $ ! == -> ( _Button_Get_State ..  `i -> 0 `i 147  ]
 {
+[; ;main.c: 25: PWM_Off();
+"25
+[e ( _PWM_Off ..  ]
+[; ;main.c: 26: asm("sleep");
+"26
+[; <" sleep ;# ">
 "27
 }
 [; ;main.c: 27: }else if( Button_Get_State() == 1){
@@ -1440,24 +1456,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 147 ]
 [e $ ! == -> ( _Button_Get_State ..  `i -> 1 `i 149  ]
 {
-"31
+[; ;main.c: 28: PWM_On_20_Percent_Duty_Cycle();
+"28
+[e ( _PWM_On_20_Percent_Duty_Cycle ..  ]
+"29
 }
-[; ;main.c: 31: }else if( Button_Get_State() == 2){
+[; ;main.c: 29: }else if( Button_Get_State() == 2){
 [e $U 150  ]
 [e :U 149 ]
 [e $ ! == -> ( _Button_Get_State ..  `i -> 2 `i 151  ]
 {
-"35
+[; ;main.c: 30: PWM_On_50_Percent_Duty_Cycle();
+"30
+[e ( _PWM_On_50_Percent_Duty_Cycle ..  ]
+"31
 }
-[; ;main.c: 35: }else if( Button_Get_State() == 3){
+[; ;main.c: 31: }else if( Button_Get_State() == 3){
 [e $U 152  ]
 [e :U 151 ]
 [e $ ! == -> ( _Button_Get_State ..  `i -> 3 `i 153  ]
 {
-"39
+[; ;main.c: 32: PWM_On_100_Percent_Duty_Cycle();
+"32
+[e ( _PWM_On_100_Percent_Duty_Cycle ..  ]
+"33
 }
 [e :U 153 ]
-"40
+"34
 [e :U 152 ]
 [e :U 150 ]
 [e :U 148 ]
@@ -1466,27 +1491,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 "22
 [e $U 145  ]
 [e :U 146 ]
-[; ;main.c: 39: }
-[; ;main.c: 40: }
-[; ;main.c: 41: return;
-"41
+[; ;main.c: 33: }
+[; ;main.c: 34: }
+[; ;main.c: 35: return;
+"35
 [e $UE 143  ]
-[; ;main.c: 42: }
-"42
+[; ;main.c: 36: }
+"36
 [e :UE 143 ]
 }
 [v $root$_ISRs `(v ~T0 @X0 0 e ]
-[v F1203 `(v ~T0 @X0 1 tf ]
-"44
-[v _ISRs `IF1203 ~T0 @X0 1 e ]
+[v F1207 `(v ~T0 @X0 1 tf ]
+"38
+[v _ISRs `IF1207 ~T0 @X0 1 e ]
 {
-[; ;main.c: 44: void interrupt ISRs(void){
+[; ;main.c: 38: void interrupt ISRs(void){
 [e :U _ISRs ]
 [f ]
-[; ;main.c: 45: Button_ISR_Executables();
-"45
+[; ;main.c: 39: Button_ISR_Executables();
+"39
 [e ( _Button_ISR_Executables ..  ]
-[; ;main.c: 46: }
-"46
+[; ;main.c: 40: }
+"40
 [e :UE 154 ]
 }

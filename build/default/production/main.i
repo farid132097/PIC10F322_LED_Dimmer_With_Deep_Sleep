@@ -2285,10 +2285,12 @@ void Sleep_Disable_Watchdog(void);
 void Sleep_Disable_FVR(void);
 void Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode(void);
 void Sleep_Disable_ADC(void);
+void Sleep_Unused_GPIO_Config(void);
 void Sleep_Init(void);
 
 # 8 "pwm.h"
 void PWM_Init(void);
+void PWM_On_20_Percent_Duty_Cycle(void);
 void PWM_On_50_Percent_Duty_Cycle(void);
 void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
@@ -2303,20 +2305,14 @@ Sleep_Init();
 while(1){
 
 if(Button_Get_State() == 0){
-
-
+PWM_Off();
+asm("sleep");
 }else if( Button_Get_State() == 1){
-
-
-
+PWM_On_20_Percent_Duty_Cycle();
 }else if( Button_Get_State() == 2){
-
-
-
+PWM_On_50_Percent_Duty_Cycle();
 }else if( Button_Get_State() == 3){
-
-
-
+PWM_On_100_Percent_Duty_Cycle();
 }
 }
 return;

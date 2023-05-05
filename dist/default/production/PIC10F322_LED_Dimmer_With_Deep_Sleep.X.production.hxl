@@ -9,11 +9,11 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 1h		(dist/default/production\PIC10F322_LED_Dimmer_With_Deep_Sleep.X.production.hex)
-  8h - 17Fh		(dist/default/production\PIC10F322_LED_Dimmer_With_Deep_Sleep.X.production.hex)
+  8h - 1C5h		(dist/default/production\PIC10F322_LED_Dimmer_With_Deep_Sleep.X.production.hex)
   400Eh - 400Fh		(dist/default/production\PIC10F322_LED_Dimmer_With_Deep_Sleep.X.production.hex)
  Unused ranges:
   2h - 7h
-  180h - 400Dh
+  1C6h - 400Dh
 
 ### Hex Memory Map ###
  Legend:
@@ -46,5 +46,10 @@
 00000150 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000160 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000170 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000180 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000190 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000001A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000001B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000001C0 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00004000 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1

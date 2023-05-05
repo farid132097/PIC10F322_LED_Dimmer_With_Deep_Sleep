@@ -2261,21 +2261,23 @@ extern __bank0 __bit __timeout;
 
 # 11 "pwm.c"
 void PWM_Init(void){
-TRISA &=~ (1<<2U);
-ANSELA &=~ (1<<2U);
-LATA &=~ (1<<2U);
+TRISA &=~ (1<<0x01U);
+ANSELA &=~ (1<<0x01U);
+LATA &=~ (1<<0x01U);
 }
 
-
+void PWM_On_20_Percent_Duty_Cycle(void){
+LATA |= (1<<0x01U);
+}
 
 void PWM_On_50_Percent_Duty_Cycle(void){
-
+LATA |= (1<<0x01U);
 }
 
 void PWM_On_100_Percent_Duty_Cycle(void){
-
+LATA |= (1<<0x01U);
 }
 
 void PWM_Off(void){
-
+LATA &=~ (1<<0x01U);
 }

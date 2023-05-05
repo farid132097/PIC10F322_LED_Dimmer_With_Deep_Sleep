@@ -22,20 +22,14 @@ void main(void) {
     while(1){
        
         if(Button_Get_State() == 0){         //system sleep, pwm off
-            //disable pwm module
-            //disable associated timer
+            PWM_Off();
+            SLEEP();
         }else if( Button_Get_State() == 1){  //pwm on 20% duty cycle
-            //check if pwm module is enabled
-            //if not enabled, enable timer and pwm module
-            //set duty cycle to 20%
+            PWM_On_20_Percent_Duty_Cycle();
         }else if( Button_Get_State() == 2){  //pwm on 50% duty cycle
-            //check if pwm module is enabled
-            //if not enabled, enable timer and pwm module
-            //set duty cycle to 50%
+            PWM_On_50_Percent_Duty_Cycle();
         }else if( Button_Get_State() == 3){  //pwm on 100% duty cycle
-            //check if pwm module is enabled
-            //if not enabled, enable timer and pwm module
-            //set duty cycle to 100%
+            PWM_On_100_Percent_Duty_Cycle();
         }
     }
     return;

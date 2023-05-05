@@ -1375,46 +1375,68 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.c: 11: void PWM_Init(void){
 [e :U _PWM_Init ]
 [f ]
-[; ;pwm.c: 12: TRISA &=~ (1<<2U);
+[; ;pwm.c: 12: TRISA &=~ (1<<0x01U);
 "12
-[e =& _TRISA -> ~ << -> 1 `i -> 2 `ui `uc ]
-[; ;pwm.c: 13: ANSELA &=~ (1<<2U);
+[e =& _TRISA -> ~ << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 13: ANSELA &=~ (1<<0x01U);
 "13
-[e =& _ANSELA -> ~ << -> 1 `i -> 2 `ui `uc ]
-[; ;pwm.c: 14: LATA &=~ (1<<2U);
+[e =& _ANSELA -> ~ << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 14: LATA &=~ (1<<0x01U);
 "14
-[e =& _LATA -> ~ << -> 1 `i -> 2 `ui `uc ]
+[e =& _LATA -> ~ << -> 1 `i -> 1 `ui `uc ]
 [; ;pwm.c: 15: }
 "15
 [e :UE 143 ]
 }
-"19
-[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+"17
+[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
 {
-[; ;pwm.c: 19: void PWM_On_50_Percent_Duty_Cycle(void){
-[e :U _PWM_On_50_Percent_Duty_Cycle ]
+[; ;pwm.c: 17: void PWM_On_20_Percent_Duty_Cycle(void){
+[e :U _PWM_On_20_Percent_Duty_Cycle ]
 [f ]
-[; ;pwm.c: 21: }
-"21
+[; ;pwm.c: 18: LATA |= (1<<0x01U);
+"18
+[e =| _LATA -> << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 19: }
+"19
 [e :UE 144 ]
 }
-"23
-[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+"21
+[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
 {
-[; ;pwm.c: 23: void PWM_On_100_Percent_Duty_Cycle(void){
-[e :U _PWM_On_100_Percent_Duty_Cycle ]
+[; ;pwm.c: 21: void PWM_On_50_Percent_Duty_Cycle(void){
+[e :U _PWM_On_50_Percent_Duty_Cycle ]
 [f ]
-[; ;pwm.c: 25: }
-"25
+[; ;pwm.c: 22: LATA |= (1<<0x01U);
+"22
+[e =| _LATA -> << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 23: }
+"23
 [e :UE 145 ]
 }
+"25
+[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 25: void PWM_On_100_Percent_Duty_Cycle(void){
+[e :U _PWM_On_100_Percent_Duty_Cycle ]
+[f ]
+[; ;pwm.c: 26: LATA |= (1<<0x01U);
+"26
+[e =| _LATA -> << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 27: }
 "27
+[e :UE 146 ]
+}
+"29
 [v _PWM_Off `(v ~T0 @X0 1 ef ]
 {
-[; ;pwm.c: 27: void PWM_Off(void){
+[; ;pwm.c: 29: void PWM_Off(void){
 [e :U _PWM_Off ]
 [f ]
-[; ;pwm.c: 29: }
-"29
-[e :UE 146 ]
+[; ;pwm.c: 30: LATA &=~ (1<<0x01U);
+"30
+[e =& _LATA -> ~ << -> 1 `i -> 1 `ui `uc ]
+[; ;pwm.c: 31: }
+"31
+[e :UE 147 ]
 }

@@ -3,13 +3,13 @@
 [d edition pro ]
 [d chip 10F322 ]
 [d frameptr 0 ]
-"36 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+"37 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_Init Button_Init `(v  1 e 1 0 ]
-"54
+"55
 [v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
-"58
+"59
 [v _Button_Interrupt_Fired Button_Interrupt_Fired `(uc  1 e 1 0 ]
-"68
+"69
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -17,10 +17,18 @@
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"44
+"38
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 "11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
 [v _PWM_Init PWM_Init `(v  1 e 1 0 ]
+"17
+[v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
+"21
+[v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
+"25
+[v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
+"29
+[v _PWM_Off PWM_Off `(v  1 e 1 0 ]
 "45 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
 [v _Sleep_Select_Internal_8MHz_Oscillator Sleep_Select_Internal_8MHz_Oscillator `(v  1 e 1 0 ]
 "51
@@ -34,8 +42,10 @@
 "67
 [v _Sleep_Disable_ADC Sleep_Disable_ADC `(v  1 e 1 0 ]
 "71
+[v _Sleep_Unused_GPIO_Config Sleep_Unused_GPIO_Config `(v  1 e 1 0 ]
+"77
 [v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
-"34 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+"35 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_State Button_State `VEuc  1 e 1 0 ]
 "196 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
 [v _TRISA TRISA `VEuc  1 e 1 @6 ]
@@ -64,12 +74,17 @@
 "16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"42
+"36
 } 0
-"71 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
+"77 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
 [v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
 {
-"78
+"85
+} 0
+"71
+[v _Sleep_Unused_GPIO_Config Sleep_Unused_GPIO_Config `(v  1 e 1 0 ]
+{
+"75
 } 0
 "45
 [v _Sleep_Select_Internal_8MHz_Oscillator Sleep_Select_Internal_8MHz_Oscillator `(v  1 e 1 0 ]
@@ -101,37 +116,57 @@
 {
 "69
 } 0
-"11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+"21 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+[v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"23
+} 0
+"17
+[v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"19
+} 0
+"25
+[v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"27
+} 0
+"29
+[v _PWM_Off PWM_Off `(v  1 e 1 0 ]
+{
+"31
+} 0
+"11
 [v _PWM_Init PWM_Init `(v  1 e 1 0 ]
 {
 "15
 } 0
-"36 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+"37 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_Init Button_Init `(v  1 e 1 0 ]
 {
-"52
+"53
 } 0
-"54
+"55
 [v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
 {
-"56
+"57
 } 0
-"44 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+"38 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 {
-"46
+"40
 } 0
-"68 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+"69 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
 {
-"73
+"74
 [v Button_ISR_Executables@i i `ui  1 a 2 2 ]
-"84
+"85
 } 0
-"58
+"59
 [v _Button_Interrupt_Fired Button_Interrupt_Fired `(uc  1 e 1 0 ]
 {
-"59
+"60
 [v Button_Interrupt_Fired@status status `uc  1 a 1 0 ]
-"66
+"67
 } 0

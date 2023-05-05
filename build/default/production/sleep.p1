@@ -11,6 +11,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _VREGCON `Vuc ~T0 @X0 0 e@62 ]
 "1279
 [v _ADCON `Vuc ~T0 @X0 0 e@31 ]
+"196
+[v _TRISA `Vuc ~T0 @X0 0 e@6 ]
+"260
+[v _ANSELA `Vuc ~T0 @X0 0 e@8 ]
+"228
+[v _LATA `Vuc ~T0 @X0 0 e@7 ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1468,30 +1474,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 154 ]
 }
 "71
+[v _Sleep_Unused_GPIO_Config `(v ~T0 @X0 1 ef ]
+{
+[; ;sleep.c: 71: void Sleep_Unused_GPIO_Config(void){
+[e :U _Sleep_Unused_GPIO_Config ]
+[f ]
+[; ;sleep.c: 72: TRISA &=~ (1<<2);
+"72
+[e =& _TRISA -> ~ << -> 1 `i -> 2 `i `uc ]
+[; ;sleep.c: 73: ANSELA &=~ (1<<2);
+"73
+[e =& _ANSELA -> ~ << -> 1 `i -> 2 `i `uc ]
+[; ;sleep.c: 74: LATA &=~ (1<<2);
+"74
+[e =& _LATA -> ~ << -> 1 `i -> 2 `i `uc ]
+[; ;sleep.c: 75: }
+"75
+[e :UE 155 ]
+}
+"77
 [v _Sleep_Init `(v ~T0 @X0 1 ef ]
 {
-[; ;sleep.c: 71: void Sleep_Init(void){
+[; ;sleep.c: 77: void Sleep_Init(void){
 [e :U _Sleep_Init ]
 [f ]
-[; ;sleep.c: 72: Sleep_Select_Internal_8MHz_Oscillator();
-"72
-[e ( _Sleep_Select_Internal_8MHz_Oscillator ..  ]
-[; ;sleep.c: 73: Sleep_Disable_Reference_Clock_Output();
-"73
-[e ( _Sleep_Disable_Reference_Clock_Output ..  ]
-[; ;sleep.c: 74: Sleep_Disable_Watchdog();
-"74
-[e ( _Sleep_Disable_Watchdog ..  ]
-[; ;sleep.c: 75: Sleep_Disable_ADC();
-"75
-[e ( _Sleep_Disable_ADC ..  ]
-[; ;sleep.c: 76: Sleep_Disable_FVR();
-"76
-[e ( _Sleep_Disable_FVR ..  ]
-[; ;sleep.c: 77: Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode();
-"77
-[e ( _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode ..  ]
-[; ;sleep.c: 78: }
+[; ;sleep.c: 78: Sleep_Select_Internal_8MHz_Oscillator();
 "78
-[e :UE 155 ]
+[e ( _Sleep_Select_Internal_8MHz_Oscillator ..  ]
+[; ;sleep.c: 79: Sleep_Disable_Reference_Clock_Output();
+"79
+[e ( _Sleep_Disable_Reference_Clock_Output ..  ]
+[; ;sleep.c: 80: Sleep_Disable_Watchdog();
+"80
+[e ( _Sleep_Disable_Watchdog ..  ]
+[; ;sleep.c: 81: Sleep_Disable_ADC();
+"81
+[e ( _Sleep_Disable_ADC ..  ]
+[; ;sleep.c: 82: Sleep_Disable_FVR();
+"82
+[e ( _Sleep_Disable_FVR ..  ]
+[; ;sleep.c: 83: Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode();
+"83
+[e ( _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode ..  ]
+[; ;sleep.c: 84: Sleep_Unused_GPIO_Config();
+"84
+[e ( _Sleep_Unused_GPIO_Config ..  ]
+[; ;sleep.c: 85: }
+"85
+[e :UE 156 ]
 }

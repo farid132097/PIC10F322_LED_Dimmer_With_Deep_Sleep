@@ -5,7 +5,7 @@
 #define PWM_TRIS  TRISA
 #define PWM_LAT   LATA
 #define PWM_ANSEL ANSELA
-#define PWM_bp    2U
+#define PWM_bp    0x01U
 
 
 void PWM_Init(void){

@@ -11,5 +11,6 @@ void Sleep_Disable_Watchdog(void);
 void Sleep_Disable_FVR(void);
 void Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode(void);
 void Sleep_Disable_ADC(void);
+void Sleep_Unused_GPIO_Config(void);
 void Sleep_Init(void);
 
