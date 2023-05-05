@@ -1,0 +1,137 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 10F322 ]
+[d frameptr 0 ]
+"36 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+[v _Button_Init Button_Init `(v  1 e 1 0 ]
+"54
+[v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
+"58
+[v _Button_Interrupt_Fired Button_Interrupt_Fired `(uc  1 e 1 0 ]
+"68
+[v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"44
+[v _ISRs ISRs `II(v  1 e 1 0 ]
+"11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+[v _PWM_Init PWM_Init `(v  1 e 1 0 ]
+"45 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
+[v _Sleep_Select_Internal_8MHz_Oscillator Sleep_Select_Internal_8MHz_Oscillator `(v  1 e 1 0 ]
+"51
+[v _Sleep_Disable_Reference_Clock_Output Sleep_Disable_Reference_Clock_Output `(v  1 e 1 0 ]
+"55
+[v _Sleep_Disable_Watchdog Sleep_Disable_Watchdog `(v  1 e 1 0 ]
+"59
+[v _Sleep_Disable_FVR Sleep_Disable_FVR `(v  1 e 1 0 ]
+"63
+[v _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode `(v  1 e 1 0 ]
+"67
+[v _Sleep_Disable_ADC Sleep_Disable_ADC `(v  1 e 1 0 ]
+"71
+[v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
+"34 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+[v _Button_State Button_State `VEuc  1 e 1 0 ]
+"196 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
+[v _TRISA TRISA `VEuc  1 e 1 @6 ]
+"228
+[v _LATA LATA `VEuc  1 e 1 @7 ]
+"260
+[v _ANSELA ANSELA `VEuc  1 e 1 @8 ]
+"350
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"590
+[v _OSCCON OSCCON `VEuc  1 e 1 @16 ]
+"1137
+[v _IOCAN IOCAN `VEuc  1 e 1 @27 ]
+"1175
+[v _IOCAF IOCAF `VEuc  1 e 1 @28 ]
+"1213
+[v _FVRCON FVRCON `VEuc  1 e 1 @29 ]
+"1279
+[v _ADCON ADCON `VEuc  1 e 1 @31 ]
+"1526
+[v _CLKRCON CLKRCON `VEuc  1 e 1 @38 ]
+"1963
+[v _WDTCON WDTCON `VEuc  1 e 1 @48 ]
+"3163
+[v _VREGCON VREGCON `VEuc  1 e 1 @62 ]
+"16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"42
+} 0
+"71 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
+[v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
+{
+"78
+} 0
+"45
+[v _Sleep_Select_Internal_8MHz_Oscillator Sleep_Select_Internal_8MHz_Oscillator `(v  1 e 1 0 ]
+{
+"49
+} 0
+"63
+[v _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode `(v  1 e 1 0 ]
+{
+"65
+} 0
+"55
+[v _Sleep_Disable_Watchdog Sleep_Disable_Watchdog `(v  1 e 1 0 ]
+{
+"57
+} 0
+"51
+[v _Sleep_Disable_Reference_Clock_Output Sleep_Disable_Reference_Clock_Output `(v  1 e 1 0 ]
+{
+"53
+} 0
+"59
+[v _Sleep_Disable_FVR Sleep_Disable_FVR `(v  1 e 1 0 ]
+{
+"61
+} 0
+"67
+[v _Sleep_Disable_ADC Sleep_Disable_ADC `(v  1 e 1 0 ]
+{
+"69
+} 0
+"11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+[v _PWM_Init PWM_Init `(v  1 e 1 0 ]
+{
+"15
+} 0
+"36 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+[v _Button_Init Button_Init `(v  1 e 1 0 ]
+{
+"52
+} 0
+"54
+[v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
+{
+"56
+} 0
+"44 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+[v _ISRs ISRs `II(v  1 e 1 0 ]
+{
+"46
+} 0
+"68 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
+[v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
+{
+"73
+[v Button_ISR_Executables@i i `ui  1 a 2 2 ]
+"84
+} 0
+"58
+[v _Button_Interrupt_Fired Button_Interrupt_Fired `(uc  1 e 1 0 ]
+{
+"59
+[v Button_Interrupt_Fired@status status `uc  1 a 1 0 ]
+"66
+} 0
