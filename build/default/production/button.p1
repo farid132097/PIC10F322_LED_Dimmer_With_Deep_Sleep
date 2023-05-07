@@ -1506,52 +1506,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70
 [e $ ! != -> ( _Button_Interrupt_Fired ..  `i -> -> -> 0 `i `uc `i 153  ]
 {
-[; ;button.c: 74: for(uint16_t i=0; i<1000;i++){
-"74
+[; ;button.c: 76: for(uint16_t i=0; i<10000;i++){
+"76
 {
 [v _i `ui ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 1000 `i `ui 154  ]
+[e $ < _i -> -> 10000 `i `ui 154  ]
 [e $U 155  ]
 [e :U 154 ]
 {
-[; ;button.c: 75: __nop();
-"75
+[; ;button.c: 77: __nop();
+"77
 [e ( ___nop ..  ]
-"76
-}
-"74
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 1000 `i `ui 154  ]
-[e :U 155 ]
-"76
-}
-[; ;button.c: 76: }
-[; ;button.c: 78: Button_State++;
 "78
+}
+"76
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 10000 `i `ui 154  ]
+[e :U 155 ]
+"78
+}
+[; ;button.c: 78: }
+[; ;button.c: 80: Button_State++;
+"80
 [e ++ _Button_State -> -> 1 `i `uc ]
-[; ;button.c: 79: if(Button_State > (4U - 1)){
-"79
+[; ;button.c: 81: if(Button_State > (4U - 1)){
+"81
 [e $ ! > -> _Button_State `ui - -> 4 `ui -> -> 1 `i `ui 157  ]
 {
-[; ;button.c: 80: Button_State = 0;
-"80
+[; ;button.c: 82: Button_State = 0;
+"82
 [e = _Button_State -> -> 0 `i `uc ]
-"81
+"83
 }
 [e :U 157 ]
-[; ;button.c: 81: }
-[; ;button.c: 82: IOCAF &=~ (0x01<<0x00U);
-"82
-[e =& _IOCAF -> ~ << -> 1 `i -> 0 `ui `uc ]
-[; ;button.c: 83: INTCON &=~ (0x01<<0x00U);
-"83
-[e =& _INTCON -> ~ << -> 1 `i -> 0 `ui `uc ]
+[; ;button.c: 83: }
+[; ;button.c: 84: IOCAF &=~ (0x01<<0x00U);
 "84
+[e =& _IOCAF -> ~ << -> 1 `i -> 0 `ui `uc ]
+[; ;button.c: 85: INTCON &=~ (0x01<<0x00U);
+"85
+[e =& _INTCON -> ~ << -> 1 `i -> 0 `ui `uc ]
+"86
 }
 [e :U 153 ]
-[; ;button.c: 84: }
-[; ;button.c: 85: }
-"85
+[; ;button.c: 86: }
+[; ;button.c: 87: }
+"87
 [e :UE 152 ]
 }

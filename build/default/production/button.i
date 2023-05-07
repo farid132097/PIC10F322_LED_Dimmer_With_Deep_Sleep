@@ -2297,9 +2297,8 @@ return status;
 void Button_ISR_Executables(void){
 if(Button_Interrupt_Fired()){
 
-
-
-for(uint16_t i=0; i<1000;i++){
+# 76
+for(uint16_t i=0; i<10000;i++){
 __nop();
 }
 

@@ -75,6 +75,8 @@ void Sleep_Unused_GPIO_Config(void){
 }
 
 void Sleep_Init(void){
+    OPTION_REG = 0x7f;  //Enable pull-up on individual pin
+    WPUA |= (1<<3);     //weak pull-up on reset
     Sleep_Select_Internal_8MHz_Oscillator();
     Sleep_Disable_Reference_Clock_Output();
     Sleep_Disable_Watchdog();

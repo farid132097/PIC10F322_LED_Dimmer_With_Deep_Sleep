@@ -2293,6 +2293,8 @@ LATA &=~ (1<<2);
 }
 
 void Sleep_Init(void){
+OPTION_REG = 0x7f;
+WPUA |= (1<<3);
 Sleep_Select_Internal_8MHz_Oscillator();
 Sleep_Disable_Reference_Clock_Output();
 Sleep_Disable_Watchdog();

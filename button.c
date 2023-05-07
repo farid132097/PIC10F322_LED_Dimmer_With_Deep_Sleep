@@ -2,7 +2,7 @@
 #include <xc.h>
 
 //#define BUTTON_HARDWARE_DEBOUNCE_PRESENT
-#define BUTTON_DEBOUNCE_NOP_CYCLES     1000
+#define BUTTON_DEBOUNCE_NOP_CYCLES     10000
 #define BUTTON_MAX_STATE               4U
 #define BUTTON_STATE_SYSTEM_SLEEP      0U
 #define BUTTON_STATE_20_PERCENT_DUTY   1U
@@ -69,8 +69,10 @@ uint8_t Button_Interrupt_Fired(void){
 void Button_ISR_Executables(void){
     if(Button_Interrupt_Fired()){
         #ifdef BUTTON_HARDWARE_DEBOUNCE_PRESENT
-        //do nothing
+        // if a 100nF capacitor is present between button and GND 
+        // do nothing
         #else
+        // need a software debounce filter to prevent multiple interrupts
         for(uint16_t i=0; i<BUTTON_DEBOUNCE_NOP_CYCLES;i++){
             NOP(); 
         }

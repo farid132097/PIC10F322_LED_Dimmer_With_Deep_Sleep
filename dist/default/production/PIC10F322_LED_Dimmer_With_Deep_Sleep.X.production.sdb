@@ -15,9 +15,9 @@
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+"17 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"38
+"39
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 "11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
 [v _PWM_Init PWM_Init `(v  1 e 1 0 ]
@@ -53,8 +53,12 @@
 [v _LATA LATA `VEuc  1 e 1 @7 ]
 "260
 [v _ANSELA ANSELA `VEuc  1 e 1 @8 ]
+"292
+[v _WPUA WPUA `VEuc  1 e 1 @9 ]
 "350
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"494
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @14 ]
 "590
 [v _OSCCON OSCCON `VEuc  1 e 1 @16 ]
 "1137
@@ -71,15 +75,15 @@
 [v _WDTCON WDTCON `VEuc  1 e 1 @48 ]
 "3163
 [v _VREGCON VREGCON `VEuc  1 e 1 @62 ]
-"16 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+"17 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"36
+"37
 } 0
 "77 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
 [v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
 {
-"85
+"87
 } 0
 "71
 [v _Sleep_Unused_GPIO_Config Sleep_Unused_GPIO_Config `(v  1 e 1 0 ]
@@ -151,17 +155,17 @@
 {
 "57
 } 0
-"38 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+"39 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 {
-"40
+"41
 } 0
 "69 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
 {
-"74
+"76
 [v Button_ISR_Executables@i i `ui  1 a 2 2 ]
-"85
+"87
 } 0
 "59
 [v _Button_Interrupt_Fired Button_Interrupt_Fired `(uc  1 e 1 0 ]
