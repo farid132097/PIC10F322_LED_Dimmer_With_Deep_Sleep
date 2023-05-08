@@ -17,17 +17,21 @@
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "17 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"39
+"38
 [v _ISRs ISRs `II(v  1 e 1 0 ]
-"11 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
-[v _PWM_Init PWM_Init `(v  1 e 1 0 ]
+"10 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+[v _PWM_Set_Duty PWM_Set_Duty `(v  1 e 1 0 ]
 "17
+[v _PWM_Enable PWM_Enable `(v  1 e 1 0 ]
+"31
+[v _PWM_Disable PWM_Disable `(v  1 e 1 0 ]
+"42
 [v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"21
+"47
 [v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"25
+"52
 [v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"29
+"57
 [v _PWM_Off PWM_Off `(v  1 e 1 0 ]
 "45 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
 [v _Sleep_Select_Internal_8MHz_Oscillator Sleep_Select_Internal_8MHz_Oscillator `(v  1 e 1 0 ]
@@ -57,10 +61,22 @@
 [v _WPUA WPUA `VEuc  1 e 1 @9 ]
 "350
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"412
+[v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
 "494
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @14 ]
 "590
 [v _OSCCON OSCCON `VEuc  1 e 1 @16 ]
+"657
+[v _PR2 PR2 `VEuc  1 e 1 @18 ]
+"664
+[v _T2CON T2CON `VEuc  1 e 1 @19 ]
+"917
+[v _PWM2DCL PWM2DCL `VEuc  1 e 1 @23 ]
+"953
+[v _PWM2DCH PWM2DCH `VEuc  1 e 1 @24 ]
+"1023
+[v _PWM2CON PWM2CON `VEuc  1 e 1 @25 ]
 "1137
 [v _IOCAN IOCAN `VEuc  1 e 1 @27 ]
 "1175
@@ -78,7 +94,7 @@
 "17 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"37
+"36
 } 0
 "77 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\sleep.c
 [v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
@@ -120,29 +136,43 @@
 {
 "69
 } 0
-"21 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
+"47 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\pwm.c
 [v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
 {
-"23
+"50
 } 0
-"17
+"42
 [v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
 {
-"19
+"45
 } 0
-"25
+"52
 [v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
 {
-"27
+"55
 } 0
+"17
+[v _PWM_Enable PWM_Enable `(v  1 e 1 0 ]
+{
 "29
+} 0
+"57
 [v _PWM_Off PWM_Off `(v  1 e 1 0 ]
 {
-"31
+"59
 } 0
-"11
-[v _PWM_Init PWM_Init `(v  1 e 1 0 ]
+"31
+[v _PWM_Disable PWM_Disable `(v  1 e 1 0 ]
 {
+"40
+} 0
+"10
+[v _PWM_Set_Duty PWM_Set_Duty `(v  1 e 1 0 ]
+{
+"11
+[v PWM_Set_Duty@temp temp `ui  1 a 2 10 ]
+"10
+[v PWM_Set_Duty@duty duty `ui  1 p 2 6 ]
 "15
 } 0
 "37 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
@@ -155,10 +185,10 @@
 {
 "57
 } 0
-"39 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
+"38 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\main.c
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 {
-"41
+"40
 } 0
 "69 D:\Projects\Embedded Projects\Personal\MPLAB\PIC10F322_LED_Dimmer_With_Deep_Sleep.X\button.c
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]

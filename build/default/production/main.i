@@ -2289,7 +2289,9 @@ void Sleep_Unused_GPIO_Config(void);
 void Sleep_Init(void);
 
 # 8 "pwm.h"
-void PWM_Init(void);
+void PWM_Set_Duty(uint16_t duty);
+void PWM_Enable(void);
+void PWM_Disable(void);
 void PWM_On_20_Percent_Duty_Cycle(void);
 void PWM_On_50_Percent_Duty_Cycle(void);
 void PWM_On_100_Percent_Duty_Cycle(void);
@@ -2299,7 +2301,6 @@ void PWM_Off(void);
 void main(void) {
 
 Button_Init();
-PWM_Init();
 Sleep_Init();
 
 while(1){

@@ -17,7 +17,6 @@
 void main(void) {
     
     Button_Init();
-    PWM_Init();
     Sleep_Init();
     
     while(1){

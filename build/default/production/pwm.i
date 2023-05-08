@@ -2259,25 +2259,54 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 11 "pwm.c"
-void PWM_Init(void){
+# 10 "pwm.c"
+void PWM_Set_Duty(uint16_t duty){
+uint16_t temp=duty;
+temp&=0x3FF;
+PWM2DCL=(temp&0x03)<<6;
+PWM2DCH=(temp>>2);
+}
+
+void PWM_Enable(void){
+ANSELA &=~ (1<<0x01U);
+TRISA |= (1<<0x01U);
+PWM2CON = 0x00;
+PR2 = 100;
+PWM_Set_Duty(20);
+PIR1 &=~ (1<<1);
+T2CON = (1<<0)|(1<<2);
+PWM2CON = (1<<7);
+while((PIR1 & (1<<1)) == 0);
+TRISA &=~(1<<0x01U);
+PWM2CON |= (1<<6);
+}
+
+void PWM_Disable(void){
+PWM2CON = 0x00;
+PR2 = 0;
+PWM_Set_Duty(0);
+T2CON = 0;
+PWM2CON = 0;
 TRISA &=~ (1<<0x01U);
 ANSELA &=~ (1<<0x01U);
 LATA &=~ (1<<0x01U);
 }
 
 void PWM_On_20_Percent_Duty_Cycle(void){
-LATA |= (1<<0x01U);
+PWM_Enable();
+PWM_Set_Duty(20);
 }
 
 void PWM_On_50_Percent_Duty_Cycle(void){
-LATA |= (1<<0x01U);
+PWM_Enable();
+PWM_Set_Duty(50);
 }
 
 void PWM_On_100_Percent_Duty_Cycle(void){
-LATA |= (1<<0x01U);
+PWM_Enable();
+PWM_Set_Duty(99);
 }
 
 void PWM_Off(void){
-LATA &=~ (1<<0x01U);
+PWM_Disable();
 }

@@ -5,9 +5,11 @@
  * Created on May 5, 2023, 5:22 PM
  */
 
-void   PWM_Init(void);
-void   PWM_On_20_Percent_Duty_Cycle(void);
-void   PWM_On_50_Percent_Duty_Cycle(void);
-void   PWM_On_100_Percent_Duty_Cycle(void);
-void   PWM_Off(void);
+void PWM_Set_Duty(uint16_t duty);
+void PWM_Enable(void);
+void PWM_Disable(void);
+void PWM_On_20_Percent_Duty_Cycle(void);
+void PWM_On_50_Percent_Duty_Cycle(void);
+void PWM_On_100_Percent_Duty_Cycle(void);
+void PWM_Off(void);
 
