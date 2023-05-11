@@ -2289,7 +2289,7 @@ void Sleep_Unused_GPIO_Config(void);
 void Sleep_Init(void);
 
 # 8 "pwm.h"
-void PWM_Set_Duty(uint16_t duty);
+void PWM_Set_Duty(uint32_t duty);
 void PWM_Enable(void);
 void PWM_Disable(void);
 void PWM_On_20_Percent_Duty_Cycle(void);
@@ -2297,24 +2297,24 @@ void PWM_On_50_Percent_Duty_Cycle(void);
 void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
 
-# 17 "main.c"
+# 18 "main.c"
 void main(void) {
 
-Button_Init();
-Sleep_Init();
 
+
+
+PWM_On_20_Percent_Duty_Cycle();
+
+uint8_t val=100;
 while(1){
 
-if(Button_Get_State() == 0){
-PWM_Off();
-asm("sleep");
-}else if( Button_Get_State() == 1){
-PWM_On_20_Percent_Duty_Cycle();
-}else if( Button_Get_State() == 2){
-PWM_On_50_Percent_Duty_Cycle();
-}else if( Button_Get_State() == 3){
-PWM_On_100_Percent_Duty_Cycle();
+# 39
+val--;
+if(val<1){
+val=100;
 }
+PWM_Set_Duty(val);
+_delay((unsigned long)((100)*(8000000/4000.0)));
 }
 return;
 }

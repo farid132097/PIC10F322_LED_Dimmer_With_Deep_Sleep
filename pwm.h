@@ -5,7 +5,7 @@
  * Created on May 5, 2023, 5:22 PM
  */
 
-void PWM_Set_Duty(uint16_t duty);
+void PWM_Set_Duty(uint32_t duty);
 void PWM_Enable(void);
 void PWM_Disable(void);
 void PWM_On_20_Percent_Duty_Cycle(void);
