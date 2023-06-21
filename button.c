@@ -45,14 +45,12 @@ void Button_Init(void){
 }
 
 void Button_Pressed(void){
-    //if((PORTA & (1<<2))==0){
-        Button_State++;
-        if(Button_State>3){
-            Button_State=0;
-        }
-        __delay_ms(200);
-        PWM_Clear_Execution_Status();
-    //}
+    Button_State++;
+    if(Button_State>2){
+        Button_State=0;
+    }
+    while( PORTA & 0x04){};
+    PWM_Clear_Execution_Status();
 }
 
 uint8_t Button_Get_State(void){
@@ -61,5 +59,5 @@ uint8_t Button_Get_State(void){
 
 void Button_ISR_Executables(void){
     Button_Pressed();
-    INTCON=0;
+    INTCON&=~0x02;
 }

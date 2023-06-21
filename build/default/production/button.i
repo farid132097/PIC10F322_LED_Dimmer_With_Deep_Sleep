@@ -2284,14 +2284,12 @@ INTCON=0x90;
 }
 
 void Button_Pressed(void){
-
 Button_State++;
-if(Button_State>3){
+if(Button_State>2){
 Button_State=0;
 }
-_delay((unsigned long)((200)*(8000000/4000.0)));
+while( PORTA & 0x04){};
 PWM_Clear_Execution_Status();
-
 }
 
 uint8_t Button_Get_State(void){
@@ -2300,5 +2298,5 @@ return Button_State;
 
 void Button_ISR_Executables(void){
 Button_Pressed();
-INTCON=0;
+INTCON&=~0x02;
 }

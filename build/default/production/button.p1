@@ -7,10 +7,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 "494
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@14 ]
-[v F38 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\builtins.h
-[v __delay `JF38 ~T0 @X0 0 e ]
-[p i __delay ]
+"158
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "10 pwm.h
 [v _PWM_Clear_Execution_Status `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
@@ -1424,57 +1422,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.c: 47: void Button_Pressed(void){
 [e :U _Button_Pressed ]
 [f ]
-[; ;button.c: 49: Button_State++;
-"49
+[; ;button.c: 48: Button_State++;
+"48
 [e ++ _Button_State -> -> 1 `i `uc ]
-[; ;button.c: 50: if(Button_State>3){
-"50
-[e $ ! > -> _Button_State `i -> 3 `i 145  ]
+[; ;button.c: 49: if(Button_State>2){
+"49
+[e $ ! > -> _Button_State `i -> 2 `i 145  ]
 {
-[; ;button.c: 51: Button_State=0;
-"51
+[; ;button.c: 50: Button_State=0;
+"50
 [e = _Button_State -> -> 0 `i `uc ]
-"52
+"51
 }
 [e :U 145 ]
-[; ;button.c: 52: }
-[; ;button.c: 53: _delay((unsigned long)((200)*(8000000/4000.0)));
+[; ;button.c: 51: }
+[; ;button.c: 52: while( PORTA & 0x04){};
+"52
+[e $U 146  ]
+[e :U 147 ]
+{
+}
+[e :U 146 ]
+[e $ != & -> _PORTA `i -> 4 `i -> 0 `i 147  ]
+[e :U 148 ]
+[; ;button.c: 53: PWM_Clear_Execution_Status();
 "53
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;button.c: 54: PWM_Clear_Execution_Status();
-"54
 [e ( _PWM_Clear_Execution_Status ..  ]
-[; ;button.c: 56: }
-"56
+[; ;button.c: 54: }
+"54
 [e :UE 144 ]
 }
-"58
+"56
 [v _Button_Get_State `(uc ~T0 @X0 1 ef ]
 {
-[; ;button.c: 58: uint8_t Button_Get_State(void){
+[; ;button.c: 56: uint8_t Button_Get_State(void){
 [e :U _Button_Get_State ]
 [f ]
-[; ;button.c: 59: return Button_State;
-"59
+[; ;button.c: 57: return Button_State;
+"57
 [e ) _Button_State ]
-[e $UE 146  ]
-[; ;button.c: 60: }
-"60
-[e :UE 146 ]
+[e $UE 149  ]
+[; ;button.c: 58: }
+"58
+[e :UE 149 ]
 }
-"62
+"60
 [v _Button_ISR_Executables `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 62: void Button_ISR_Executables(void){
+[; ;button.c: 60: void Button_ISR_Executables(void){
 [e :U _Button_ISR_Executables ]
 [f ]
-[; ;button.c: 63: Button_Pressed();
-"63
+[; ;button.c: 61: Button_Pressed();
+"61
 [e ( _Button_Pressed ..  ]
-[; ;button.c: 64: INTCON=0;
-"64
-[e = _INTCON -> -> 0 `i `uc ]
-[; ;button.c: 65: }
-"65
-[e :UE 147 ]
+[; ;button.c: 62: INTCON&=~0x02;
+"62
+[e =& _INTCON -> ~ -> 2 `i `uc ]
+[; ;button.c: 63: }
+"63
+[e :UE 150 ]
 }
