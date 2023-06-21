@@ -34,7 +34,7 @@
 #define INTTERRUPT_CONTROLLER_PEIE_bm  (0x01<<INTTERRUPT_CONTROLLER_PEIE_bp)
 #define INTTERRUPT_CONTROLLER_GIE_bm   (0x01<<INTTERRUPT_CONTROLLER_GIE_bp)
 
-volatile uint8_t Button_State = 0;
+volatile uint8_t Button_State = 0, sleep_mode=0;
 
 void Button_Init(void){
     TRISA =(1<<2);
@@ -48,6 +48,8 @@ void Button_Pressed(void){
     Button_State++;
     if(Button_State>2){
         Button_State=0;
+        sleep_mode=1;
+        INTCON=0x90; 
     }
     while( PORTA & 0x04){};
     PWM_Clear_Execution_Status();
@@ -57,7 +59,12 @@ uint8_t Button_Get_State(void){
     return Button_State;
 }
 
+uint8_t Button_Get_Sleep_Mode(void){
+    return sleep_mode;
+}
+
 void Button_ISR_Executables(void){
-    Button_Pressed();
-    INTCON&=~0x02;
+//    Button_Pressed();
+    INTCON=0x00;
+    sleep_mode=0;
 }

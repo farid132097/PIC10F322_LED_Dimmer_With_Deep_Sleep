@@ -2276,6 +2276,7 @@ extern __bank0 __bit __timeout;
 void Button_Pressed(void);
 void Button_Init(void);
 uint8_t Button_Get_State(void);
+uint8_t Button_Get_Sleep_Mode(void);
 void Button_ISR_Executables(void);
 
 # 8 "sleep.h"
@@ -2301,7 +2302,9 @@ void PWM_On_50_Percent_Duty_Cycle(void);
 void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
 
-# 18 "main.c"
+# 16 "main.c"
+uint8_t button_state=0;
+
 void main(void) {
 
 Button_Init();
@@ -2309,15 +2312,14 @@ Sleep_Init();
 
 while(1){
 
-if(Button_Get_State() == 0){
+if(Button_Get_Sleep_Mode()==0){
+if(!(PORTA & 0x04)){
+while( PORTA & 0x04){};
+
+}
+}else{
 PWM_Off();
 asm("sleep");
-}else if( Button_Get_State() == 1){
-PWM_On_20_Percent_Duty_Cycle();
-}else if( Button_Get_State() == 2){
-PWM_On_50_Percent_Duty_Cycle();
-}else if( Button_Get_State() == 3){
-PWM_On_100_Percent_Duty_Cycle();
 }
 }
 }

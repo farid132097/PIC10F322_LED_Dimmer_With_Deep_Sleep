@@ -1390,7 +1390,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _Button_State
 -> -> 0 `i `uc
 ]
-[; ;button.c: 37: volatile uint8_t Button_State = 0;
+[v _sleep_mode `Vuc ~T0 @X0 1 e ]
+[i _sleep_mode
+-> -> 0 `i `uc
+]
+[; ;button.c: 37: volatile uint8_t Button_State = 0, sleep_mode=0;
 "39
 [v _Button_Init `(v ~T0 @X0 1 ef ]
 {
@@ -1432,12 +1436,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.c: 50: Button_State=0;
 "50
 [e = _Button_State -> -> 0 `i `uc ]
+[; ;button.c: 51: sleep_mode=1;
 "51
+[e = _sleep_mode -> -> 1 `i `uc ]
+[; ;button.c: 52: INTCON=0x90;
+"52
+[e = _INTCON -> -> 144 `i `uc ]
+"53
 }
 [e :U 145 ]
-[; ;button.c: 51: }
-[; ;button.c: 52: while( PORTA & 0x04){};
-"52
+[; ;button.c: 53: }
+[; ;button.c: 54: while( PORTA & 0x04){};
+"54
 [e $U 146  ]
 [e :U 147 ]
 {
@@ -1445,40 +1455,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 146 ]
 [e $ != & -> _PORTA `i -> 4 `i -> 0 `i 147  ]
 [e :U 148 ]
-[; ;button.c: 53: PWM_Clear_Execution_Status();
-"53
+[; ;button.c: 55: PWM_Clear_Execution_Status();
+"55
 [e ( _PWM_Clear_Execution_Status ..  ]
-[; ;button.c: 54: }
-"54
+[; ;button.c: 56: }
+"56
 [e :UE 144 ]
 }
-"56
+"58
 [v _Button_Get_State `(uc ~T0 @X0 1 ef ]
 {
-[; ;button.c: 56: uint8_t Button_Get_State(void){
+[; ;button.c: 58: uint8_t Button_Get_State(void){
 [e :U _Button_Get_State ]
 [f ]
-[; ;button.c: 57: return Button_State;
-"57
+[; ;button.c: 59: return Button_State;
+"59
 [e ) _Button_State ]
 [e $UE 149  ]
-[; ;button.c: 58: }
-"58
+[; ;button.c: 60: }
+"60
 [e :UE 149 ]
 }
-"60
+"62
+[v _Button_Get_Sleep_Mode `(uc ~T0 @X0 1 ef ]
+{
+[; ;button.c: 62: uint8_t Button_Get_Sleep_Mode(void){
+[e :U _Button_Get_Sleep_Mode ]
+[f ]
+[; ;button.c: 63: return sleep_mode;
+"63
+[e ) _sleep_mode ]
+[e $UE 150  ]
+[; ;button.c: 64: }
+"64
+[e :UE 150 ]
+}
+"66
 [v _Button_ISR_Executables `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 60: void Button_ISR_Executables(void){
+[; ;button.c: 66: void Button_ISR_Executables(void){
 [e :U _Button_ISR_Executables ]
 [f ]
-[; ;button.c: 61: Button_Pressed();
-"61
-[e ( _Button_Pressed ..  ]
-[; ;button.c: 62: INTCON&=~0x02;
-"62
-[e =& _INTCON -> ~ -> 2 `i `uc ]
-[; ;button.c: 63: }
-"63
-[e :UE 150 ]
+[; ;button.c: 68: INTCON=0x00;
+"68
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;button.c: 69: sleep_mode=0;
+"69
+[e = _sleep_mode -> -> 0 `i `uc ]
+[; ;button.c: 70: }
+"70
+[e :UE 151 ]
 }

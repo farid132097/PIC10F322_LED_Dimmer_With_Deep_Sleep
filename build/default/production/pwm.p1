@@ -1388,11 +1388,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _executed
 -> -> 0 `i `uc
 ]
-[v _sleep_mode `Vuc ~T0 @X0 1 e ]
-[i _sleep_mode
--> -> 0 `i `uc
-]
-[; ;pwm.c: 10: volatile uint8_t executed=0, sleep_mode=0;
+[; ;pwm.c: 10: volatile uint8_t executed=0;
 "12
 [v _PWM_Get_Execution_Status `(uc ~T0 @X0 1 ef ]
 {
@@ -1578,9 +1574,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "67
 [e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 153  ]
 {
-[; ;pwm.c: 68: PWM_Disable();
-"68
-[e ( _PWM_Disable ..  ]
 [; ;pwm.c: 69: PWM_Enable();
 "69
 [e ( _PWM_Enable ..  ]
@@ -1608,9 +1601,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "76
 [e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 155  ]
 {
-[; ;pwm.c: 77: PWM_Disable();
-"77
-[e ( _PWM_Disable ..  ]
 [; ;pwm.c: 78: PWM_Enable();
 "78
 [e ( _PWM_Enable ..  ]
@@ -1638,9 +1628,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "85
 [e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 157  ]
 {
-[; ;pwm.c: 86: PWM_Disable();
-"86
-[e ( _PWM_Disable ..  ]
 [; ;pwm.c: 87: PWM_Enable();
 "87
 [e ( _PWM_Enable ..  ]

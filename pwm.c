@@ -7,7 +7,7 @@
 #define PWM_ANSEL ANSELA
 #define PWM_bp    0x01U
 
-volatile uint8_t executed=0, sleep_mode=0;
+volatile uint8_t executed=0;
 
 uint8_t PWM_Get_Execution_Status(void){
     return executed;
@@ -65,7 +65,7 @@ void PWM_Disable(void){
 
 void PWM_On_20_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        PWM_Disable();
+        //PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(20);
         PWM_Set_Execution_Status();
@@ -74,7 +74,7 @@ void PWM_On_20_Percent_Duty_Cycle(void){
 
 void PWM_On_50_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        PWM_Disable();
+        //PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(50);
         PWM_Set_Execution_Status();
@@ -83,7 +83,7 @@ void PWM_On_50_Percent_Duty_Cycle(void){
 
 void PWM_On_100_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        PWM_Disable();
+        //PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(95);
         PWM_Set_Execution_Status();

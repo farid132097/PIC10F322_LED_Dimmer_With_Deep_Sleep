@@ -2273,7 +2273,7 @@ void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
 
 # 37 "button.c"
-volatile uint8_t Button_State = 0;
+volatile uint8_t Button_State = 0, sleep_mode=0;
 
 void Button_Init(void){
 TRISA =(1<<2);
@@ -2287,6 +2287,8 @@ void Button_Pressed(void){
 Button_State++;
 if(Button_State>2){
 Button_State=0;
+sleep_mode=1;
+INTCON=0x90;
 }
 while( PORTA & 0x04){};
 PWM_Clear_Execution_Status();
@@ -2296,7 +2298,12 @@ uint8_t Button_Get_State(void){
 return Button_State;
 }
 
+uint8_t Button_Get_Sleep_Mode(void){
+return sleep_mode;
+}
+
 void Button_ISR_Executables(void){
-Button_Pressed();
-INTCON&=~0x02;
+
+INTCON=0x00;
+sleep_mode=0;
 }

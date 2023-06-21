@@ -8,5 +8,6 @@
 void     Button_Pressed(void);
 void     Button_Init(void);
 uint8_t  Button_Get_State(void);
+uint8_t  Button_Get_Sleep_Mode(void);
 void     Button_ISR_Executables(void);
 

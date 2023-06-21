@@ -4,17 +4,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Button_Init `(v ~T0 @X0 0 ef ]
 "15 sleep.h
 [v _Sleep_Init `(v ~T0 @X0 0 ef ]
-"10 button.h
-[v _Button_Get_State `(uc ~T0 @X0 0 ef ]
+"11 button.h
+[v _Button_Get_Sleep_Mode `(uc ~T0 @X0 0 ef ]
+"158 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "18 pwm.h
 [v _PWM_Off `(v ~T0 @X0 0 ef ]
-"15
-[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"16
-[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"17
-[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"11 button.h
+"12 button.h
 [v _Button_ISR_Executables `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
@@ -1403,7 +1399,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.h: 8: void Button_Pressed(void);
 [; ;button.h: 9: void Button_Init(void);
 [; ;button.h: 10: uint8_t Button_Get_State(void);
-[; ;button.h: 11: void Button_ISR_Executables(void);
+[; ;button.h: 11: uint8_t Button_Get_Sleep_Mode(void);
+[; ;button.h: 12: void Button_ISR_Executables(void);
 [; ;sleep.h: 8: void Sleep_Select_Internal_8MHz_Oscillator(void);
 [; ;sleep.h: 9: void Sleep_Disable_Reference_Clock_Output(void);
 [; ;sleep.h: 10: void Sleep_Disable_Watchdog(void);
@@ -1422,8 +1419,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.h: 16: void PWM_On_50_Percent_Duty_Cycle(void);
 [; ;pwm.h: 17: void PWM_On_100_Percent_Duty_Cycle(void);
 [; ;pwm.h: 18: void PWM_Off(void);
+"16 main.c
+[v _button_state `uc ~T0 @X0 1 e ]
+[i _button_state
+-> -> 0 `i `uc
+]
+[; ;main.c: 16: uint8_t button_state=0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"18 main.c
+"18
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [; ;main.c: 18: void main(void) {
@@ -1439,76 +1442,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [e :U 145 ]
 {
-[; ;main.c: 25: if(Button_Get_State() == 0){
+[; ;main.c: 25: if(Button_Get_Sleep_Mode()==0){
 "25
-[e $ ! == -> ( _Button_Get_State ..  `i -> 0 `i 147  ]
+[e $ ! == -> ( _Button_Get_Sleep_Mode ..  `i -> 0 `i 147  ]
 {
-[; ;main.c: 26: PWM_Off();
+[; ;main.c: 26: if(!(PORTA & 0x04)){
 "26
-[e ( _PWM_Off ..  ]
-[; ;main.c: 27: asm("sleep");
-"27
-[; <" sleep ;# ">
-"28
-}
-[; ;main.c: 28: }else if( Button_Get_State() == 1){
-[e $U 148  ]
-[e :U 147 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 1 `i 149  ]
+[e $ ! ! != & -> _PORTA `i -> 4 `i -> 0 `i 148  ]
 {
-[; ;main.c: 29: PWM_On_20_Percent_Duty_Cycle();
+[; ;main.c: 27: while( PORTA & 0x04){};
+"27
+[e $U 149  ]
+[e :U 150 ]
+{
+}
+[e :U 149 ]
+[e $ != & -> _PORTA `i -> 4 `i -> 0 `i 150  ]
+[e :U 151 ]
 "29
-[e ( _PWM_On_20_Percent_Duty_Cycle ..  ]
+}
+[e :U 148 ]
 "30
 }
-[; ;main.c: 30: }else if( Button_Get_State() == 2){
-[e $U 150  ]
-[e :U 149 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 2 `i 151  ]
-{
-[; ;main.c: 31: PWM_On_50_Percent_Duty_Cycle();
-"31
-[e ( _PWM_On_50_Percent_Duty_Cycle ..  ]
-"32
-}
-[; ;main.c: 32: }else if( Button_Get_State() == 3){
+[; ;main.c: 29: }
+[; ;main.c: 30: }else{
 [e $U 152  ]
-[e :U 151 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 3 `i 153  ]
+[e :U 147 ]
 {
-[; ;main.c: 33: PWM_On_100_Percent_Duty_Cycle();
+[; ;main.c: 31: PWM_Off();
+"31
+[e ( _PWM_Off ..  ]
+[; ;main.c: 32: asm("sleep");
+"32
+[; <" sleep ;# ">
 "33
-[e ( _PWM_On_100_Percent_Duty_Cycle ..  ]
-"34
 }
-[e :U 153 ]
-"35
 [e :U 152 ]
-[e :U 150 ]
-[e :U 148 ]
+"34
 }
 [e :U 144 ]
 "23
 [e $U 145  ]
 [e :U 146 ]
+[; ;main.c: 33: }
 [; ;main.c: 34: }
 [; ;main.c: 35: }
-[; ;main.c: 36: }
-"36
+"35
 [e :UE 143 ]
 }
 [v $root$_ISRs `(v ~T0 @X0 0 e ]
-[v F1217 `(v ~T0 @X0 1 tf ]
-"38
-[v _ISRs `IF1217 ~T0 @X0 1 e ]
+[v F1220 `(v ~T0 @X0 1 tf ]
+"37
+[v _ISRs `IF1220 ~T0 @X0 1 e ]
 {
-[; ;main.c: 38: void interrupt ISRs(void){
+[; ;main.c: 37: void interrupt ISRs(void){
 [e :U _ISRs ]
 [f ]
-[; ;main.c: 39: Button_ISR_Executables();
-"39
+[; ;main.c: 38: Button_ISR_Executables();
+"38
 [e ( _Button_ISR_Executables ..  ]
-[; ;main.c: 40: }
-"40
-[e :UE 154 ]
+[; ;main.c: 39: }
+"39
+[e :UE 153 ]
 }
