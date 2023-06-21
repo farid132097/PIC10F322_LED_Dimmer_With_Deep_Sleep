@@ -1,26 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"590 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
-[v _OSCCON `Vuc ~T0 @X0 0 e@16 ]
-"1526
-[v _CLKRCON `Vuc ~T0 @X0 0 e@38 ]
-"1963
-[v _WDTCON `Vuc ~T0 @X0 0 e@48 ]
+"228 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
+[v _LATA `Vuc ~T0 @X0 0 e@7 ]
+"292
+[v _WPUA `Vuc ~T0 @X0 0 e@9 ]
+"1279
+[v _ADCON `Vuc ~T0 @X0 0 e@31 ]
 "1213
 [v _FVRCON `Vuc ~T0 @X0 0 e@29 ]
 "3163
 [v _VREGCON `Vuc ~T0 @X0 0 e@62 ]
-"1279
-[v _ADCON `Vuc ~T0 @X0 0 e@31 ]
-"196
-[v _TRISA `Vuc ~T0 @X0 0 e@6 ]
-"260
-[v _ANSELA `Vuc ~T0 @X0 0 e@8 ]
-"228
-[v _LATA `Vuc ~T0 @X0 0 e@7 ]
-"494
-[v _OPTION_REG `Vuc ~T0 @X0 0 e@14 ]
-"292
-[v _WPUA `Vuc ~T0 @X0 0 e@9 ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1385,151 +1373,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xc8\pic\include\pic.h: 127: extern __bank0 unsigned char __resetbits;
 [; ;xc8\pic\include\pic.h: 128: extern __bank0 __bit __powerdown;
 [; ;xc8\pic\include\pic.h: 129: extern __bank0 __bit __timeout;
-"45 sleep.c
-[v _Sleep_Select_Internal_8MHz_Oscillator `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 45: void Sleep_Select_Internal_8MHz_Oscillator(void){
-[e :U _Sleep_Select_Internal_8MHz_Oscillator ]
-[f ]
-[; ;sleep.c: 46: OSCCON = (0x06<<0x04U);
-"46
-[e = _OSCCON -> << -> 6 `i -> 4 `ui `uc ]
-[; ;sleep.c: 47: while((OSCCON & (0x01<<0x03U)) == 0);
-"47
-[e $U 144  ]
-[e :U 145 ]
-[e :U 144 ]
-[e $ == & -> _OSCCON `i << -> 1 `i -> 3 `ui -> 0 `i 145  ]
-[e :U 146 ]
-[; ;sleep.c: 48: while((OSCCON & (0x01<<0x00U)) == 0);
-"48
-[e $U 147  ]
-[e :U 148 ]
-[e :U 147 ]
-[e $ == & -> _OSCCON `i << -> 1 `i -> 0 `ui -> 0 `i 148  ]
-[e :U 149 ]
-[; ;sleep.c: 49: }
-"49
-[e :UE 143 ]
-}
-"51
-[v _Sleep_Disable_Reference_Clock_Output `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 51: void Sleep_Disable_Reference_Clock_Output(void){
-[e :U _Sleep_Disable_Reference_Clock_Output ]
-[f ]
-[; ;sleep.c: 52: CLKRCON &=~ (0x01<<0x06U);
-"52
-[e =& _CLKRCON -> ~ << -> 1 `i -> 6 `ui `uc ]
-[; ;sleep.c: 53: }
-"53
-[e :UE 150 ]
-}
-"55
-[v _Sleep_Disable_Watchdog `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 55: void Sleep_Disable_Watchdog(void){
-[e :U _Sleep_Disable_Watchdog ]
-[f ]
-[; ;sleep.c: 56: WDTCON &=~ (0x01<<0x00U);
-"56
-[e =& _WDTCON -> ~ << -> 1 `i -> 0 `ui `uc ]
-[; ;sleep.c: 57: }
-"57
-[e :UE 151 ]
-}
-"59
-[v _Sleep_Disable_FVR `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 59: void Sleep_Disable_FVR(void){
-[e :U _Sleep_Disable_FVR ]
-[f ]
-[; ;sleep.c: 60: FVRCON = 0x00;
-"60
-[e = _FVRCON -> -> 0 `i `uc ]
-[; ;sleep.c: 61: }
-"61
-[e :UE 152 ]
-}
-"63
-[v _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 63: void Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode(void){
-[e :U _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode ]
-[f ]
-[; ;sleep.c: 64: VREGCON |= (0x01<<0x01U);
-"64
-[e =| _VREGCON -> << -> 1 `i -> 1 `ui `uc ]
-[; ;sleep.c: 65: }
-"65
-[e :UE 153 ]
-}
-"67
-[v _Sleep_Disable_ADC `(v ~T0 @X0 1 ef ]
-{
-[; ;sleep.c: 67: void Sleep_Disable_ADC(void){
-[e :U _Sleep_Disable_ADC ]
-[f ]
-[; ;sleep.c: 68: ADCON &=~ (0x01<<0x00U);
-"68
-[e =& _ADCON -> ~ << -> 1 `i -> 0 `ui `uc ]
-[; ;sleep.c: 69: }
-"69
-[e :UE 154 ]
-}
-"71
+"72 sleep.c
 [v _Sleep_Unused_GPIO_Config `(v ~T0 @X0 1 ef ]
 {
-[; ;sleep.c: 71: void Sleep_Unused_GPIO_Config(void){
+[; ;sleep.c: 72: void Sleep_Unused_GPIO_Config(void){
 [e :U _Sleep_Unused_GPIO_Config ]
 [f ]
-[; ;sleep.c: 72: TRISA &=~ (1<<2);
-"72
-[e =& _TRISA -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;sleep.c: 73: ANSELA &=~ (1<<2);
-"73
-[e =& _ANSELA -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;sleep.c: 74: LATA &=~ (1<<2);
-"74
-[e =& _LATA -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;sleep.c: 75: }
+[; ;sleep.c: 75: LATA &=~ 1;
 "75
-[e :UE 155 ]
+[e =& _LATA -> ~ -> 1 `i `uc ]
+[; ;sleep.c: 76: }
+"76
+[e :UE 143 ]
 }
-"77
+"78
 [v _Sleep_Init `(v ~T0 @X0 1 ef ]
 {
-[; ;sleep.c: 77: void Sleep_Init(void){
+[; ;sleep.c: 78: void Sleep_Init(void){
 [e :U _Sleep_Init ]
 [f ]
-[; ;sleep.c: 78: OPTION_REG = 0x7f;
-"78
-[e = _OPTION_REG -> -> 127 `i `uc ]
-[; ;sleep.c: 79: WPUA |= (1<<3);
+[; ;sleep.c: 79: WPUA = (1<<3);
 "79
-[e =| _WPUA -> << -> 1 `i -> 3 `i `uc ]
-[; ;sleep.c: 80: Sleep_Select_Internal_8MHz_Oscillator();
-"80
-[e ( _Sleep_Select_Internal_8MHz_Oscillator ..  ]
-[; ;sleep.c: 81: Sleep_Disable_Reference_Clock_Output();
-"81
-[e ( _Sleep_Disable_Reference_Clock_Output ..  ]
-[; ;sleep.c: 82: Sleep_Disable_Watchdog();
-"82
-[e ( _Sleep_Disable_Watchdog ..  ]
-[; ;sleep.c: 83: Sleep_Disable_ADC();
+[e = _WPUA -> << -> 1 `i -> 3 `i `uc ]
+[; ;sleep.c: 83: ADCON = 0x00;
 "83
-[e ( _Sleep_Disable_ADC ..  ]
-[; ;sleep.c: 84: Sleep_Disable_FVR();
+[e = _ADCON -> -> 0 `i `uc ]
+[; ;sleep.c: 84: FVRCON = 0x00;
 "84
-[e ( _Sleep_Disable_FVR ..  ]
-[; ;sleep.c: 85: Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode();
+[e = _FVRCON -> -> 0 `i `uc ]
+[; ;sleep.c: 85: VREGCON = 0x02;
 "85
-[e ( _Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode ..  ]
+[e = _VREGCON -> -> 2 `i `uc ]
 [; ;sleep.c: 86: Sleep_Unused_GPIO_Config();
 "86
 [e ( _Sleep_Unused_GPIO_Config ..  ]
 [; ;sleep.c: 87: }
 "87
-[e :UE 156 ]
+[e :UE 144 ]
 }

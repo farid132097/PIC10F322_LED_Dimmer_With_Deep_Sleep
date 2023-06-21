@@ -2259,54 +2259,46 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 35 "button.c"
+# 8 "pwm.h"
+uint8_t PWM_Get_Execution_Status(void);
+void PWM_Set_Execution_Status(void);
+void PWM_Clear_Execution_Status(void);
+
+void PWM_Set_Duty(uint32_t duty);
+void PWM_Enable(void);
+void PWM_Disable(void);
+void PWM_On_20_Percent_Duty_Cycle(void);
+void PWM_On_50_Percent_Duty_Cycle(void);
+void PWM_On_100_Percent_Duty_Cycle(void);
+void PWM_Off(void);
+
+# 37 "button.c"
 volatile uint8_t Button_State = 0;
 
 void Button_Init(void){
-TRISA |= (0x01<<0x00U);
-ANSELA&=~ (0x01<<0x00U);
-IOCAN |= (0x01<<0x00U);
-if((INTCON & (0x01<<0x03U)) == 0){
-INTCON |= (0x01<<0x03U);
+TRISA =(1<<2);
+ANSELA=0x00;
+INTCON = 0;
+OPTION_REG&=~0xC0;
+INTCON=0x90;
 }
-if((INTCON & (0x01<<0x07U)) == 0){
-INTCON |= (0x01<<0x07U);
+
+void Button_Pressed(void){
+
+Button_State++;
+if(Button_State>3){
+Button_State=0;
 }
-if((INTCON & (0x01<<0x00U)) == 0){
-INTCON &=~ (0x01<<0x00U);
-}
-if(IOCAF & (0x01<<0x00U)){
-IOCAF &=~ (0x01<<0x00U);
-}
+_delay((unsigned long)((200)*(8000000/4000.0)));
+PWM_Clear_Execution_Status();
+
 }
 
 uint8_t Button_Get_State(void){
 return Button_State;
 }
 
-uint8_t Button_Interrupt_Fired(void){
-uint8_t status = 0;
-if(INTCON & (0x01<<0x00U)){
-if(IOCAF & (0x01<<0x00U)){
-status =1;
-}
-}
-return status;
-}
-
 void Button_ISR_Executables(void){
-if(Button_Interrupt_Fired()){
-
-# 76
-for(uint16_t i=0; i<10000;i++){
-__nop();
-}
-
-Button_State++;
-if(Button_State > (4U - 1)){
-Button_State = 0;
-}
-IOCAF &=~ (0x01<<0x00U);
-INTCON &=~ (0x01<<0x00U);
-}
+Button_Pressed();
+INTCON=0;
 }

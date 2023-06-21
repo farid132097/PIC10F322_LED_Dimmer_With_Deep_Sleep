@@ -2260,6 +2260,21 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
 # 10 "pwm.c"
+volatile uint8_t executed=0;
+
+uint8_t PWM_Get_Execution_Status(void){
+return executed;
+}
+
+void PWM_Set_Execution_Status(void){
+INTCON=0x90;
+executed=1;
+}
+
+void PWM_Clear_Execution_Status(void){
+executed=0;
+}
+
 void PWM_Set_Duty(uint32_t duty){
 if(duty>100){
 duty=100;
@@ -2268,51 +2283,67 @@ duty=0;
 }
 duty*=1023;
 duty/=100;
+
 uint16_t temp=duty;
 temp&=0x3FF;
-PWM2DCL=(temp&0x03)<<6;
 PWM2DCH=(temp>>2);
+PWM2DCL=(temp&0x03)<<6;
 }
 
 void PWM_Enable(void){
-ANSELA|= (1<<0x01U);
-TRISA |= (1<<0x01U);
-PR2 = 0xFF;
-T2CON = (1<<0)|(1<<2);
-PIR1 &=~(1<<1);
-PWM2DCH = 0xFF;
-PWM2DCL = 0xC0;
+LATA &=~ (1<<1);
+TRISA |= (1<<1);
+ANSELA |= (1<<1);
 PWM2CON = (1<<6)|(1<<7);
-TRISA &=~(1<<0x01U);
+PWM2DCH = 0x7F;
+PWM2DCL = 0xC0;
+PR2 = 0xFF;
+TMR2 = 0x00;
+PIR1 &=~ (1<<1);
+T2CON = (1<<2);
+TRISA &=~ (1<<1);
 }
 
 void PWM_Disable(void){
-ANSELA&=~(1<<0x01U);
-TRISA &=~(1<<0x01U);
-LATA &=~(1<<0x01U);
-PR2 = 0;
-T2CON = 0;
-PIR1 &=~(1<<1);
+TRISA |= (1<<1);
 PWM2DCH = 0;
 PWM2DCL = 0;
 PWM2CON = 0;
+PR2 = 0;
+TMR2 = 0;
+T2CON = 0;
+LATA &=~ (1<<1);
+ANSELA &=~ (1<<1);
+TRISA &=~ (1<<1);
 }
 
 void PWM_On_20_Percent_Duty_Cycle(void){
+if(PWM_Get_Execution_Status()==0){
 PWM_Enable();
 PWM_Set_Duty(20);
+PWM_Set_Execution_Status();
+}
 }
 
 void PWM_On_50_Percent_Duty_Cycle(void){
+if(PWM_Get_Execution_Status()==0){
 PWM_Enable();
 PWM_Set_Duty(50);
+PWM_Set_Execution_Status();
+}
 }
 
 void PWM_On_100_Percent_Duty_Cycle(void){
+if(PWM_Get_Execution_Status()==0){
 PWM_Enable();
 PWM_Set_Duty(99);
+PWM_Set_Execution_Status();
+}
 }
 
 void PWM_Off(void){
+if(PWM_Get_Execution_Status()==0){
 PWM_Disable();
+PWM_Set_Execution_Status();
+}
 }

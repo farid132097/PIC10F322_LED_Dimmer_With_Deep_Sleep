@@ -3,15 +3,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@6 ]
 "260
 [v _ANSELA `Vuc ~T0 @X0 0 e@8 ]
-"1137
-[v _IOCAN `Vuc ~T0 @X0 0 e@27 ]
 "350
 [v _INTCON `Vuc ~T0 @X0 0 e@11 ]
-"1175
-[v _IOCAF `Vuc ~T0 @X0 0 e@28 ]
-"8 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\builtins.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+"494
+[v _OPTION_REG `Vuc ~T0 @X0 0 e@14 ]
+[v F38 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\builtins.h
+[v __delay `JF38 ~T0 @X0 0 e ]
+[p i __delay ]
+"10 pwm.h
+[v _PWM_Clear_Execution_Status `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1376,182 +1377,104 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xc8\pic\include\pic.h: 127: extern __bank0 unsigned char __resetbits;
 [; ;xc8\pic\include\pic.h: 128: extern __bank0 __bit __powerdown;
 [; ;xc8\pic\include\pic.h: 129: extern __bank0 __bit __timeout;
-"35 button.c
+[; ;pwm.h: 8: uint8_t PWM_Get_Execution_Status(void);
+[; ;pwm.h: 9: void PWM_Set_Execution_Status(void);
+[; ;pwm.h: 10: void PWM_Clear_Execution_Status(void);
+[; ;pwm.h: 12: void PWM_Set_Duty(uint32_t duty);
+[; ;pwm.h: 13: void PWM_Enable(void);
+[; ;pwm.h: 14: void PWM_Disable(void);
+[; ;pwm.h: 15: void PWM_On_20_Percent_Duty_Cycle(void);
+[; ;pwm.h: 16: void PWM_On_50_Percent_Duty_Cycle(void);
+[; ;pwm.h: 17: void PWM_On_100_Percent_Duty_Cycle(void);
+[; ;pwm.h: 18: void PWM_Off(void);
+"37 button.c
 [v _Button_State `Vuc ~T0 @X0 1 e ]
 [i _Button_State
 -> -> 0 `i `uc
 ]
-[; ;button.c: 35: volatile uint8_t Button_State = 0;
-"37
+[; ;button.c: 37: volatile uint8_t Button_State = 0;
+"39
 [v _Button_Init `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 37: void Button_Init(void){
+[; ;button.c: 39: void Button_Init(void){
 [e :U _Button_Init ]
 [f ]
-[; ;button.c: 38: TRISA |= (0x01<<0x00U);
-"38
-[e =| _TRISA -> << -> 1 `i -> 0 `ui `uc ]
-[; ;button.c: 39: ANSELA&=~ (0x01<<0x00U);
-"39
-[e =& _ANSELA -> ~ << -> 1 `i -> 0 `ui `uc ]
-[; ;button.c: 40: IOCAN |= (0x01<<0x00U);
+[; ;button.c: 40: TRISA =(1<<2);
 "40
-[e =| _IOCAN -> << -> 1 `i -> 0 `ui `uc ]
-[; ;button.c: 41: if((INTCON & (0x01<<0x03U)) == 0){
+[e = _TRISA -> << -> 1 `i -> 2 `i `uc ]
+[; ;button.c: 41: ANSELA=0x00;
 "41
-[e $ ! == & -> _INTCON `i << -> 1 `i -> 3 `ui -> 0 `i 144  ]
-{
-[; ;button.c: 42: INTCON |= (0x01<<0x03U);
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;button.c: 42: INTCON = 0;
 "42
-[e =| _INTCON -> << -> 1 `i -> 3 `ui `uc ]
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;button.c: 43: OPTION_REG&=~0xC0;
 "43
-}
-[e :U 144 ]
-[; ;button.c: 43: }
-[; ;button.c: 44: if((INTCON & (0x01<<0x07U)) == 0){
+[e =& _OPTION_REG -> ~ -> 192 `i `uc ]
+[; ;button.c: 44: INTCON=0x90;
 "44
-[e $ ! == & -> _INTCON `i << -> 1 `i -> 7 `ui -> 0 `i 145  ]
-{
-[; ;button.c: 45: INTCON |= (0x01<<0x07U);
+[e = _INTCON -> -> 144 `i `uc ]
+[; ;button.c: 45: }
 "45
-[e =| _INTCON -> << -> 1 `i -> 7 `ui `uc ]
-"46
-}
-[e :U 145 ]
-[; ;button.c: 46: }
-[; ;button.c: 47: if((INTCON & (0x01<<0x00U)) == 0){
-"47
-[e $ ! == & -> _INTCON `i << -> 1 `i -> 0 `ui -> 0 `i 146  ]
-{
-[; ;button.c: 48: INTCON &=~ (0x01<<0x00U);
-"48
-[e =& _INTCON -> ~ << -> 1 `i -> 0 `ui `uc ]
-"49
-}
-[e :U 146 ]
-[; ;button.c: 49: }
-[; ;button.c: 50: if(IOCAF & (0x01<<0x00U)){
-"50
-[e $ ! != & -> _IOCAF `i << -> 1 `i -> 0 `ui -> 0 `i 147  ]
-{
-[; ;button.c: 51: IOCAF &=~ (0x01<<0x00U);
-"51
-[e =& _IOCAF -> ~ << -> 1 `i -> 0 `ui `uc ]
-"52
-}
-[e :U 147 ]
-[; ;button.c: 52: }
-[; ;button.c: 53: }
-"53
 [e :UE 143 ]
 }
-"55
+"47
+[v _Button_Pressed `(v ~T0 @X0 1 ef ]
+{
+[; ;button.c: 47: void Button_Pressed(void){
+[e :U _Button_Pressed ]
+[f ]
+[; ;button.c: 49: Button_State++;
+"49
+[e ++ _Button_State -> -> 1 `i `uc ]
+[; ;button.c: 50: if(Button_State>3){
+"50
+[e $ ! > -> _Button_State `i -> 3 `i 145  ]
+{
+[; ;button.c: 51: Button_State=0;
+"51
+[e = _Button_State -> -> 0 `i `uc ]
+"52
+}
+[e :U 145 ]
+[; ;button.c: 52: }
+[; ;button.c: 53: _delay((unsigned long)((200)*(8000000/4000.0)));
+"53
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;button.c: 54: PWM_Clear_Execution_Status();
+"54
+[e ( _PWM_Clear_Execution_Status ..  ]
+[; ;button.c: 56: }
+"56
+[e :UE 144 ]
+}
+"58
 [v _Button_Get_State `(uc ~T0 @X0 1 ef ]
 {
-[; ;button.c: 55: uint8_t Button_Get_State(void){
+[; ;button.c: 58: uint8_t Button_Get_State(void){
 [e :U _Button_Get_State ]
 [f ]
-[; ;button.c: 56: return Button_State;
-"56
-[e ) _Button_State ]
-[e $UE 148  ]
-[; ;button.c: 57: }
-"57
-[e :UE 148 ]
-}
+[; ;button.c: 59: return Button_State;
 "59
-[v _Button_Interrupt_Fired `(uc ~T0 @X0 1 ef ]
-{
-[; ;button.c: 59: uint8_t Button_Interrupt_Fired(void){
-[e :U _Button_Interrupt_Fired ]
-[f ]
+[e ) _Button_State ]
+[e $UE 146  ]
+[; ;button.c: 60: }
 "60
-[v _status `uc ~T0 @X0 1 a ]
-[; ;button.c: 60: uint8_t status = 0;
-[e = _status -> -> 0 `i `uc ]
-[; ;button.c: 61: if(INTCON & (0x01<<0x00U)){
-"61
-[e $ ! != & -> _INTCON `i << -> 1 `i -> 0 `ui -> 0 `i 150  ]
-{
-[; ;button.c: 62: if(IOCAF & (0x01<<0x00U)){
+[e :UE 146 ]
+}
 "62
-[e $ ! != & -> _IOCAF `i << -> 1 `i -> 0 `ui -> 0 `i 151  ]
-{
-[; ;button.c: 63: status =1;
-"63
-[e = _status -> -> 1 `i `uc ]
-"64
-}
-[e :U 151 ]
-"65
-}
-[e :U 150 ]
-[; ;button.c: 64: }
-[; ;button.c: 65: }
-[; ;button.c: 66: return status;
-"66
-[e ) _status ]
-[e $UE 149  ]
-[; ;button.c: 67: }
-"67
-[e :UE 149 ]
-}
-"69
 [v _Button_ISR_Executables `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 69: void Button_ISR_Executables(void){
+[; ;button.c: 62: void Button_ISR_Executables(void){
 [e :U _Button_ISR_Executables ]
 [f ]
-[; ;button.c: 70: if(Button_Interrupt_Fired()){
-"70
-[e $ ! != -> ( _Button_Interrupt_Fired ..  `i -> -> -> 0 `i `uc `i 153  ]
-{
-[; ;button.c: 76: for(uint16_t i=0; i<10000;i++){
-"76
-{
-[v _i `ui ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 10000 `i `ui 154  ]
-[e $U 155  ]
-[e :U 154 ]
-{
-[; ;button.c: 77: __nop();
-"77
-[e ( ___nop ..  ]
-"78
-}
-"76
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 10000 `i `ui 154  ]
-[e :U 155 ]
-"78
-}
-[; ;button.c: 78: }
-[; ;button.c: 80: Button_State++;
-"80
-[e ++ _Button_State -> -> 1 `i `uc ]
-[; ;button.c: 81: if(Button_State > (4U - 1)){
-"81
-[e $ ! > -> _Button_State `ui - -> 4 `ui -> -> 1 `i `ui 157  ]
-{
-[; ;button.c: 82: Button_State = 0;
-"82
-[e = _Button_State -> -> 0 `i `uc ]
-"83
-}
-[e :U 157 ]
-[; ;button.c: 83: }
-[; ;button.c: 84: IOCAF &=~ (0x01<<0x00U);
-"84
-[e =& _IOCAF -> ~ << -> 1 `i -> 0 `ui `uc ]
-[; ;button.c: 85: INTCON &=~ (0x01<<0x00U);
-"85
-[e =& _INTCON -> ~ << -> 1 `i -> 0 `ui `uc ]
-"86
-}
-[e :U 153 ]
-[; ;button.c: 86: }
-[; ;button.c: 87: }
-"87
-[e :UE 152 ]
+[; ;button.c: 63: Button_Pressed();
+"63
+[e ( _Button_Pressed ..  ]
+[; ;button.c: 64: INTCON=0;
+"64
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;button.c: 65: }
+"65
+[e :UE 147 ]
 }

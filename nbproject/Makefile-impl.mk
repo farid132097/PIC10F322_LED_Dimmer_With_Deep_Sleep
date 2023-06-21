@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=PIC10F322_LED_Dimmer_With_Deep_Sleep.X
+PROJECTNAME=PIC10F322_LED_Dimmer_With_Deep_Sleep
 
 # Active Configuration
 DEFAULTCONF=default

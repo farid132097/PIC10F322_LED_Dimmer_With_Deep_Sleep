@@ -2273,9 +2273,9 @@ extern __bank0 __bit __timeout;
 #pragma config WRT = OFF
 
 # 8 "button.h"
+void Button_Pressed(void);
 void Button_Init(void);
 uint8_t Button_Get_State(void);
-uint8_t Button_Interrupt_Fired(void);
 void Button_ISR_Executables(void);
 
 # 8 "sleep.h"
@@ -2289,6 +2289,10 @@ void Sleep_Unused_GPIO_Config(void);
 void Sleep_Init(void);
 
 # 8 "pwm.h"
+uint8_t PWM_Get_Execution_Status(void);
+void PWM_Set_Execution_Status(void);
+void PWM_Clear_Execution_Status(void);
+
 void PWM_Set_Duty(uint32_t duty);
 void PWM_Enable(void);
 void PWM_Disable(void);
@@ -2300,23 +2304,22 @@ void PWM_Off(void);
 # 18 "main.c"
 void main(void) {
 
+Button_Init();
+Sleep_Init();
 
-
-
-PWM_On_20_Percent_Duty_Cycle();
-
-uint8_t val=100;
 while(1){
 
-# 39
-val--;
-if(val<1){
-val=100;
+if(Button_Get_State() == 0){
+PWM_Off();
+asm("sleep");
+}else if( Button_Get_State() == 1){
+PWM_On_20_Percent_Duty_Cycle();
+}else if( Button_Get_State() == 2){
+PWM_On_50_Percent_Duty_Cycle();
+}else if( Button_Get_State() == 3){
+PWM_On_100_Percent_Duty_Cycle();
 }
-PWM_Set_Duty(val);
-_delay((unsigned long)((100)*(8000000/4000.0)));
 }
-return;
 }
 
 void interrupt ISRs(void){

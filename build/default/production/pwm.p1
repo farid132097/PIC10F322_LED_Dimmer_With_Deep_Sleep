@@ -1,22 +1,26 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"917 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
-[v _PWM2DCL `Vuc ~T0 @X0 0 e@23 ]
+"350 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
+[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 "953
 [v _PWM2DCH `Vuc ~T0 @X0 0 e@24 ]
-"260
-[v _ANSELA `Vuc ~T0 @X0 0 e@8 ]
-"196
-[v _TRISA `Vuc ~T0 @X0 0 e@6 ]
-"657
-[v _PR2 `Vuc ~T0 @X0 0 e@18 ]
-"664
-[v _T2CON `Vuc ~T0 @X0 0 e@19 ]
-"412
-[v _PIR1 `Vuc ~T0 @X0 0 e@12 ]
-"1023
-[v _PWM2CON `Vuc ~T0 @X0 0 e@25 ]
+"917
+[v _PWM2DCL `Vuc ~T0 @X0 0 e@23 ]
 "228
 [v _LATA `Vuc ~T0 @X0 0 e@7 ]
+"196
+[v _TRISA `Vuc ~T0 @X0 0 e@6 ]
+"260
+[v _ANSELA `Vuc ~T0 @X0 0 e@8 ]
+"1023
+[v _PWM2CON `Vuc ~T0 @X0 0 e@25 ]
+"657
+[v _PR2 `Vuc ~T0 @X0 0 e@18 ]
+"650
+[v _TMR2 `Vuc ~T0 @X0 0 e@17 ]
+"412
+[v _PIR1 `Vuc ~T0 @X0 0 e@12 ]
+"664
+[v _T2CON `Vuc ~T0 @X0 0 e@19 ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1382,189 +1386,291 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xc8\pic\include\pic.h: 128: extern __bank0 __bit __powerdown;
 [; ;xc8\pic\include\pic.h: 129: extern __bank0 __bit __timeout;
 "10 pwm.c
+[v _executed `Vuc ~T0 @X0 1 e ]
+[i _executed
+-> -> 0 `i `uc
+]
+[; ;pwm.c: 10: volatile uint8_t executed=0;
+"12
+[v _PWM_Get_Execution_Status `(uc ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 12: uint8_t PWM_Get_Execution_Status(void){
+[e :U _PWM_Get_Execution_Status ]
+[f ]
+[; ;pwm.c: 13: return executed;
+"13
+[e ) _executed ]
+[e $UE 143  ]
+[; ;pwm.c: 14: }
+"14
+[e :UE 143 ]
+}
+"16
+[v _PWM_Set_Execution_Status `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 16: void PWM_Set_Execution_Status(void){
+[e :U _PWM_Set_Execution_Status ]
+[f ]
+[; ;pwm.c: 17: INTCON=0x90;
+"17
+[e = _INTCON -> -> 144 `i `uc ]
+[; ;pwm.c: 18: executed=1;
+"18
+[e = _executed -> -> 1 `i `uc ]
+[; ;pwm.c: 19: }
+"19
+[e :UE 144 ]
+}
+"21
+[v _PWM_Clear_Execution_Status `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 21: void PWM_Clear_Execution_Status(void){
+[e :U _PWM_Clear_Execution_Status ]
+[f ]
+[; ;pwm.c: 22: executed=0;
+"22
+[e = _executed -> -> 0 `i `uc ]
+[; ;pwm.c: 23: }
+"23
+[e :UE 145 ]
+}
+"25
 [v _PWM_Set_Duty `(v ~T0 @X0 1 ef1`ul ]
 {
-[; ;pwm.c: 10: void PWM_Set_Duty(uint32_t duty){
+[; ;pwm.c: 25: void PWM_Set_Duty(uint32_t duty){
 [e :U _PWM_Set_Duty ]
 [v _duty `ul ~T0 @X0 1 r1 ]
 [f ]
-[; ;pwm.c: 11: if(duty>100){
-"11
-[e $ ! > _duty -> -> -> 100 `i `l `ul 144  ]
+[; ;pwm.c: 26: if(duty>100){
+"26
+[e $ ! > _duty -> -> -> 100 `i `l `ul 147  ]
 {
-[; ;pwm.c: 12: duty=100;
-"12
+[; ;pwm.c: 27: duty=100;
+"27
 [e = _duty -> -> -> 100 `i `l `ul ]
-"13
+"28
 }
-[; ;pwm.c: 13: }else if(duty<0){
-[e $U 145  ]
-[e :U 144 ]
-[e $ ! < _duty -> -> -> 0 `i `l `ul 146  ]
+[; ;pwm.c: 28: }else if(duty<0){
+[e $U 148  ]
+[e :U 147 ]
+[e $ ! < _duty -> -> -> 0 `i `l `ul 149  ]
 {
-[; ;pwm.c: 14: duty=0;
-"14
+[; ;pwm.c: 29: duty=0;
+"29
 [e = _duty -> -> -> 0 `i `l `ul ]
-"15
+"30
 }
-[e :U 146 ]
-"16
-[e :U 145 ]
-[; ;pwm.c: 15: }
-[; ;pwm.c: 16: duty*=1023;
+[e :U 149 ]
+"31
+[e :U 148 ]
+[; ;pwm.c: 30: }
+[; ;pwm.c: 31: duty*=1023;
 [e =* _duty -> -> -> 1023 `i `l `ul ]
-[; ;pwm.c: 17: duty/=100;
-"17
+[; ;pwm.c: 32: duty/=100;
+"32
 [e =/ _duty -> -> 100 `uc `ul ]
-"18
+"34
 [v _temp `ui ~T0 @X0 1 a ]
-[; ;pwm.c: 18: uint16_t temp=duty;
+[; ;pwm.c: 34: uint16_t temp=duty;
 [e = _temp -> _duty `ui ]
-[; ;pwm.c: 19: temp&=0x3FF;
-"19
+[; ;pwm.c: 35: temp&=0x3FF;
+"35
 [e =& _temp -> -> 1023 `i `ui ]
-[; ;pwm.c: 20: PWM2DCL=(temp&0x03)<<6;
-"20
-[e = _PWM2DCL -> << & _temp -> -> 3 `i `ui -> 6 `i `uc ]
-[; ;pwm.c: 21: PWM2DCH=(temp>>2);
-"21
+[; ;pwm.c: 36: PWM2DCH=(temp>>2);
+"36
 [e = _PWM2DCH -> >> _temp -> 2 `i `uc ]
-[; ;pwm.c: 22: }
-"22
-[e :UE 143 ]
+[; ;pwm.c: 37: PWM2DCL=(temp&0x03)<<6;
+"37
+[e = _PWM2DCL -> << & _temp -> -> 3 `i `ui -> 6 `i `uc ]
+[; ;pwm.c: 38: }
+"38
+[e :UE 146 ]
 }
-"24
+"40
 [v _PWM_Enable `(v ~T0 @X0 1 ef ]
 {
-[; ;pwm.c: 24: void PWM_Enable(void){
+[; ;pwm.c: 40: void PWM_Enable(void){
 [e :U _PWM_Enable ]
 [f ]
-[; ;pwm.c: 25: ANSELA|= (1<<0x01U);
-"25
-[e =| _ANSELA -> << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 26: TRISA |= (1<<0x01U);
-"26
-[e =| _TRISA -> << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 27: PR2 = 0xFF;
-"27
-[e = _PR2 -> -> 255 `i `uc ]
-[; ;pwm.c: 28: T2CON = (1<<0)|(1<<2);
-"28
-[e = _T2CON -> | << -> 1 `i -> 0 `i << -> 1 `i -> 2 `i `uc ]
-[; ;pwm.c: 29: PIR1 &=~(1<<1);
-"29
-[e =& _PIR1 -> ~ << -> 1 `i -> 1 `i `uc ]
-[; ;pwm.c: 30: PWM2DCH = 0xFF;
-"30
-[e = _PWM2DCH -> -> 255 `i `uc ]
-[; ;pwm.c: 31: PWM2DCL = 0xC0;
-"31
-[e = _PWM2DCL -> -> 192 `i `uc ]
-[; ;pwm.c: 32: PWM2CON = (1<<6)|(1<<7);
-"32
-[e = _PWM2CON -> | << -> 1 `i -> 6 `i << -> 1 `i -> 7 `i `uc ]
-[; ;pwm.c: 33: TRISA &=~(1<<0x01U);
-"33
-[e =& _TRISA -> ~ << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 34: }
-"34
-[e :UE 147 ]
-}
-"36
-[v _PWM_Disable `(v ~T0 @X0 1 ef ]
-{
-[; ;pwm.c: 36: void PWM_Disable(void){
-[e :U _PWM_Disable ]
-[f ]
-[; ;pwm.c: 37: ANSELA&=~(1<<0x01U);
-"37
-[e =& _ANSELA -> ~ << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 38: TRISA &=~(1<<0x01U);
-"38
-[e =& _TRISA -> ~ << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 39: LATA &=~(1<<0x01U);
-"39
-[e =& _LATA -> ~ << -> 1 `i -> 1 `ui `uc ]
-[; ;pwm.c: 40: PR2 = 0;
-"40
-[e = _PR2 -> -> 0 `i `uc ]
-[; ;pwm.c: 41: T2CON = 0;
+[; ;pwm.c: 41: LATA &=~ (1<<1);
 "41
-[e = _T2CON -> -> 0 `i `uc ]
-[; ;pwm.c: 42: PIR1 &=~(1<<1);
+[e =& _LATA -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 42: TRISA |= (1<<1);
 "42
-[e =& _PIR1 -> ~ << -> 1 `i -> 1 `i `uc ]
-[; ;pwm.c: 43: PWM2DCH = 0;
+[e =| _TRISA -> << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 43: ANSELA |= (1<<1);
 "43
-[e = _PWM2DCH -> -> 0 `i `uc ]
-[; ;pwm.c: 44: PWM2DCL = 0;
+[e =| _ANSELA -> << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 44: PWM2CON = (1<<6)|(1<<7);
 "44
-[e = _PWM2DCL -> -> 0 `i `uc ]
-[; ;pwm.c: 45: PWM2CON = 0;
+[e = _PWM2CON -> | << -> 1 `i -> 6 `i << -> 1 `i -> 7 `i `uc ]
+[; ;pwm.c: 45: PWM2DCH = 0x7F;
 "45
-[e = _PWM2CON -> -> 0 `i `uc ]
-[; ;pwm.c: 46: }
+[e = _PWM2DCH -> -> 127 `i `uc ]
+[; ;pwm.c: 46: PWM2DCL = 0xC0;
 "46
-[e :UE 148 ]
-}
+[e = _PWM2DCL -> -> 192 `i `uc ]
+[; ;pwm.c: 47: PR2 = 0xFF;
+"47
+[e = _PR2 -> -> 255 `i `uc ]
+[; ;pwm.c: 48: TMR2 = 0x00;
 "48
-[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
-{
-[; ;pwm.c: 48: void PWM_On_20_Percent_Duty_Cycle(void){
-[e :U _PWM_On_20_Percent_Duty_Cycle ]
-[f ]
-[; ;pwm.c: 49: PWM_Enable();
+[e = _TMR2 -> -> 0 `i `uc ]
+[; ;pwm.c: 49: PIR1 &=~ (1<<1);
 "49
-[e ( _PWM_Enable ..  ]
-[; ;pwm.c: 50: PWM_Set_Duty(20);
+[e =& _PIR1 -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 50: T2CON = (1<<2);
 "50
-[e ( _PWM_Set_Duty (1 -> -> -> 20 `i `l `ul ]
-[; ;pwm.c: 51: }
+[e = _T2CON -> << -> 1 `i -> 2 `i `uc ]
+[; ;pwm.c: 51: TRISA &=~ (1<<1);
 "51
-[e :UE 149 ]
-}
-"53
-[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
-{
-[; ;pwm.c: 53: void PWM_On_50_Percent_Duty_Cycle(void){
-[e :U _PWM_On_50_Percent_Duty_Cycle ]
-[f ]
-[; ;pwm.c: 54: PWM_Enable();
-"54
-[e ( _PWM_Enable ..  ]
-[; ;pwm.c: 55: PWM_Set_Duty(50);
-"55
-[e ( _PWM_Set_Duty (1 -> -> -> 50 `i `l `ul ]
-[; ;pwm.c: 56: }
-"56
+[e =& _TRISA -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 52: }
+"52
 [e :UE 150 ]
 }
+"54
+[v _PWM_Disable `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 54: void PWM_Disable(void){
+[e :U _PWM_Disable ]
+[f ]
+[; ;pwm.c: 55: TRISA |= (1<<1);
+"55
+[e =| _TRISA -> << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 56: PWM2DCH = 0;
+"56
+[e = _PWM2DCH -> -> 0 `i `uc ]
+[; ;pwm.c: 57: PWM2DCL = 0;
+"57
+[e = _PWM2DCL -> -> 0 `i `uc ]
+[; ;pwm.c: 58: PWM2CON = 0;
 "58
-[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
-{
-[; ;pwm.c: 58: void PWM_On_100_Percent_Duty_Cycle(void){
-[e :U _PWM_On_100_Percent_Duty_Cycle ]
-[f ]
-[; ;pwm.c: 59: PWM_Enable();
+[e = _PWM2CON -> -> 0 `i `uc ]
+[; ;pwm.c: 59: PR2 = 0;
 "59
-[e ( _PWM_Enable ..  ]
-[; ;pwm.c: 60: PWM_Set_Duty(99);
+[e = _PR2 -> -> 0 `i `uc ]
+[; ;pwm.c: 60: TMR2 = 0;
 "60
-[e ( _PWM_Set_Duty (1 -> -> -> 99 `i `l `ul ]
-[; ;pwm.c: 61: }
+[e = _TMR2 -> -> 0 `i `uc ]
+[; ;pwm.c: 61: T2CON = 0;
 "61
-[e :UE 151 ]
-}
+[e = _T2CON -> -> 0 `i `uc ]
+[; ;pwm.c: 62: LATA &=~ (1<<1);
+"62
+[e =& _LATA -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 63: ANSELA &=~ (1<<1);
 "63
-[v _PWM_Off `(v ~T0 @X0 1 ef ]
-{
-[; ;pwm.c: 63: void PWM_Off(void){
-[e :U _PWM_Off ]
-[f ]
-[; ;pwm.c: 64: PWM_Disable();
+[e =& _ANSELA -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;pwm.c: 64: TRISA &=~ (1<<1);
 "64
-[e ( _PWM_Disable ..  ]
+[e =& _TRISA -> ~ << -> 1 `i -> 1 `i `uc ]
 [; ;pwm.c: 65: }
 "65
+[e :UE 151 ]
+}
+"67
+[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 67: void PWM_On_20_Percent_Duty_Cycle(void){
+[e :U _PWM_On_20_Percent_Duty_Cycle ]
+[f ]
+[; ;pwm.c: 68: if(PWM_Get_Execution_Status()==0){
+"68
+[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 153  ]
+{
+[; ;pwm.c: 69: PWM_Enable();
+"69
+[e ( _PWM_Enable ..  ]
+[; ;pwm.c: 70: PWM_Set_Duty(20);
+"70
+[e ( _PWM_Set_Duty (1 -> -> -> 20 `i `l `ul ]
+[; ;pwm.c: 71: PWM_Set_Execution_Status();
+"71
+[e ( _PWM_Set_Execution_Status ..  ]
+"72
+}
+[e :U 153 ]
+[; ;pwm.c: 72: }
+[; ;pwm.c: 73: }
+"73
 [e :UE 152 ]
+}
+"75
+[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 75: void PWM_On_50_Percent_Duty_Cycle(void){
+[e :U _PWM_On_50_Percent_Duty_Cycle ]
+[f ]
+[; ;pwm.c: 76: if(PWM_Get_Execution_Status()==0){
+"76
+[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 155  ]
+{
+[; ;pwm.c: 77: PWM_Enable();
+"77
+[e ( _PWM_Enable ..  ]
+[; ;pwm.c: 78: PWM_Set_Duty(50);
+"78
+[e ( _PWM_Set_Duty (1 -> -> -> 50 `i `l `ul ]
+[; ;pwm.c: 79: PWM_Set_Execution_Status();
+"79
+[e ( _PWM_Set_Execution_Status ..  ]
+"80
+}
+[e :U 155 ]
+[; ;pwm.c: 80: }
+[; ;pwm.c: 81: }
+"81
+[e :UE 154 ]
+}
+"83
+[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 83: void PWM_On_100_Percent_Duty_Cycle(void){
+[e :U _PWM_On_100_Percent_Duty_Cycle ]
+[f ]
+[; ;pwm.c: 84: if(PWM_Get_Execution_Status()==0){
+"84
+[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 157  ]
+{
+[; ;pwm.c: 85: PWM_Enable();
+"85
+[e ( _PWM_Enable ..  ]
+[; ;pwm.c: 86: PWM_Set_Duty(99);
+"86
+[e ( _PWM_Set_Duty (1 -> -> -> 99 `i `l `ul ]
+[; ;pwm.c: 87: PWM_Set_Execution_Status();
+"87
+[e ( _PWM_Set_Execution_Status ..  ]
+"88
+}
+[e :U 157 ]
+[; ;pwm.c: 88: }
+[; ;pwm.c: 89: }
+"89
+[e :UE 156 ]
+}
+"91
+[v _PWM_Off `(v ~T0 @X0 1 ef ]
+{
+[; ;pwm.c: 91: void PWM_Off(void){
+[e :U _PWM_Off ]
+[f ]
+[; ;pwm.c: 92: if(PWM_Get_Execution_Status()==0){
+"92
+[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 159  ]
+{
+[; ;pwm.c: 93: PWM_Disable();
+"93
+[e ( _PWM_Disable ..  ]
+[; ;pwm.c: 94: PWM_Set_Execution_Status();
+"94
+[e ( _PWM_Set_Execution_Status ..  ]
+"95
+}
+[e :U 159 ]
+[; ;pwm.c: 95: }
+[; ;pwm.c: 96: }
+"96
+[e :UE 158 ]
 }

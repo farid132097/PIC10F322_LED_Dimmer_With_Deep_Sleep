@@ -2259,47 +2259,20 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 45 "sleep.c"
-void Sleep_Select_Internal_8MHz_Oscillator(void){
-OSCCON = (0x06<<0x04U);
-while((OSCCON & (0x01<<0x03U)) == 0);
-while((OSCCON & (0x01<<0x00U)) == 0);
-}
-
-void Sleep_Disable_Reference_Clock_Output(void){
-CLKRCON &=~ (0x01<<0x06U);
-}
-
-void Sleep_Disable_Watchdog(void){
-WDTCON &=~ (0x01<<0x00U);
-}
-
-void Sleep_Disable_FVR(void){
-FVRCON = 0x00;
-}
-
-void Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode(void){
-VREGCON |= (0x01<<0x01U);
-}
-
-void Sleep_Disable_ADC(void){
-ADCON &=~ (0x01<<0x00U);
-}
-
+# 72 "sleep.c"
 void Sleep_Unused_GPIO_Config(void){
-TRISA &=~ (1<<2);
-ANSELA &=~ (1<<2);
-LATA &=~ (1<<2);
+
+
+LATA &=~ 1;
 }
 
 void Sleep_Init(void){
-OPTION_REG = 0x7f;
-WPUA |= (1<<3);
-Sleep_Select_Internal_8MHz_Oscillator();
-Sleep_Disable_Reference_Clock_Output();
-Sleep_Disable_Watchdog();
-Sleep_Disable_ADC();
-Sleep_Disable_FVR();
-Sleep_Enable_Voltage_Regulator_In_Low_Power_Mode();
+WPUA = (1<<3);
+
+
+
+ADCON = 0x00;
+FVRCON = 0x00;
+VREGCON = 0x02;
 Sleep_Unused_GPIO_Config();
 }
