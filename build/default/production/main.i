@@ -2273,7 +2273,6 @@ extern __bank0 __bit __timeout;
 #pragma config WRT = OFF
 
 # 8 "button.h"
-void Button_Pressed(void);
 void Button_Set_Sleep_Mode(void);
 void Button_Set_Active_Mode(void);
 void Button_Init(void);
@@ -2305,8 +2304,6 @@ void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
 
 # 16 "main.c"
-uint8_t button_state=0;
-
 void main(void) {
 
 Button_Init();
@@ -2315,17 +2312,10 @@ PWM_Clear_Execution_Status();
 
 while(1){
 
-if(Button_Get_Sleep_Mode()==0){
-if(Button_Get_State() == 1){
-PWM_On_20_Percent_Duty_Cycle();
-}else if(Button_Get_State() == 2){
-PWM_On_50_Percent_Duty_Cycle();
-}else if(Button_Get_State() == 3){
-PWM_On_100_Percent_Duty_Cycle();
-}
-}else{
+if(Button_Get_Sleep_Mode()==1){
 asm("sleep");
 }
+
 }
 }
 

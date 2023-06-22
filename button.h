@@ -5,7 +5,6 @@
  * Created on May 5, 2023, 5:23 PM
  */
 
-void     Button_Pressed(void);
 void     Button_Set_Sleep_Mode(void);
 void     Button_Set_Active_Mode(void);
 void     Button_Init(void);

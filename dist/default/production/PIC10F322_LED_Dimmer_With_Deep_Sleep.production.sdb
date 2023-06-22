@@ -5,15 +5,15 @@
 [d frameptr 0 ]
 "39 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\button.c
 [v _Button_Init Button_Init `(v  1 e 1 0 ]
-"58
+"47
 [v _Button_Set_Sleep_Mode Button_Set_Sleep_Mode `(v  1 e 1 0 ]
-"62
+"51
 [v _Button_Set_Active_Mode Button_Set_Active_Mode `(v  1 e 1 0 ]
-"66
+"55
 [v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
-"70
+"59
 [v _Button_Get_Sleep_Mode Button_Get_Sleep_Mode `(uc  1 e 1 0 ]
-"74
+"64
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
@@ -23,32 +23,30 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"18 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
+"16 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
 [v _main main `(v  1 e 1 0 ]
-"40
+"31
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 "12 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
 [v _PWM_Get_Execution_Status PWM_Get_Execution_Status `(uc  1 e 1 0 ]
-[v i1_PWM_Get_Execution_Status PWM_Get_Execution_Status `(uc  1 e 1 0 ]
 "16
 [v _PWM_Set_Execution_Status PWM_Set_Execution_Status `(v  1 e 1 0 ]
-[v i1_PWM_Set_Execution_Status PWM_Set_Execution_Status `(v  1 e 1 0 ]
 "20
 [v _PWM_Clear_Execution_Status PWM_Clear_Execution_Status `(v  1 e 1 0 ]
 [v i1_PWM_Clear_Execution_Status PWM_Clear_Execution_Status `(v  1 e 1 0 ]
 "24
 [v _PWM_Set_Duty PWM_Set_Duty `(v  1 e 1 0 ]
-"34
+"33
 [v _PWM_Enable PWM_Enable `(v  1 e 1 0 ]
-"48
+"47
 [v _PWM_Disable PWM_Disable `(v  1 e 1 0 ]
-"61
+"60
 [v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"70
+"69
 [v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"79
+"78
 [v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
-"88
+"87
 [v _PWM_Off PWM_Off `(v  1 e 1 0 ]
 "72 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\sleep.c
 [v _Sleep_Unused_GPIO_Config Sleep_Unused_GPIO_Config `(v  1 e 1 0 ]
@@ -93,10 +91,10 @@
 [v _VREGCON VREGCON `VEuc  1 e 1 @62 ]
 "10 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
 [v _executed executed `VEuc  1 e 1 0 ]
-"18 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
+"16 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"38
+"29
 } 0
 "78 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\sleep.c
 [v _Sleep_Init Sleep_Init `(v  1 e 1 0 ]
@@ -108,68 +106,7 @@
 {
 "76
 } 0
-"70 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
-[v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
-{
-"77
-} 0
-"61
-[v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
-{
-"68
-} 0
-"79
-[v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
-{
-"86
-} 0
-"16
-[v _PWM_Set_Execution_Status PWM_Set_Execution_Status `(v  1 e 1 0 ]
-{
-"18
-} 0
-"24
-[v _PWM_Set_Duty PWM_Set_Duty `(v  1 e 1 0 ]
-{
-"28
-[v PWM_Set_Duty@temp temp `ui  1 a 2 24 ]
-"24
-[v PWM_Set_Duty@duty duty `ul  1 p 4 18 ]
-"32
-} 0
-"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul32.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-{
-"17
-[v ___lmul@product product `ul  1 a 4 13 ]
-"15
-[v ___lmul@multiplier multiplier `ul  1 p 4 4 ]
-[v ___lmul@multiplicand multiplicand `ul  1 p 4 8 ]
-"129
-} 0
-"5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\__lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-{
-"10
-[v ___lldiv@quotient quotient `ul  1 a 4 13 ]
-"11
-[v ___lldiv@counter counter `uc  1 a 1 17 ]
-"5
-[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
-[v ___lldiv@dividend dividend `ul  1 p 4 8 ]
-"30
-} 0
-"12 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
-[v _PWM_Get_Execution_Status PWM_Get_Execution_Status `(uc  1 e 1 0 ]
-{
-"14
-} 0
-"34
-[v _PWM_Enable PWM_Enable `(v  1 e 1 0 ]
-{
-"46
-} 0
-"20
+"20 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
 [v _PWM_Clear_Execution_Status PWM_Clear_Execution_Status `(v  1 e 1 0 ]
 {
 "22
@@ -179,58 +116,109 @@
 {
 "45
 } 0
-"66
-[v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
-{
-"68
-} 0
-"70
+"59
 [v _Button_Get_Sleep_Mode Button_Get_Sleep_Mode `(uc  1 e 1 0 ]
 {
-"72
+"61
 } 0
-"40 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
+"31 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\main.c
 [v _ISRs ISRs `II(v  1 e 1 0 ]
 {
-"42
+"33
 } 0
-"74 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\button.c
+"64 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\button.c
 [v _Button_ISR_Executables Button_ISR_Executables `(v  1 e 1 0 ]
 {
-"91
+"90
 } 0
 "20 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
 [v i1_PWM_Clear_Execution_Status PWM_Clear_Execution_Status `(v  1 e 1 0 ]
 {
 "22
 } 0
-"88
+"69
+[v _PWM_On_50_Percent_Duty_Cycle PWM_On_50_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"76
+} 0
+"60
+[v _PWM_On_20_Percent_Duty_Cycle PWM_On_20_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"67
+} 0
+"78
+[v _PWM_On_100_Percent_Duty_Cycle PWM_On_100_Percent_Duty_Cycle `(v  1 e 1 0 ]
+{
+"85
+} 0
+"24
+[v _PWM_Set_Duty PWM_Set_Duty `(v  1 e 1 0 ]
+{
+"27
+[v PWM_Set_Duty@temp temp `ui  1 a 2 20 ]
+"24
+[v PWM_Set_Duty@duty duty `ul  1 p 4 14 ]
+"31
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 9 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"30
+} 0
+"33 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\pwm.c
+[v _PWM_Enable PWM_Enable `(v  1 e 1 0 ]
+{
+"45
+} 0
+"87
 [v _PWM_Off PWM_Off `(v  1 e 1 0 ]
 {
-"93
+"92
 } 0
 "16
-[v i1_PWM_Set_Execution_Status PWM_Set_Execution_Status `(v  1 e 1 0 ]
+[v _PWM_Set_Execution_Status PWM_Set_Execution_Status `(v  1 e 1 0 ]
 {
 "18
 } 0
 "12
-[v i1_PWM_Get_Execution_Status PWM_Get_Execution_Status `(uc  1 e 1 0 ]
+[v _PWM_Get_Execution_Status PWM_Get_Execution_Status `(uc  1 e 1 0 ]
 {
 "14
 } 0
-"48
+"47
 [v _PWM_Disable PWM_Disable `(v  1 e 1 0 ]
 {
-"59
+"58
 } 0
-"58 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\button.c
+"47 E:\Embedded Projects\Running\MPLAB Projects\PIC10F322_LED_Dimmer_With_Deep_Sleep\button.c
 [v _Button_Set_Sleep_Mode Button_Set_Sleep_Mode `(v  1 e 1 0 ]
 {
-"60
+"49
 } 0
-"62
+"51
 [v _Button_Set_Active_Mode Button_Set_Active_Mode `(v  1 e 1 0 ]
 {
-"64
+"53
+} 0
+"55
+[v _Button_Get_State Button_Get_State `(uc  1 e 1 0 ]
+{
+"57
 } 0

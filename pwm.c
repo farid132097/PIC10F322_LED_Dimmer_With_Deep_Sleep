@@ -24,7 +24,6 @@ void PWM_Clear_Execution_Status(void){
 void PWM_Set_Duty(uint32_t duty){
     duty*=1023;
     duty/=100;
-    
     uint16_t temp=duty;
     temp&=0x3FF;
     PWM2DCH=(temp>>2);
@@ -60,7 +59,7 @@ void PWM_Disable(void){
 
 void PWM_On_20_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        //PWM_Disable();
+        PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(20);
         PWM_Set_Execution_Status();
@@ -69,7 +68,7 @@ void PWM_On_20_Percent_Duty_Cycle(void){
 
 void PWM_On_50_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        //PWM_Disable();
+        PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(50);
         PWM_Set_Execution_Status();
@@ -78,7 +77,7 @@ void PWM_On_50_Percent_Duty_Cycle(void){
 
 void PWM_On_100_Percent_Duty_Cycle(void){
     if(PWM_Get_Execution_Status()==0){
-        //PWM_Disable();
+        PWM_Disable();
         PWM_Enable();
         PWM_Set_Duty(95);
         PWM_Set_Execution_Status();

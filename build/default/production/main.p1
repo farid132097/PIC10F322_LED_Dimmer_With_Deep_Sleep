@@ -1,22 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"11 button.h
+"10 button.h
 [v _Button_Init `(v ~T0 @X0 0 ef ]
 "15 sleep.h
 [v _Sleep_Init `(v ~T0 @X0 0 ef ]
 "10 pwm.h
 [v _PWM_Clear_Execution_Status `(v ~T0 @X0 0 ef ]
-"13 button.h
+"12 button.h
 [v _Button_Get_Sleep_Mode `(uc ~T0 @X0 0 ef ]
-"12
-[v _Button_Get_State `(uc ~T0 @X0 0 ef ]
-"15 pwm.h
-[v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"16
-[v _PWM_On_50_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"17
-[v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
-"14 button.h
+"13
 [v _Button_ISR_Executables `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
@@ -1402,13 +1394,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x BORV=LO ]
 "17
 [p x WRT=OFF ]
-[; ;button.h: 8: void Button_Pressed(void);
-[; ;button.h: 9: void Button_Set_Sleep_Mode(void);
-[; ;button.h: 10: void Button_Set_Active_Mode(void);
-[; ;button.h: 11: void Button_Init(void);
-[; ;button.h: 12: uint8_t Button_Get_State(void);
-[; ;button.h: 13: uint8_t Button_Get_Sleep_Mode(void);
-[; ;button.h: 14: void Button_ISR_Executables(void);
+[; ;button.h: 8: void Button_Set_Sleep_Mode(void);
+[; ;button.h: 9: void Button_Set_Active_Mode(void);
+[; ;button.h: 10: void Button_Init(void);
+[; ;button.h: 11: uint8_t Button_Get_State(void);
+[; ;button.h: 12: uint8_t Button_Get_Sleep_Mode(void);
+[; ;button.h: 13: void Button_ISR_Executables(void);
 [; ;sleep.h: 8: void Sleep_Select_Internal_8MHz_Oscillator(void);
 [; ;sleep.h: 9: void Sleep_Disable_Reference_Clock_Output(void);
 [; ;sleep.h: 10: void Sleep_Disable_Watchdog(void);
@@ -1427,105 +1418,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.h: 16: void PWM_On_50_Percent_Duty_Cycle(void);
 [; ;pwm.h: 17: void PWM_On_100_Percent_Duty_Cycle(void);
 [; ;pwm.h: 18: void PWM_Off(void);
-"16 main.c
-[v _button_state `uc ~T0 @X0 1 e ]
-[i _button_state
--> -> 0 `i `uc
-]
-[; ;main.c: 16: uint8_t button_state=0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"18
+"16 main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 18: void main(void) {
+[; ;main.c: 16: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 20: Button_Init();
-"20
+[; ;main.c: 18: Button_Init();
+"18
 [e ( _Button_Init ..  ]
-[; ;main.c: 21: Sleep_Init();
-"21
+[; ;main.c: 19: Sleep_Init();
+"19
 [e ( _Sleep_Init ..  ]
-[; ;main.c: 22: PWM_Clear_Execution_Status();
-"22
+[; ;main.c: 20: PWM_Clear_Execution_Status();
+"20
 [e ( _PWM_Clear_Execution_Status ..  ]
-[; ;main.c: 24: while(1){
-"24
+[; ;main.c: 22: while(1){
+"22
 [e :U 145 ]
 {
-[; ;main.c: 26: if(Button_Get_Sleep_Mode()==0){
-"26
-[e $ ! == -> ( _Button_Get_Sleep_Mode ..  `i -> 0 `i 147  ]
+[; ;main.c: 24: if(Button_Get_Sleep_Mode()==1){
+"24
+[e $ ! == -> ( _Button_Get_Sleep_Mode ..  `i -> 1 `i 147  ]
 {
-[; ;main.c: 27: if(Button_Get_State() == 1){
-"27
-[e $ ! == -> ( _Button_Get_State ..  `i -> 1 `i 148  ]
-{
-[; ;main.c: 28: PWM_On_20_Percent_Duty_Cycle();
-"28
-[e ( _PWM_On_20_Percent_Duty_Cycle ..  ]
-"29
-}
-[; ;main.c: 29: }else if(Button_Get_State() == 2){
-[e $U 149  ]
-[e :U 148 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 2 `i 150  ]
-{
-[; ;main.c: 30: PWM_On_50_Percent_Duty_Cycle();
-"30
-[e ( _PWM_On_50_Percent_Duty_Cycle ..  ]
-"31
-}
-[; ;main.c: 31: }else if(Button_Get_State() == 3){
-[e $U 151  ]
-[e :U 150 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 3 `i 152  ]
-{
-[; ;main.c: 32: PWM_On_100_Percent_Duty_Cycle();
-"32
-[e ( _PWM_On_100_Percent_Duty_Cycle ..  ]
-"33
-}
-[e :U 152 ]
-"34
-[e :U 151 ]
-[e :U 149 ]
-}
-[; ;main.c: 33: }
-[; ;main.c: 34: }else{
-[e $U 153  ]
-[e :U 147 ]
-{
-[; ;main.c: 35: asm("sleep");
-"35
+[; ;main.c: 25: asm("sleep");
+"25
 [; <" sleep ;# ">
-"36
+"26
 }
-[e :U 153 ]
-"37
+[e :U 147 ]
+"28
 }
 [e :U 144 ]
-"24
+"22
 [e $U 145  ]
 [e :U 146 ]
-[; ;main.c: 36: }
-[; ;main.c: 37: }
-[; ;main.c: 38: }
-"38
+[; ;main.c: 26: }
+[; ;main.c: 28: }
+[; ;main.c: 29: }
+"29
 [e :UE 143 ]
 }
 [v $root$_ISRs `(v ~T0 @X0 0 e ]
-[v F1224 `(v ~T0 @X0 1 tf ]
-"40
-[v _ISRs `IF1224 ~T0 @X0 1 e ]
+[v F1221 `(v ~T0 @X0 1 tf ]
+"31
+[v _ISRs `IF1221 ~T0 @X0 1 e ]
 {
-[; ;main.c: 40: void interrupt ISRs(void){
+[; ;main.c: 31: void interrupt ISRs(void){
 [e :U _ISRs ]
 [f ]
-[; ;main.c: 41: Button_ISR_Executables();
-"41
+[; ;main.c: 32: Button_ISR_Executables();
+"32
 [e ( _Button_ISR_Executables ..  ]
-[; ;main.c: 42: }
-"42
-[e :UE 154 ]
+[; ;main.c: 33: }
+"33
+[e :UE 148 ]
 }

@@ -13,8 +13,6 @@
 #include "sleep.h"
 #include "pwm.h"
 
-uint8_t button_state=0;
-
 void main(void) {
     
     Button_Init();
@@ -23,17 +21,10 @@ void main(void) {
     
     while(1){
         
-        if(Button_Get_Sleep_Mode()==0){
-            if(Button_Get_State() == 1){
-                PWM_On_20_Percent_Duty_Cycle();
-            }else if(Button_Get_State() == 2){
-                PWM_On_50_Percent_Duty_Cycle();
-            }else if(Button_Get_State() == 3){
-                PWM_On_100_Percent_Duty_Cycle();
-            }
-        }else{
+        if(Button_Get_Sleep_Mode()==1){
             SLEEP();
         }
+        
     }
 }
 

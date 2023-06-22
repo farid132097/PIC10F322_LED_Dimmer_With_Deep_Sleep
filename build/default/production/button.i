@@ -2283,17 +2283,6 @@ OPTION_REG&=~0xC0;
 INTCON=0x90;
 }
 
-void Button_Pressed(void){
-Button_State++;
-if(Button_State>2){
-Button_State=0;
-sleep_mode=1;
-INTCON=0x90;
-}
-while( PORTA & 0x04){};
-PWM_Clear_Execution_Status();
-}
-
 void Button_Set_Sleep_Mode(void){
 sleep_mode = 1;
 }
@@ -2310,21 +2299,31 @@ uint8_t Button_Get_Sleep_Mode(void){
 return sleep_mode;
 }
 
+
 void Button_ISR_Executables(void){
 if(INTCON & (1<<1)){
-while( PORTA & 0x04){};
+_delay((unsigned long)((5)*(8000000/4000.0)));
+while( (PORTA & 0x04) == 0 );
+
 Button_State++;
 if(Button_State>3){
 Button_State=0;
 }
+
 PWM_Clear_Execution_Status();
 if(Button_State==0){
 PWM_Off();
 Button_Set_Sleep_Mode();
 }else{
+if(Button_Get_State() == 1){
+PWM_On_20_Percent_Duty_Cycle();
+}else if(Button_Get_State() == 2){
+PWM_On_50_Percent_Duty_Cycle();
+}else if(Button_Get_State() == 3){
+PWM_On_100_Percent_Duty_Cycle();
+}
 Button_Set_Active_Mode();
 }
-
 INTCON&=~0x02;
 }
 }
