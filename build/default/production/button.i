@@ -2273,7 +2273,7 @@ void PWM_On_100_Percent_Duty_Cycle(void);
 void PWM_Off(void);
 
 # 37 "button.c"
-volatile uint8_t Button_State = 0, sleep_mode=0;
+volatile uint8_t Button_State = 0, sleep_mode=0, button_functions_executed=0;
 
 void Button_Init(void){
 TRISA =(1<<2);
@@ -2302,19 +2302,25 @@ return sleep_mode;
 
 void Button_ISR_Executables(void){
 if(INTCON & (1<<1)){
-_delay((unsigned long)((5)*(8000000/4000.0)));
-while( (PORTA & 0x04) == 0 );
-
+_delay((unsigned long)((10)*(8000000/4000.0)));
+if((PORTA & 0x04) == 0 ){
 Button_State++;
 if(Button_State>3){
 Button_State=0;
 }
+button_functions_executed=0;
+}
+while( (PORTA & 0x04) == 0 );
+_delay((unsigned long)((10)*(8000000/4000.0)));
 
-PWM_Clear_Execution_Status();
-if(Button_State==0){
+if(button_functions_executed==0){
+if(Button_Get_State()==0){
 PWM_Off();
 Button_Set_Sleep_Mode();
 }else{
+Button_Set_Active_Mode();
+PWM_Disable();
+PWM_Enable();
 if(Button_Get_State() == 1){
 PWM_On_20_Percent_Duty_Cycle();
 }else if(Button_Get_State() == 2){
@@ -2322,8 +2328,11 @@ PWM_On_50_Percent_Duty_Cycle();
 }else if(Button_Get_State() == 3){
 PWM_On_100_Percent_Duty_Cycle();
 }
-Button_Set_Active_Mode();
 }
+button_functions_executed=1;
+}
+
+
 INTCON&=~0x02;
 }
 }

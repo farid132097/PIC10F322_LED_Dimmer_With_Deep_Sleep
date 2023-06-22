@@ -13,10 +13,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "158 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC10-12Fxxx_DFP/1.4.56/xc8\pic\include\proc\pic10f322.h
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"10 pwm.h
-[v _PWM_Clear_Execution_Status `(v ~T0 @X0 0 ef ]
-"18
+"18 pwm.h
 [v _PWM_Off `(v ~T0 @X0 0 ef ]
+"14
+[v _PWM_Disable `(v ~T0 @X0 0 ef ]
+"13
+[v _PWM_Enable `(v ~T0 @X0 0 ef ]
 "15
 [v _PWM_On_20_Percent_Duty_Cycle `(v ~T0 @X0 0 ef ]
 "16
@@ -1406,7 +1408,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _sleep_mode
 -> -> 0 `i `uc
 ]
-[; ;button.c: 37: volatile uint8_t Button_State = 0, sleep_mode=0;
+[v _button_functions_executed `Vuc ~T0 @X0 1 e ]
+[i _button_functions_executed
+-> -> 0 `i `uc
+]
+[; ;button.c: 37: volatile uint8_t Button_State = 0, sleep_mode=0, button_functions_executed=0;
 "39
 [v _Button_Init `(v ~T0 @X0 1 ef ]
 {
@@ -1496,97 +1502,125 @@ Version 3.2 HI-TECH Software Intermediate Code
 "65
 [e $ ! != & -> _INTCON `i << -> 1 `i -> 1 `i -> 0 `i 149  ]
 {
-[; ;button.c: 66: _delay((unsigned long)((5)*(8000000/4000.0)));
+[; ;button.c: 66: _delay((unsigned long)((10)*(8000000/4000.0)));
 "66
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;button.c: 67: while( (PORTA & 0x04) == 0 );
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;button.c: 67: if((PORTA & 0x04) == 0 ){
 "67
-[e $U 150  ]
-[e :U 151 ]
-[e :U 150 ]
-[e $ == & -> _PORTA `i -> 4 `i -> 0 `i 151  ]
-[e :U 152 ]
-[; ;button.c: 69: Button_State++;
-"69
+[e $ ! == & -> _PORTA `i -> 4 `i -> 0 `i 150  ]
+{
+[; ;button.c: 68: Button_State++;
+"68
 [e ++ _Button_State -> -> 1 `i `uc ]
-[; ;button.c: 70: if(Button_State>3){
+[; ;button.c: 69: if(Button_State>3){
+"69
+[e $ ! > -> _Button_State `i -> 3 `i 151  ]
+{
+[; ;button.c: 70: Button_State=0;
 "70
-[e $ ! > -> _Button_State `i -> 3 `i 153  ]
-{
-[; ;button.c: 71: Button_State=0;
-"71
 [e = _Button_State -> -> 0 `i `uc ]
+"71
+}
+[e :U 151 ]
+[; ;button.c: 71: }
+[; ;button.c: 72: button_functions_executed=0;
 "72
+[e = _button_functions_executed -> -> 0 `i `uc ]
+"73
 }
-[e :U 153 ]
-[; ;button.c: 72: }
-[; ;button.c: 74: PWM_Clear_Execution_Status();
+[e :U 150 ]
+[; ;button.c: 73: }
+[; ;button.c: 74: while( (PORTA & 0x04) == 0 );
 "74
-[e ( _PWM_Clear_Execution_Status ..  ]
-[; ;button.c: 75: if(Button_State==0){
-"75
-[e $ ! == -> _Button_State `i -> 0 `i 154  ]
-{
-[; ;button.c: 76: PWM_Off();
-"76
-[e ( _PWM_Off ..  ]
-[; ;button.c: 77: Button_Set_Sleep_Mode();
-"77
-[e ( _Button_Set_Sleep_Mode ..  ]
-"78
-}
-[; ;button.c: 78: }else{
-[e $U 155  ]
+[e $U 152  ]
+[e :U 153 ]
+[e :U 152 ]
+[e $ == & -> _PORTA `i -> 4 `i -> 0 `i 153  ]
 [e :U 154 ]
+[; ;button.c: 75: _delay((unsigned long)((10)*(8000000/4000.0)));
+"75
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;button.c: 77: if(button_functions_executed==0){
+"77
+[e $ ! == -> _button_functions_executed `i -> 0 `i 155  ]
 {
-[; ;button.c: 79: if(Button_Get_State() == 1){
+[; ;button.c: 78: if(Button_Get_State()==0){
+"78
+[e $ ! == -> ( _Button_Get_State ..  `i -> 0 `i 156  ]
+{
+[; ;button.c: 79: PWM_Off();
 "79
-[e $ ! == -> ( _Button_Get_State ..  `i -> 1 `i 156  ]
-{
-[; ;button.c: 80: PWM_On_20_Percent_Duty_Cycle();
+[e ( _PWM_Off ..  ]
+[; ;button.c: 80: Button_Set_Sleep_Mode();
 "80
-[e ( _PWM_On_20_Percent_Duty_Cycle ..  ]
+[e ( _Button_Set_Sleep_Mode ..  ]
 "81
 }
-[; ;button.c: 81: }else if(Button_Get_State() == 2){
+[; ;button.c: 81: }else{
 [e $U 157  ]
 [e :U 156 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 2 `i 158  ]
 {
-[; ;button.c: 82: PWM_On_50_Percent_Duty_Cycle();
+[; ;button.c: 82: Button_Set_Active_Mode();
 "82
-[e ( _PWM_On_50_Percent_Duty_Cycle ..  ]
-"83
-}
-[; ;button.c: 83: }else if(Button_Get_State() == 3){
-[e $U 159  ]
-[e :U 158 ]
-[e $ ! == -> ( _Button_Get_State ..  `i -> 3 `i 160  ]
-{
-[; ;button.c: 84: PWM_On_100_Percent_Duty_Cycle();
-"84
-[e ( _PWM_On_100_Percent_Duty_Cycle ..  ]
-"85
-}
-[e :U 160 ]
-"86
-[e :U 159 ]
-[e :U 157 ]
-[; ;button.c: 85: }
-[; ;button.c: 86: Button_Set_Active_Mode();
 [e ( _Button_Set_Active_Mode ..  ]
+[; ;button.c: 83: PWM_Disable();
+"83
+[e ( _PWM_Disable ..  ]
+[; ;button.c: 84: PWM_Enable();
+"84
+[e ( _PWM_Enable ..  ]
+[; ;button.c: 85: if(Button_Get_State() == 1){
+"85
+[e $ ! == -> ( _Button_Get_State ..  `i -> 1 `i 158  ]
+{
+[; ;button.c: 86: PWM_On_20_Percent_Duty_Cycle();
+"86
+[e ( _PWM_On_20_Percent_Duty_Cycle ..  ]
 "87
 }
-[e :U 155 ]
-[; ;button.c: 87: }
-[; ;button.c: 88: INTCON&=~0x02;
+[; ;button.c: 87: }else if(Button_Get_State() == 2){
+[e $U 159  ]
+[e :U 158 ]
+[e $ ! == -> ( _Button_Get_State ..  `i -> 2 `i 160  ]
+{
+[; ;button.c: 88: PWM_On_50_Percent_Duty_Cycle();
 "88
-[e =& _INTCON -> ~ -> 2 `i `uc ]
+[e ( _PWM_On_50_Percent_Duty_Cycle ..  ]
 "89
 }
-[e :U 149 ]
-[; ;button.c: 89: }
-[; ;button.c: 90: }
+[; ;button.c: 89: }else if(Button_Get_State() == 3){
+[e $U 161  ]
+[e :U 160 ]
+[e $ ! == -> ( _Button_Get_State ..  `i -> 3 `i 162  ]
+{
+[; ;button.c: 90: PWM_On_100_Percent_Duty_Cycle();
 "90
+[e ( _PWM_On_100_Percent_Duty_Cycle ..  ]
+"91
+}
+[e :U 162 ]
+"92
+[e :U 161 ]
+[e :U 159 ]
+}
+[e :U 157 ]
+[; ;button.c: 91: }
+[; ;button.c: 92: }
+[; ;button.c: 93: button_functions_executed=1;
+"93
+[e = _button_functions_executed -> -> 1 `i `uc ]
+"94
+}
+[e :U 155 ]
+[; ;button.c: 94: }
+[; ;button.c: 97: INTCON&=~0x02;
+"97
+[e =& _INTCON -> ~ -> 2 `i `uc ]
+"98
+}
+[e :U 149 ]
+[; ;button.c: 98: }
+[; ;button.c: 99: }
+"99
 [e :UE 148 ]
 }

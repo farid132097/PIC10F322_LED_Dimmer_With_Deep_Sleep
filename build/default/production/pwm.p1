@@ -1548,26 +1548,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.c: 60: void PWM_On_20_Percent_Duty_Cycle(void){
 [e :U _PWM_On_20_Percent_Duty_Cycle ]
 [f ]
-[; ;pwm.c: 61: if(PWM_Get_Execution_Status()==0){
-"61
-[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 150  ]
-{
-[; ;pwm.c: 62: PWM_Disable();
-"62
-[e ( _PWM_Disable ..  ]
-[; ;pwm.c: 63: PWM_Enable();
-"63
-[e ( _PWM_Enable ..  ]
 [; ;pwm.c: 64: PWM_Set_Duty(20);
 "64
 [e ( _PWM_Set_Duty (1 -> -> -> 20 `i `l `ul ]
-[; ;pwm.c: 65: PWM_Set_Execution_Status();
-"65
-[e ( _PWM_Set_Execution_Status ..  ]
-"66
-}
-[e :U 150 ]
-[; ;pwm.c: 66: }
 [; ;pwm.c: 67: }
 "67
 [e :UE 149 ]
@@ -1578,29 +1561,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.c: 69: void PWM_On_50_Percent_Duty_Cycle(void){
 [e :U _PWM_On_50_Percent_Duty_Cycle ]
 [f ]
-[; ;pwm.c: 70: if(PWM_Get_Execution_Status()==0){
-"70
-[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 152  ]
-{
-[; ;pwm.c: 71: PWM_Disable();
-"71
-[e ( _PWM_Disable ..  ]
-[; ;pwm.c: 72: PWM_Enable();
-"72
-[e ( _PWM_Enable ..  ]
 [; ;pwm.c: 73: PWM_Set_Duty(50);
 "73
 [e ( _PWM_Set_Duty (1 -> -> -> 50 `i `l `ul ]
-[; ;pwm.c: 74: PWM_Set_Execution_Status();
-"74
-[e ( _PWM_Set_Execution_Status ..  ]
-"75
-}
-[e :U 152 ]
-[; ;pwm.c: 75: }
 [; ;pwm.c: 76: }
 "76
-[e :UE 151 ]
+[e :UE 150 ]
 }
 "78
 [v _PWM_On_100_Percent_Duty_Cycle `(v ~T0 @X0 1 ef ]
@@ -1608,29 +1574,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.c: 78: void PWM_On_100_Percent_Duty_Cycle(void){
 [e :U _PWM_On_100_Percent_Duty_Cycle ]
 [f ]
-[; ;pwm.c: 79: if(PWM_Get_Execution_Status()==0){
-"79
-[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 154  ]
-{
-[; ;pwm.c: 80: PWM_Disable();
-"80
-[e ( _PWM_Disable ..  ]
-[; ;pwm.c: 81: PWM_Enable();
-"81
-[e ( _PWM_Enable ..  ]
 [; ;pwm.c: 82: PWM_Set_Duty(95);
 "82
 [e ( _PWM_Set_Duty (1 -> -> -> 95 `i `l `ul ]
-[; ;pwm.c: 83: PWM_Set_Execution_Status();
-"83
-[e ( _PWM_Set_Execution_Status ..  ]
-"84
-}
-[e :U 154 ]
-[; ;pwm.c: 84: }
 [; ;pwm.c: 85: }
 "85
-[e :UE 153 ]
+[e :UE 151 ]
 }
 "87
 [v _PWM_Off `(v ~T0 @X0 1 ef ]
@@ -1638,21 +1587,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pwm.c: 87: void PWM_Off(void){
 [e :U _PWM_Off ]
 [f ]
-[; ;pwm.c: 88: if(PWM_Get_Execution_Status()==0){
-"88
-[e $ ! == -> ( _PWM_Get_Execution_Status ..  `i -> 0 `i 156  ]
-{
 [; ;pwm.c: 89: PWM_Disable();
 "89
 [e ( _PWM_Disable ..  ]
-[; ;pwm.c: 90: PWM_Set_Execution_Status();
-"90
-[e ( _PWM_Set_Execution_Status ..  ]
-"91
-}
-[e :U 156 ]
-[; ;pwm.c: 91: }
 [; ;pwm.c: 92: }
 "92
-[e :UE 155 ]
+[e :UE 152 ]
 }

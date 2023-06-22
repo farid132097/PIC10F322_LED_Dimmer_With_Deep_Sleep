@@ -2311,35 +2311,35 @@ TRISA &=~ (1<<1);
 }
 
 void PWM_On_20_Percent_Duty_Cycle(void){
-if(PWM_Get_Execution_Status()==0){
-PWM_Disable();
-PWM_Enable();
+
+
+
 PWM_Set_Duty(20);
-PWM_Set_Execution_Status();
-}
+
+
 }
 
 void PWM_On_50_Percent_Duty_Cycle(void){
-if(PWM_Get_Execution_Status()==0){
-PWM_Disable();
-PWM_Enable();
+
+
+
 PWM_Set_Duty(50);
-PWM_Set_Execution_Status();
-}
+
+
 }
 
 void PWM_On_100_Percent_Duty_Cycle(void){
-if(PWM_Get_Execution_Status()==0){
-PWM_Disable();
-PWM_Enable();
+
+
+
 PWM_Set_Duty(95);
-PWM_Set_Execution_Status();
-}
+
+
 }
 
 void PWM_Off(void){
-if(PWM_Get_Execution_Status()==0){
+
 PWM_Disable();
-PWM_Set_Execution_Status();
-}
+
+
 }
