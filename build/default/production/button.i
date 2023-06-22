@@ -2294,6 +2294,14 @@ while( PORTA & 0x04){};
 PWM_Clear_Execution_Status();
 }
 
+void Button_Set_Sleep_Mode(void){
+sleep_mode = 1;
+}
+
+void Button_Set_Active_Mode(void){
+sleep_mode = 0;
+}
+
 uint8_t Button_Get_State(void){
 return Button_State;
 }
@@ -2303,7 +2311,20 @@ return sleep_mode;
 }
 
 void Button_ISR_Executables(void){
+if(INTCON & (1<<1)){
+while( PORTA & 0x04){};
+Button_State++;
+if(Button_State>3){
+Button_State=0;
+}
+PWM_Clear_Execution_Status();
+if(Button_State==0){
+PWM_Off();
+Button_Set_Sleep_Mode();
+}else{
+Button_Set_Active_Mode();
+}
 
-INTCON=0x00;
-sleep_mode=0;
+INTCON&=~0x02;
+}
 }

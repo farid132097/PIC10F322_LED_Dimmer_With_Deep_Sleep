@@ -11,6 +11,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "10 pwm.h
 [v _PWM_Clear_Execution_Status `(v ~T0 @X0 0 ef ]
+"18
+[v _PWM_Off `(v ~T0 @X0 0 ef ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1463,46 +1465,126 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 144 ]
 }
 "58
-[v _Button_Get_State `(uc ~T0 @X0 1 ef ]
+[v _Button_Set_Sleep_Mode `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 58: uint8_t Button_Get_State(void){
-[e :U _Button_Get_State ]
+[; ;button.c: 58: void Button_Set_Sleep_Mode(void){
+[e :U _Button_Set_Sleep_Mode ]
 [f ]
-[; ;button.c: 59: return Button_State;
+[; ;button.c: 59: sleep_mode = 1;
 "59
-[e ) _Button_State ]
-[e $UE 149  ]
+[e = _sleep_mode -> -> 1 `i `uc ]
 [; ;button.c: 60: }
 "60
 [e :UE 149 ]
 }
 "62
-[v _Button_Get_Sleep_Mode `(uc ~T0 @X0 1 ef ]
+[v _Button_Set_Active_Mode `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 62: uint8_t Button_Get_Sleep_Mode(void){
-[e :U _Button_Get_Sleep_Mode ]
+[; ;button.c: 62: void Button_Set_Active_Mode(void){
+[e :U _Button_Set_Active_Mode ]
 [f ]
-[; ;button.c: 63: return sleep_mode;
+[; ;button.c: 63: sleep_mode = 0;
 "63
-[e ) _sleep_mode ]
-[e $UE 150  ]
+[e = _sleep_mode -> -> 0 `i `uc ]
 [; ;button.c: 64: }
 "64
 [e :UE 150 ]
 }
 "66
+[v _Button_Get_State `(uc ~T0 @X0 1 ef ]
+{
+[; ;button.c: 66: uint8_t Button_Get_State(void){
+[e :U _Button_Get_State ]
+[f ]
+[; ;button.c: 67: return Button_State;
+"67
+[e ) _Button_State ]
+[e $UE 151  ]
+[; ;button.c: 68: }
+"68
+[e :UE 151 ]
+}
+"70
+[v _Button_Get_Sleep_Mode `(uc ~T0 @X0 1 ef ]
+{
+[; ;button.c: 70: uint8_t Button_Get_Sleep_Mode(void){
+[e :U _Button_Get_Sleep_Mode ]
+[f ]
+[; ;button.c: 71: return sleep_mode;
+"71
+[e ) _sleep_mode ]
+[e $UE 152  ]
+[; ;button.c: 72: }
+"72
+[e :UE 152 ]
+}
+"74
 [v _Button_ISR_Executables `(v ~T0 @X0 1 ef ]
 {
-[; ;button.c: 66: void Button_ISR_Executables(void){
+[; ;button.c: 74: void Button_ISR_Executables(void){
 [e :U _Button_ISR_Executables ]
 [f ]
-[; ;button.c: 68: INTCON=0x00;
-"68
-[e = _INTCON -> -> 0 `i `uc ]
-[; ;button.c: 69: sleep_mode=0;
-"69
-[e = _sleep_mode -> -> 0 `i `uc ]
-[; ;button.c: 70: }
-"70
-[e :UE 151 ]
+[; ;button.c: 75: if(INTCON & (1<<1)){
+"75
+[e $ ! != & -> _INTCON `i << -> 1 `i -> 1 `i -> 0 `i 154  ]
+{
+[; ;button.c: 76: while( PORTA & 0x04){};
+"76
+[e $U 155  ]
+[e :U 156 ]
+{
+}
+[e :U 155 ]
+[e $ != & -> _PORTA `i -> 4 `i -> 0 `i 156  ]
+[e :U 157 ]
+[; ;button.c: 77: Button_State++;
+"77
+[e ++ _Button_State -> -> 1 `i `uc ]
+[; ;button.c: 78: if(Button_State>3){
+"78
+[e $ ! > -> _Button_State `i -> 3 `i 158  ]
+{
+[; ;button.c: 79: Button_State=0;
+"79
+[e = _Button_State -> -> 0 `i `uc ]
+"80
+}
+[e :U 158 ]
+[; ;button.c: 80: }
+[; ;button.c: 81: PWM_Clear_Execution_Status();
+"81
+[e ( _PWM_Clear_Execution_Status ..  ]
+[; ;button.c: 82: if(Button_State==0){
+"82
+[e $ ! == -> _Button_State `i -> 0 `i 159  ]
+{
+[; ;button.c: 83: PWM_Off();
+"83
+[e ( _PWM_Off ..  ]
+[; ;button.c: 84: Button_Set_Sleep_Mode();
+"84
+[e ( _Button_Set_Sleep_Mode ..  ]
+"85
+}
+[; ;button.c: 85: }else{
+[e $U 160  ]
+[e :U 159 ]
+{
+[; ;button.c: 86: Button_Set_Active_Mode();
+"86
+[e ( _Button_Set_Active_Mode ..  ]
+"87
+}
+[e :U 160 ]
+[; ;button.c: 87: }
+[; ;button.c: 89: INTCON&=~0x02;
+"89
+[e =& _INTCON -> ~ -> 2 `i `uc ]
+"90
+}
+[e :U 154 ]
+[; ;button.c: 90: }
+[; ;button.c: 91: }
+"91
+[e :UE 153 ]
 }

@@ -22,11 +22,6 @@ void PWM_Clear_Execution_Status(void){
 }
 
 void PWM_Set_Duty(uint32_t duty){
-    if(duty>100){
-        duty=100;
-    }else if(duty<0){
-        duty=0;
-    }
     duty*=1023;
     duty/=100;
     
@@ -52,12 +47,12 @@ void PWM_Enable(void){
 
 void PWM_Disable(void){
     PWM_TRIS  |= (1<<1);
-    PWM2DCH = 0;
-    PWM2DCL = 0;
     PWM2CON = 0;
+    T2CON = 0;
     PR2   = 0;
     TMR2  = 0;
-    T2CON = 0;
+    PWM2DCH = 0;
+    PWM2DCL = 0;
     PWM_LAT   &=~ (1<<1);
     PWM_ANSEL &=~ (1<<1);
     PWM_TRIS  &=~ (1<<1);

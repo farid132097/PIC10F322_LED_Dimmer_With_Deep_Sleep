@@ -19,16 +19,19 @@ void main(void) {
     
     Button_Init();
     Sleep_Init();
+    PWM_Clear_Execution_Status();
     
     while(1){
-          
+        
         if(Button_Get_Sleep_Mode()==0){
-            if(!(PORTA & 0x04)){
-                while( PORTA & 0x04){};
-                
+            if(Button_Get_State() == 1){
+                PWM_On_20_Percent_Duty_Cycle();
+            }else if(Button_Get_State() == 2){
+                PWM_On_50_Percent_Duty_Cycle();
+            }else if(Button_Get_State() == 3){
+                PWM_On_100_Percent_Duty_Cycle();
             }
         }else{
-            PWM_Off();
             SLEEP();
         }
     }

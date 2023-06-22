@@ -2275,11 +2275,6 @@ executed=0;
 }
 
 void PWM_Set_Duty(uint32_t duty){
-if(duty>100){
-duty=100;
-}else if(duty<0){
-duty=0;
-}
 duty*=1023;
 duty/=100;
 
@@ -2305,12 +2300,12 @@ TRISA &=~ (1<<1);
 
 void PWM_Disable(void){
 TRISA |= (1<<1);
-PWM2DCH = 0;
-PWM2DCL = 0;
 PWM2CON = 0;
+T2CON = 0;
 PR2 = 0;
 TMR2 = 0;
-T2CON = 0;
+PWM2DCH = 0;
+PWM2DCL = 0;
 LATA &=~ (1<<1);
 ANSELA &=~ (1<<1);
 TRISA &=~ (1<<1);

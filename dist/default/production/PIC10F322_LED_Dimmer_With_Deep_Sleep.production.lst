@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                               Wed Jun 21 19:15:07 2023
+                                                                                               Thu Jun 22 11:30:59 2023
 
 Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
      1                           	processor	10F322
@@ -19,1150 +19,2473 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
     13                           	psect	text5,local,class=CODE,merge=1,delta=2
     14                           	psect	text6,local,class=CODE,merge=1,delta=2
     15                           	psect	text7,local,class=CODE,merge=1,delta=2
-    16                           	psect	text8,local,class=CODE,merge=1,delta=2
-    17                           	psect	text9,local,class=CODE,merge=1,delta=2
-    18                           	psect	intentry,global,class=CODE,delta=2
-    19                           	psect	text10,local,class=CODE,merge=1,delta=2
-    20                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
-    21                           	dabs	1,0x7E,2
-    22     0000                     
-    23                           ; Version 2.32
-    24                           ; Generated 23/11/2020 GMT
-    25                           ; 
-    26                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    27                           ; All rights reserved.
-    28                           ; 
-    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    16                           	psect	text8,local,class=CODE,merge=1,delta=2,group=1
+    17                           	psect	text9,local,class=CODE,merge=1,delta=2,group=1
+    18                           	psect	text10,local,class=CODE,merge=1,delta=2
+    19                           	psect	text11,local,class=CODE,merge=1,delta=2
+    20                           	psect	text12,local,class=CODE,merge=1,delta=2
+    21                           	psect	text13,local,class=CODE,merge=1,delta=2
+    22                           	psect	text14,local,class=CODE,merge=1,delta=2
+    23                           	psect	text15,local,class=CODE,merge=1,delta=2
+    24                           	psect	text16,local,class=CODE,merge=1,delta=2
+    25                           	psect	intentry,global,class=CODE,delta=2
+    26                           	psect	text17,local,class=CODE,merge=1,delta=2
+    27                           	psect	text18,local,class=CODE,merge=1,delta=2
+    28                           	psect	text19,local,class=CODE,merge=1,delta=2
+    29                           	psect	text20,local,class=CODE,merge=1,delta=2
+    30                           	psect	text21,local,class=CODE,merge=1,delta=2
+    31                           	psect	text22,local,class=CODE,merge=1,delta=2
+    32                           	psect	text23,local,class=CODE,merge=1,delta=2
+    33                           	psect	text24,local,class=CODE,merge=1,delta=2
+    34                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    35                           	dabs	1,0x7E,2
+    36     0000                     
+    37                           ; Version 2.32
+    38                           ; Generated 23/11/2020 GMT
+    39                           ; 
+    40                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    41                           ; All rights reserved.
+    42                           ; 
+    43                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    30                           ; 
-    31                           ; Redistribution and use in source and binary forms, with or without modification, are
-    32                           ; permitted provided that the following conditions are met:
-    33                           ; 
-    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
-      +                          t of
-    35                           ;        conditions and the following disclaimer.
-    36                           ; 
-    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
-      +                          list
-    38                           ;        of conditions and the following disclaimer in the documentation and/or other
-    39                           ;        materials provided with the distribution. Publication is not required when
-    40                           ;        this file is used in an embedded application.
-    41                           ; 
-    42                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
-      +                          is
-    43                           ;        software without specific prior written permission.
     44                           ; 
-    45                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    46                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    45                           ; Redistribution and use in source and binary forms, with or without modification, are
+    46                           ; permitted provided that the following conditions are met:
+    47                           ; 
+    48                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    49                           ;        conditions and the following disclaimer.
+    50                           ; 
+    51                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    52                           ;        of conditions and the following disclaimer in the documentation and/or other
+    53                           ;        materials provided with the distribution. Publication is not required when
+    54                           ;        this file is used in an embedded application.
+    55                           ; 
+    56                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    57                           ;        software without specific prior written permission.
+    58                           ; 
+    59                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    60                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    47                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    61                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    48                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    49                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    50                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    62                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    63                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    64                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    51                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    65                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    52                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    53                           ; 
-    54                           ; 
-    55                           ; Code-generator required, PIC10F322 Definitions
-    56                           ; 
-    57                           ; SFR Addresses
-    58     0000                     	;# 
-    59     0001                     	;# 
-    60     0002                     	;# 
-    61     0003                     	;# 
-    62     0004                     	;# 
-    63     0005                     	;# 
-    64     0006                     	;# 
-    65     0007                     	;# 
-    66     0008                     	;# 
-    67     0009                     	;# 
-    68     000A                     	;# 
-    69     000B                     	;# 
-    70     000C                     	;# 
-    71     000D                     	;# 
-    72     000E                     	;# 
-    73     000F                     	;# 
-    74     0010                     	;# 
-    75     0011                     	;# 
-    76     0012                     	;# 
-    77     0013                     	;# 
-    78     0014                     	;# 
-    79     0015                     	;# 
-    80     0016                     	;# 
-    81     0016                     	;# 
-    82     0017                     	;# 
-    83     0018                     	;# 
-    84     0019                     	;# 
-    85     0019                     	;# 
-    86     001A                     	;# 
-    87     001B                     	;# 
-    88     001C                     	;# 
-    89     001D                     	;# 
-    90     001E                     	;# 
-    91     001F                     	;# 
-    92     0020                     	;# 
-    93     0020                     	;# 
-    94     0021                     	;# 
-    95     0022                     	;# 
-    96     0022                     	;# 
-    97     0023                     	;# 
-    98     0024                     	;# 
-    99     0025                     	;# 
-   100     0026                     	;# 
-   101     0027                     	;# 
-   102     0027                     	;# 
-   103     0028                     	;# 
-   104     0029                     	;# 
-   105     002A                     	;# 
-   106     002A                     	;# 
-   107     002B                     	;# 
-   108     002C                     	;# 
-   109     002D                     	;# 
-   110     002E                     	;# 
-   111     0030                     	;# 
-   112     0031                     	;# 
-   113     0032                     	;# 
-   114     0033                     	;# 
-   115     0034                     	;# 
-   116     0035                     	;# 
-   117     0036                     	;# 
-   118     0037                     	;# 
-   119     0038                     	;# 
-   120     0039                     	;# 
-   121     003A                     	;# 
-   122     003B                     	;# 
-   123     003C                     	;# 
-   124     003D                     	;# 
-   125     003E                     	;# 
-   126     003F                     	;# 
-   127     0000                     	;# 
-   128     0001                     	;# 
-   129     0002                     	;# 
-   130     0003                     	;# 
-   131     0004                     	;# 
-   132     0005                     	;# 
-   133     0006                     	;# 
-   134     0007                     	;# 
-   135     0008                     	;# 
-   136     0009                     	;# 
-   137     000A                     	;# 
-   138     000B                     	;# 
-   139     000C                     	;# 
-   140     000D                     	;# 
-   141     000E                     	;# 
-   142     000F                     	;# 
-   143     0010                     	;# 
-   144     0011                     	;# 
-   145     0012                     	;# 
-   146     0013                     	;# 
-   147     0014                     	;# 
-   148     0015                     	;# 
-   149     0016                     	;# 
-   150     0016                     	;# 
-   151     0017                     	;# 
-   152     0018                     	;# 
-   153     0019                     	;# 
-   154     0019                     	;# 
-   155     001A                     	;# 
-   156     001B                     	;# 
-   157     001C                     	;# 
-   158     001D                     	;# 
-   159     001E                     	;# 
-   160     001F                     	;# 
-   161     0020                     	;# 
-   162     0020                     	;# 
-   163     0021                     	;# 
-   164     0022                     	;# 
-   165     0022                     	;# 
-   166     0023                     	;# 
-   167     0024                     	;# 
-   168     0025                     	;# 
-   169     0026                     	;# 
-   170     0027                     	;# 
-   171     0027                     	;# 
-   172     0028                     	;# 
-   173     0029                     	;# 
-   174     002A                     	;# 
-   175     002A                     	;# 
-   176     002B                     	;# 
-   177     002C                     	;# 
-   178     002D                     	;# 
-   179     002E                     	;# 
-   180     0030                     	;# 
-   181     0031                     	;# 
-   182     0032                     	;# 
-   183     0033                     	;# 
-   184     0034                     	;# 
-   185     0035                     	;# 
-   186     0036                     	;# 
-   187     0037                     	;# 
-   188     0038                     	;# 
-   189     0039                     	;# 
-   190     003A                     	;# 
-   191     003B                     	;# 
-   192     003C                     	;# 
-   193     003D                     	;# 
-   194     003E                     	;# 
-   195     003F                     	;# 
-   196     0000                     	;# 
-   197     0001                     	;# 
-   198     0002                     	;# 
-   199     0003                     	;# 
-   200     0004                     	;# 
-   201     0005                     	;# 
-   202     0006                     	;# 
-   203     0007                     	;# 
-   204     0008                     	;# 
-   205     0009                     	;# 
-   206     000A                     	;# 
-   207     000B                     	;# 
-   208     000C                     	;# 
-   209     000D                     	;# 
-   210     000E                     	;# 
-   211     000F                     	;# 
-   212     0010                     	;# 
-   213     0011                     	;# 
-   214     0012                     	;# 
-   215     0013                     	;# 
-   216     0014                     	;# 
-   217     0015                     	;# 
-   218     0016                     	;# 
-   219     0016                     	;# 
-   220     0017                     	;# 
-   221     0018                     	;# 
-   222     0019                     	;# 
-   223     0019                     	;# 
-   224     001A                     	;# 
-   225     001B                     	;# 
-   226     001C                     	;# 
-   227     001D                     	;# 
-   228     001E                     	;# 
-   229     001F                     	;# 
-   230     0020                     	;# 
-   231     0020                     	;# 
-   232     0021                     	;# 
-   233     0022                     	;# 
-   234     0022                     	;# 
-   235     0023                     	;# 
-   236     0024                     	;# 
-   237     0025                     	;# 
-   238     0026                     	;# 
-   239     0027                     	;# 
-   240     0027                     	;# 
-   241     0028                     	;# 
-   242     0029                     	;# 
-   243     002A                     	;# 
-   244     002A                     	;# 
-   245     002B                     	;# 
-   246     002C                     	;# 
-   247     002D                     	;# 
-   248     002E                     	;# 
-   249     0030                     	;# 
-   250     0031                     	;# 
-   251     0032                     	;# 
-   252     0033                     	;# 
-   253     0034                     	;# 
-   254     0035                     	;# 
-   255     0036                     	;# 
-   256     0037                     	;# 
-   257     0038                     	;# 
-   258     0039                     	;# 
-   259     003A                     	;# 
-   260     003B                     	;# 
-   261     003C                     	;# 
-   262     003D                     	;# 
-   263     003E                     	;# 
-   264     003F                     	;# 
-   265     0000                     	;# 
-   266     0001                     	;# 
-   267     0002                     	;# 
-   268     0003                     	;# 
-   269     0004                     	;# 
-   270     0005                     	;# 
-   271     0006                     	;# 
-   272     0007                     	;# 
-   273     0008                     	;# 
-   274     0009                     	;# 
-   275     000A                     	;# 
-   276     000B                     	;# 
-   277     000C                     	;# 
-   278     000D                     	;# 
-   279     000E                     	;# 
-   280     000F                     	;# 
-   281     0010                     	;# 
-   282     0011                     	;# 
-   283     0012                     	;# 
-   284     0013                     	;# 
-   285     0014                     	;# 
-   286     0015                     	;# 
-   287     0016                     	;# 
-   288     0016                     	;# 
-   289     0017                     	;# 
-   290     0018                     	;# 
-   291     0019                     	;# 
-   292     0019                     	;# 
-   293     001A                     	;# 
-   294     001B                     	;# 
-   295     001C                     	;# 
-   296     001D                     	;# 
-   297     001E                     	;# 
-   298     001F                     	;# 
-   299     0020                     	;# 
-   300     0020                     	;# 
-   301     0021                     	;# 
-   302     0022                     	;# 
-   303     0022                     	;# 
-   304     0023                     	;# 
-   305     0024                     	;# 
-   306     0025                     	;# 
-   307     0026                     	;# 
-   308     0027                     	;# 
-   309     0027                     	;# 
-   310     0028                     	;# 
-   311     0029                     	;# 
-   312     002A                     	;# 
-   313     002A                     	;# 
-   314     002B                     	;# 
-   315     002C                     	;# 
-   316     002D                     	;# 
-   317     002E                     	;# 
-   318     0030                     	;# 
-   319     0031                     	;# 
-   320     0032                     	;# 
-   321     0033                     	;# 
-   322     0034                     	;# 
-   323     0035                     	;# 
-   324     0036                     	;# 
-   325     0037                     	;# 
-   326     0038                     	;# 
-   327     0039                     	;# 
-   328     003A                     	;# 
-   329     003B                     	;# 
-   330     003C                     	;# 
-   331     003D                     	;# 
-   332     003E                     	;# 
-   333     003F                     	;# 
-   334     000E                     _OPTION_REG	set	14
-   335     000B                     _INTCON	set	11
-   336     003E                     _VREGCON	set	62
-   337     001D                     _FVRCON	set	29
-   338     001F                     _ADCON	set	31
-   339     0009                     _WPUA	set	9
-   340     0013                     _T2CON	set	19
-   341     000C                     _PIR1	set	12
-   342     0011                     _TMR2	set	17
-   343     0012                     _PR2	set	18
-   344     0019                     _PWM2CON	set	25
-   345     0008                     _ANSELA	set	8
-   346     0006                     _TRISA	set	6
-   347     0007                     _LATA	set	7
-   348     0017                     _PWM2DCL	set	23
-   349     0018                     _PWM2DCH	set	24
-   350     0005                     _PORTA	set	5
-   351                           
-   352                           	psect	cinit
-   353     000B                     start_initialization:	
-   354                           ; #config settings
-   355                           
-   356     000B                     __initialization:
-   357                           
-   358                           ; Clear objects allocated to BANK0
-   359     000B  01C0               	clrf	__pbssBANK0& (0+127)
-   360     000C  01C1               	clrf	(__pbssBANK0+1)& (0+127)
-   361     000D  01C2               	clrf	(__pbssBANK0+2)& (0+127)
-   362     000E  01C3               	clrf	(__pbssBANK0+3)& (0+127)
-   363     000F                     end_of_initialization:	
-   364                           ;End of C runtime variable initialization code
+    66                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    67                           ; 
+    68                           ; 
+    69                           ; Code-generator required, PIC10F322 Definitions
+    70                           ; 
+    71                           ; SFR Addresses
+    72     0000                     	;# 
+    73     0001                     	;# 
+    74     0002                     	;# 
+    75     0003                     	;# 
+    76     0004                     	;# 
+    77     0005                     	;# 
+    78     0006                     	;# 
+    79     0007                     	;# 
+    80     0008                     	;# 
+    81     0009                     	;# 
+    82     000A                     	;# 
+    83     000B                     	;# 
+    84     000C                     	;# 
+    85     000D                     	;# 
+    86     000E                     	;# 
+    87     000F                     	;# 
+    88     0010                     	;# 
+    89     0011                     	;# 
+    90     0012                     	;# 
+    91     0013                     	;# 
+    92     0014                     	;# 
+    93     0015                     	;# 
+    94     0016                     	;# 
+    95     0016                     	;# 
+    96     0017                     	;# 
+    97     0018                     	;# 
+    98     0019                     	;# 
+    99     0019                     	;# 
+   100     001A                     	;# 
+   101     001B                     	;# 
+   102     001C                     	;# 
+   103     001D                     	;# 
+   104     001E                     	;# 
+   105     001F                     	;# 
+   106     0020                     	;# 
+   107     0020                     	;# 
+   108     0021                     	;# 
+   109     0022                     	;# 
+   110     0022                     	;# 
+   111     0023                     	;# 
+   112     0024                     	;# 
+   113     0025                     	;# 
+   114     0026                     	;# 
+   115     0027                     	;# 
+   116     0027                     	;# 
+   117     0028                     	;# 
+   118     0029                     	;# 
+   119     002A                     	;# 
+   120     002A                     	;# 
+   121     002B                     	;# 
+   122     002C                     	;# 
+   123     002D                     	;# 
+   124     002E                     	;# 
+   125     0030                     	;# 
+   126     0031                     	;# 
+   127     0032                     	;# 
+   128     0033                     	;# 
+   129     0034                     	;# 
+   130     0035                     	;# 
+   131     0036                     	;# 
+   132     0037                     	;# 
+   133     0038                     	;# 
+   134     0039                     	;# 
+   135     003A                     	;# 
+   136     003B                     	;# 
+   137     003C                     	;# 
+   138     003D                     	;# 
+   139     003E                     	;# 
+   140     003F                     	;# 
+   141     0000                     	;# 
+   142     0001                     	;# 
+   143     0002                     	;# 
+   144     0003                     	;# 
+   145     0004                     	;# 
+   146     0005                     	;# 
+   147     0006                     	;# 
+   148     0007                     	;# 
+   149     0008                     	;# 
+   150     0009                     	;# 
+   151     000A                     	;# 
+   152     000B                     	;# 
+   153     000C                     	;# 
+   154     000D                     	;# 
+   155     000E                     	;# 
+   156     000F                     	;# 
+   157     0010                     	;# 
+   158     0011                     	;# 
+   159     0012                     	;# 
+   160     0013                     	;# 
+   161     0014                     	;# 
+   162     0015                     	;# 
+   163     0016                     	;# 
+   164     0016                     	;# 
+   165     0017                     	;# 
+   166     0018                     	;# 
+   167     0019                     	;# 
+   168     0019                     	;# 
+   169     001A                     	;# 
+   170     001B                     	;# 
+   171     001C                     	;# 
+   172     001D                     	;# 
+   173     001E                     	;# 
+   174     001F                     	;# 
+   175     0020                     	;# 
+   176     0020                     	;# 
+   177     0021                     	;# 
+   178     0022                     	;# 
+   179     0022                     	;# 
+   180     0023                     	;# 
+   181     0024                     	;# 
+   182     0025                     	;# 
+   183     0026                     	;# 
+   184     0027                     	;# 
+   185     0027                     	;# 
+   186     0028                     	;# 
+   187     0029                     	;# 
+   188     002A                     	;# 
+   189     002A                     	;# 
+   190     002B                     	;# 
+   191     002C                     	;# 
+   192     002D                     	;# 
+   193     002E                     	;# 
+   194     0030                     	;# 
+   195     0031                     	;# 
+   196     0032                     	;# 
+   197     0033                     	;# 
+   198     0034                     	;# 
+   199     0035                     	;# 
+   200     0036                     	;# 
+   201     0037                     	;# 
+   202     0038                     	;# 
+   203     0039                     	;# 
+   204     003A                     	;# 
+   205     003B                     	;# 
+   206     003C                     	;# 
+   207     003D                     	;# 
+   208     003E                     	;# 
+   209     003F                     	;# 
+   210     0000                     	;# 
+   211     0001                     	;# 
+   212     0002                     	;# 
+   213     0003                     	;# 
+   214     0004                     	;# 
+   215     0005                     	;# 
+   216     0006                     	;# 
+   217     0007                     	;# 
+   218     0008                     	;# 
+   219     0009                     	;# 
+   220     000A                     	;# 
+   221     000B                     	;# 
+   222     000C                     	;# 
+   223     000D                     	;# 
+   224     000E                     	;# 
+   225     000F                     	;# 
+   226     0010                     	;# 
+   227     0011                     	;# 
+   228     0012                     	;# 
+   229     0013                     	;# 
+   230     0014                     	;# 
+   231     0015                     	;# 
+   232     0016                     	;# 
+   233     0016                     	;# 
+   234     0017                     	;# 
+   235     0018                     	;# 
+   236     0019                     	;# 
+   237     0019                     	;# 
+   238     001A                     	;# 
+   239     001B                     	;# 
+   240     001C                     	;# 
+   241     001D                     	;# 
+   242     001E                     	;# 
+   243     001F                     	;# 
+   244     0020                     	;# 
+   245     0020                     	;# 
+   246     0021                     	;# 
+   247     0022                     	;# 
+   248     0022                     	;# 
+   249     0023                     	;# 
+   250     0024                     	;# 
+   251     0025                     	;# 
+   252     0026                     	;# 
+   253     0027                     	;# 
+   254     0027                     	;# 
+   255     0028                     	;# 
+   256     0029                     	;# 
+   257     002A                     	;# 
+   258     002A                     	;# 
+   259     002B                     	;# 
+   260     002C                     	;# 
+   261     002D                     	;# 
+   262     002E                     	;# 
+   263     0030                     	;# 
+   264     0031                     	;# 
+   265     0032                     	;# 
+   266     0033                     	;# 
+   267     0034                     	;# 
+   268     0035                     	;# 
+   269     0036                     	;# 
+   270     0037                     	;# 
+   271     0038                     	;# 
+   272     0039                     	;# 
+   273     003A                     	;# 
+   274     003B                     	;# 
+   275     003C                     	;# 
+   276     003D                     	;# 
+   277     003E                     	;# 
+   278     003F                     	;# 
+   279     0000                     	;# 
+   280     0001                     	;# 
+   281     0002                     	;# 
+   282     0003                     	;# 
+   283     0004                     	;# 
+   284     0005                     	;# 
+   285     0006                     	;# 
+   286     0007                     	;# 
+   287     0008                     	;# 
+   288     0009                     	;# 
+   289     000A                     	;# 
+   290     000B                     	;# 
+   291     000C                     	;# 
+   292     000D                     	;# 
+   293     000E                     	;# 
+   294     000F                     	;# 
+   295     0010                     	;# 
+   296     0011                     	;# 
+   297     0012                     	;# 
+   298     0013                     	;# 
+   299     0014                     	;# 
+   300     0015                     	;# 
+   301     0016                     	;# 
+   302     0016                     	;# 
+   303     0017                     	;# 
+   304     0018                     	;# 
+   305     0019                     	;# 
+   306     0019                     	;# 
+   307     001A                     	;# 
+   308     001B                     	;# 
+   309     001C                     	;# 
+   310     001D                     	;# 
+   311     001E                     	;# 
+   312     001F                     	;# 
+   313     0020                     	;# 
+   314     0020                     	;# 
+   315     0021                     	;# 
+   316     0022                     	;# 
+   317     0022                     	;# 
+   318     0023                     	;# 
+   319     0024                     	;# 
+   320     0025                     	;# 
+   321     0026                     	;# 
+   322     0027                     	;# 
+   323     0027                     	;# 
+   324     0028                     	;# 
+   325     0029                     	;# 
+   326     002A                     	;# 
+   327     002A                     	;# 
+   328     002B                     	;# 
+   329     002C                     	;# 
+   330     002D                     	;# 
+   331     002E                     	;# 
+   332     0030                     	;# 
+   333     0031                     	;# 
+   334     0032                     	;# 
+   335     0033                     	;# 
+   336     0034                     	;# 
+   337     0035                     	;# 
+   338     0036                     	;# 
+   339     0037                     	;# 
+   340     0038                     	;# 
+   341     0039                     	;# 
+   342     003A                     	;# 
+   343     003B                     	;# 
+   344     003C                     	;# 
+   345     003D                     	;# 
+   346     003E                     	;# 
+   347     003F                     	;# 
+   348     0005                     _PORTA	set	5
+   349     000E                     _OPTION_REG	set	14
+   350     000B                     _INTCON	set	11
+   351     003E                     _VREGCON	set	62
+   352     001D                     _FVRCON	set	29
+   353     001F                     _ADCON	set	31
+   354     0009                     _WPUA	set	9
+   355     0013                     _T2CON	set	19
+   356     000C                     _PIR1	set	12
+   357     0011                     _TMR2	set	17
+   358     0012                     _PR2	set	18
+   359     0019                     _PWM2CON	set	25
+   360     0008                     _ANSELA	set	8
+   361     0006                     _TRISA	set	6
+   362     0007                     _LATA	set	7
+   363     0017                     _PWM2DCL	set	23
+   364     0018                     _PWM2DCH	set	24
    365                           
-   366     000F                     __end_of__initialization:
-   367     000F  0183               	clrf	3
-   368     0010  2811               	ljmp	_main	;jump to C main() function
+   366                           	psect	cinit
+   367     000B                     start_initialization:	
+   368                           ; #config settings
    369                           
-   370                           	psect	bssBANK0
-   371     0040                     __pbssBANK0:
-   372     0040                     _sleep_mode:
-   373     0040                     	ds	1
-   374     0041                     _Button_State:
-   375     0041                     	ds	1
-   376     0042                     _executed:
-   377     0042                     	ds	1
-   378     0043                     _button_state:
-   379     0043                     	ds	1
-   380                           
-   381                           	psect	cstackCOMMON
-   382     0000                     __pcstackCOMMON:
-   383     0000                     ??_Sleep_Init:
-   384     0000                     ??_Button_Get_Sleep_Mode:	
-   385                           ; 1 bytes @ 0x0
-   386                           
-   387     0000                     ??_PWM_Off:	
-   388                           ; 1 bytes @ 0x0
-   389                           
-   390     0000                     ??_Button_ISR_Executables:	
-   391                           ; 1 bytes @ 0x0
-   392                           
-   393     0000                     ??_main:	
-   394                           ; 1 bytes @ 0x0
-   395                           
-   396     0000                     ??_PWM_Get_Execution_Status:	
-   397                           ; 1 bytes @ 0x0
-   398                           
-   399     0000                     ??_PWM_Set_Execution_Status:	
-   400                           ; 1 bytes @ 0x0
-   401                           
-   402                           
-   403                           	psect	cstackBANK0
-   404     0044                     __pcstackBANK0:	
+   370     000B                     __initialization:
+   371                           
+   372                           ; Clear objects allocated to BANK0
+   373     000B  01DA               	clrf	__pbssBANK0& (0+127)
+   374     000C  01DB               	clrf	(__pbssBANK0+1)& (0+127)
+   375     000D  01DC               	clrf	(__pbssBANK0+2)& (0+127)
+   376     000E  01DD               	clrf	(__pbssBANK0+3)& (0+127)
+   377     000F                     end_of_initialization:	
+   378                           ;End of C runtime variable initialization code
+   379                           
+   380     000F                     __end_of__initialization:
+   381     000F  0183               	clrf	3
+   382     0010  2910               	ljmp	_main	;jump to C main() function
+   383                           
+   384                           	psect	bssBANK0
+   385     005A                     __pbssBANK0:
+   386     005A                     _sleep_mode:
+   387     005A                     	ds	1
+   388     005B                     _Button_State:
+   389     005B                     	ds	1
+   390     005C                     _executed:
+   391     005C                     	ds	1
+   392     005D                     _button_state:
+   393     005D                     	ds	1
+   394                           
+   395                           	psect	cstackCOMMON
+   396     0000                     __pcstackCOMMON:
+   397     0000                     ??_Sleep_Init:
+   398     0000                     ??_PWM_Clear_Execution_Status:	
+   399                           ; 1 bytes @ 0x0
+   400                           
+   401     0000                     ??_Button_Get_Sleep_Mode:	
+   402                           ; 1 bytes @ 0x0
+   403                           
+   404     0000                     ??_Button_Get_State:	
    405                           ; 1 bytes @ 0x0
    406                           
-   407     0044                     ?_Button_Init:
-   408     0044                     ?_Sleep_Init:	
-   409                           ; 1 bytes @ 0x0
-   410                           
-   411     0044                     ?_Button_Get_Sleep_Mode:	
-   412                           ; 1 bytes @ 0x0
-   413                           
-   414     0044                     ?_PWM_Off:	
-   415                           ; 1 bytes @ 0x0
-   416                           
-   417     0044                     ?_Button_ISR_Executables:	
-   418                           ; 1 bytes @ 0x0
-   419                           
-   420     0044                     ?_main:	
-   421                           ; 1 bytes @ 0x0
-   422                           
-   423     0044                     ?_ISRs:	
-   424                           ; 1 bytes @ 0x0
-   425                           
-   426     0044                     ??_ISRs:	
-   427                           ; 1 bytes @ 0x0
-   428                           
-   429     0044                     ?_PWM_Get_Execution_Status:	
-   430                           ; 1 bytes @ 0x0
-   431                           
-   432     0044                     ?_PWM_Set_Execution_Status:	
-   433                           ; 1 bytes @ 0x0
-   434                           
-   435     0044                     ?_PWM_Disable:	
-   436                           ; 1 bytes @ 0x0
-   437                           
-   438     0044                     ?_Sleep_Unused_GPIO_Config:	
-   439                           ; 1 bytes @ 0x0
-   440                           
-   441                           
-   442                           ; 1 bytes @ 0x0
-   443     0044                     	ds	2
-   444     0046                     ??_Button_Init:
-   445     0046                     ??_PWM_Disable:	
-   446                           ; 1 bytes @ 0x2
+   407     0000                     ??_PWM_On_20_Percent_Duty_Cycle:	
+   408                           ; 1 bytes @ 0x0
+   409                           
+   410     0000                     ??_PWM_On_50_Percent_Duty_Cycle:	
+   411                           ; 1 bytes @ 0x0
+   412                           
+   413     0000                     ??_PWM_On_100_Percent_Duty_Cycle:	
+   414                           ; 1 bytes @ 0x0
+   415                           
+   416     0000                     ??_main:	
+   417                           ; 1 bytes @ 0x0
+   418                           
+   419     0000                     ??_PWM_Get_Execution_Status:	
+   420                           ; 1 bytes @ 0x0
+   421                           
+   422     0000                     ??_PWM_Set_Execution_Status:	
+   423                           ; 1 bytes @ 0x0
+   424                           
+   425     0000                     ??_PWM_Off:	
+   426                           ; 1 bytes @ 0x0
+   427                           
+   428     0000                     ??_Button_Set_Sleep_Mode:	
+   429                           ; 1 bytes @ 0x0
+   430                           
+   431     0000                     ??_Button_Set_Active_Mode:	
+   432                           ; 1 bytes @ 0x0
+   433                           
+   434     0000                     ??i1_PWM_Get_Execution_Status:	
+   435                           ; 1 bytes @ 0x0
+   436                           
+   437     0000                     ??i1_PWM_Set_Execution_Status:	
+   438                           ; 1 bytes @ 0x0
+   439                           
+   440     0000                     ??i1_PWM_Clear_Execution_Status:	
+   441                           ; 1 bytes @ 0x0
+   442                           
+   443                           
+   444                           	psect	cstackBANK0
+   445     0040                     __pcstackBANK0:	
+   446                           ; 1 bytes @ 0x0
    447                           
-   448     0046                     ??_Sleep_Unused_GPIO_Config:	
-   449                           ; 1 bytes @ 0x2
-   450                           
+   448     0040                     ?_Button_Init:
+   449     0040                     ?_Sleep_Init:	
+   450                           ; 1 bytes @ 0x0
    451                           
-   452                           ; 1 bytes @ 0x2
-   453     0046                     	ds	1
+   452     0040                     ?_PWM_Clear_Execution_Status:	
+   453                           ; 1 bytes @ 0x0
    454                           
-   455                           	psect	maintext
-   456     0011                     __pmaintext:	
-   457 ;;
-   458 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   459 ;;
-   460 ;; *************** function _main *****************
-   461 ;; Defined at:
-   462 ;;		line 18 in file "main.c"
-   463 ;; Parameters:    Size  Location     Type
-   464 ;;		None
-   465 ;; Auto vars:     Size  Location     Type
-   466 ;;		None
-   467 ;; Return value:  Size  Location     Type
-   468 ;;                  1    wreg      void 
-   469 ;; Registers used:
-   470 ;;		wreg, status,2, status,0, pclath, cstack
-   471 ;; Tracked objects:
-   472 ;;		On entry : B00/0
-   473 ;;		On exit  : 0/0
-   474 ;;		Unchanged: 0/0
-   475 ;; Data sizes:     COMMON   BANK0
-   476 ;;      Params:         0       0
-   477 ;;      Locals:         0       0
-   478 ;;      Temps:          0       0
-   479 ;;      Totals:         0       0
-   480 ;;Total ram usage:        0 bytes
-   481 ;; Hardware stack levels required when called: 4
-   482 ;; This function calls:
-   483 ;;		_Button_Get_Sleep_Mode
-   484 ;;		_Button_Init
-   485 ;;		_PWM_Off
-   486 ;;		_Sleep_Init
-   487 ;; This function is called by:
-   488 ;;		Startup code after reset
-   489 ;; This function uses a non-reentrant model
-   490 ;;
-   491                           
-   492     0011                     _main:	
-   493                           ;psect for function _main
-   494                           
-   495     0011                     l833:	
-   496                           ;incstack = 0
-   497                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   498                           
+   455     0040                     ?_Button_Get_Sleep_Mode:	
+   456                           ; 1 bytes @ 0x0
+   457                           
+   458     0040                     ?_Button_Get_State:	
+   459                           ; 1 bytes @ 0x0
+   460                           
+   461     0040                     ?_PWM_On_20_Percent_Duty_Cycle:	
+   462                           ; 1 bytes @ 0x0
+   463                           
+   464     0040                     ?_PWM_On_50_Percent_Duty_Cycle:	
+   465                           ; 1 bytes @ 0x0
+   466                           
+   467     0040                     ?_PWM_On_100_Percent_Duty_Cycle:	
+   468                           ; 1 bytes @ 0x0
+   469                           
+   470     0040                     ?_Button_ISR_Executables:	
+   471                           ; 1 bytes @ 0x0
+   472                           
+   473     0040                     ?_main:	
+   474                           ; 1 bytes @ 0x0
+   475                           
+   476     0040                     ?_ISRs:	
+   477                           ; 1 bytes @ 0x0
+   478                           
+   479     0040                     ?_PWM_Get_Execution_Status:	
+   480                           ; 1 bytes @ 0x0
+   481                           
+   482     0040                     ?_PWM_Set_Execution_Status:	
+   483                           ; 1 bytes @ 0x0
+   484                           
+   485     0040                     ?_PWM_Enable:	
+   486                           ; 1 bytes @ 0x0
+   487                           
+   488     0040                     ?_PWM_Disable:	
+   489                           ; 1 bytes @ 0x0
+   490                           
+   491     0040                     ??_PWM_Disable:	
+   492                           ; 1 bytes @ 0x0
+   493                           
+   494     0040                     ?_PWM_Off:	
+   495                           ; 1 bytes @ 0x0
+   496                           
+   497     0040                     ?_Sleep_Unused_GPIO_Config:	
+   498                           ; 1 bytes @ 0x0
    499                           
-   500                           ;main.c: 20: Button_Init();
-   501     0011  203A               	fcall	_Button_Init
+   500     0040                     ?_Button_Set_Sleep_Mode:	
+   501                           ; 1 bytes @ 0x0
    502                           
-   503                           ;main.c: 21: Sleep_Init();
-   504     0012  204E               	fcall	_Sleep_Init
-   505     0013                     l835:
-   506                           
-   507                           ;main.c: 25: if(Button_Get_Sleep_Mode()==0){
-   508     0013  206B               	fcall	_Button_Get_Sleep_Mode
-   509     0014  3A00               	xorlw	0
-   510     0015  1D03               	skipz
-   511     0016  2818               	goto	u131
-   512     0017  2819               	goto	u130
-   513     0018                     u131:
-   514     0018  2822               	goto	l841
-   515     0019                     u130:
-   516     0019                     l837:
-   517                           
-   518                           ;main.c: 26: if(!(PORTA & 0x04)){
-   519     0019  1905               	btfsc	5,2	;volatile
-   520     001A  281C               	goto	u141
-   521     001B  281D               	goto	u140
-   522     001C                     u141:
-   523     001C  2813               	goto	l835
-   524     001D                     u140:
-   525     001D                     l22:
-   526     001D  1905               	btfsc	5,2	;volatile
-   527     001E  2820               	goto	u151
-   528     001F  2821               	goto	u150
-   529     0020                     u151:
-   530     0020  281D               	goto	l22
-   531     0021                     u150:
-   532     0021  2813               	goto	l835
-   533     0022                     l841:
-   534                           
-   535                           ;main.c: 31: PWM_Off();
-   536     0022  2045               	fcall	_PWM_Off
-   537     0023  0063               	sleep	;# 
-   538     0024  2813               	goto	l835
-   539     0025  280A               	ljmp	start
-   540     0026                     __end_of_main:
+   503     0040                     ?_Button_Set_Active_Mode:	
+   504                           ; 1 bytes @ 0x0
+   505                           
+   506     0040                     ?i1_PWM_Get_Execution_Status:	
+   507                           ; 1 bytes @ 0x0
+   508                           
+   509     0040                     ?i1_PWM_Set_Execution_Status:	
+   510                           ; 1 bytes @ 0x0
+   511                           
+   512     0040                     ?i1_PWM_Clear_Execution_Status:	
+   513                           ; 1 bytes @ 0x0
+   514                           
+   515                           
+   516                           ; 1 bytes @ 0x0
+   517     0040                     	ds	1
+   518     0041                     ??_Button_ISR_Executables:
+   519                           
+   520                           ; 1 bytes @ 0x1
+   521     0041                     	ds	1
+   522     0042                     ??_ISRs:
+   523                           
+   524                           ; 1 bytes @ 0x2
+   525     0042                     	ds	2
+   526     0044                     ??_Button_Init:
+   527     0044                     ??_PWM_Enable:	
+   528                           ; 1 bytes @ 0x4
+   529                           
+   530     0044                     ??_Sleep_Unused_GPIO_Config:	
+   531                           ; 1 bytes @ 0x4
+   532                           
+   533     0044                     ?___lmul:	
+   534                           ; 1 bytes @ 0x4
+   535                           
+   536     0044                     ?___lldiv:	
+   537                           ; 4 bytes @ 0x4
+   538                           
+   539     0044                     ___lmul@multiplier:	
+   540                           ; 4 bytes @ 0x4
    541                           
-   542                           	psect	text1
-   543     004E                     __ptext1:	
-   544 ;; *************** function _Sleep_Init *****************
-   545 ;; Defined at:
-   546 ;;		line 78 in file "sleep.c"
-   547 ;; Parameters:    Size  Location     Type
-   548 ;;		None
-   549 ;; Auto vars:     Size  Location     Type
-   550 ;;		None
-   551 ;; Return value:  Size  Location     Type
-   552 ;;                  1    wreg      void 
-   553 ;; Registers used:
-   554 ;;		wreg, status,2, status,0, pclath, cstack
-   555 ;; Tracked objects:
-   556 ;;		On entry : 0/0
-   557 ;;		On exit  : 0/0
-   558 ;;		Unchanged: 0/0
-   559 ;; Data sizes:     COMMON   BANK0
-   560 ;;      Params:         0       0
-   561 ;;      Locals:         0       0
-   562 ;;      Temps:          0       0
-   563 ;;      Totals:         0       0
-   564 ;;Total ram usage:        0 bytes
-   565 ;; Hardware stack levels used: 1
-   566 ;; Hardware stack levels required when called: 3
-   567 ;; This function calls:
-   568 ;;		_Sleep_Unused_GPIO_Config
-   569 ;; This function is called by:
-   570 ;;		_main
-   571 ;; This function uses a non-reentrant model
-   572 ;;
-   573                           
-   574     004E                     _Sleep_Init:	
-   575                           ;psect for function _Sleep_Init
+   542     0044                     ___lldiv@divisor:	
+   543                           ; 4 bytes @ 0x4
+   544                           
+   545                           
+   546                           ; 4 bytes @ 0x4
+   547     0044                     	ds	4
+   548     0048                     ___lmul@multiplicand:
+   549     0048                     ___lldiv@dividend:	
+   550                           ; 4 bytes @ 0x8
+   551                           
+   552                           
+   553                           ; 4 bytes @ 0x8
+   554     0048                     	ds	4
+   555     004C                     ??___lmul:
+   556     004C                     ??___lldiv:	
+   557                           ; 1 bytes @ 0xC
+   558                           
+   559                           
+   560                           ; 1 bytes @ 0xC
+   561     004C                     	ds	1
+   562     004D                     ___lmul@product:
+   563     004D                     ___lldiv@quotient:	
+   564                           ; 4 bytes @ 0xD
+   565                           
+   566                           
+   567                           ; 4 bytes @ 0xD
+   568     004D                     	ds	4
+   569     0051                     ___lldiv@counter:
+   570                           
+   571                           ; 1 bytes @ 0x11
+   572     0051                     	ds	1
+   573     0052                     ?_PWM_Set_Duty:
+   574     0052                     PWM_Set_Duty@duty:	
+   575                           ; 1 bytes @ 0x12
    576                           
-   577     004E                     l815:	
-   578                           ;incstack = 0
-   579                           ; Regs used in _Sleep_Init: [wreg+status,2+status,0+pclath+cstack]
-   580                           
+   577                           
+   578                           ; 4 bytes @ 0x12
+   579     0052                     	ds	4
+   580     0056                     ??_PWM_Set_Duty:
    581                           
-   582                           ;sleep.c: 79: WPUA = (1<<3);
-   583     004E  3008               	movlw	8
-   584     004F  0089               	movwf	9	;volatile
-   585     0050                     l817:
-   586                           
-   587                           ;sleep.c: 83: ADCON = 0x00;
-   588     0050  019F               	clrf	31	;volatile
-   589     0051                     l819:
-   590                           
-   591                           ;sleep.c: 84: FVRCON = 0x00;
-   592     0051  019D               	clrf	29	;volatile
-   593                           
-   594                           ;sleep.c: 85: VREGCON = 0x02;
-   595     0052  3002               	movlw	2
-   596     0053  00BE               	movwf	62	;volatile
-   597     0054                     l821:
-   598                           
-   599                           ;sleep.c: 86: Sleep_Unused_GPIO_Config();
-   600     0054  205E               	fcall	_Sleep_Unused_GPIO_Config
-   601     0055                     l108:
-   602     0055  0008               	return
-   603     0056                     __end_of_Sleep_Init:
-   604                           
-   605                           	psect	text2
-   606     005E                     __ptext2:	
-   607 ;; *************** function _Sleep_Unused_GPIO_Config *****************
-   608 ;; Defined at:
-   609 ;;		line 72 in file "sleep.c"
-   610 ;; Parameters:    Size  Location     Type
-   611 ;;		None
-   612 ;; Auto vars:     Size  Location     Type
-   613 ;;		None
-   614 ;; Return value:  Size  Location     Type
-   615 ;;                  1    wreg      void 
-   616 ;; Registers used:
-   617 ;;		wreg, status,2, status,0
-   618 ;; Tracked objects:
-   619 ;;		On entry : 0/0
-   620 ;;		On exit  : 0/0
-   621 ;;		Unchanged: 0/0
-   622 ;; Data sizes:     COMMON   BANK0
-   623 ;;      Params:         0       0
-   624 ;;      Locals:         0       0
-   625 ;;      Temps:          0       1
-   626 ;;      Totals:         0       1
-   627 ;;Total ram usage:        1 bytes
-   628 ;; Hardware stack levels used: 1
-   629 ;; Hardware stack levels required when called: 2
-   630 ;; This function calls:
-   631 ;;		Nothing
-   632 ;; This function is called by:
-   633 ;;		_Sleep_Init
-   634 ;; This function uses a non-reentrant model
-   635 ;;
+   582                           ; 1 bytes @ 0x16
+   583     0056                     	ds	2
+   584     0058                     PWM_Set_Duty@temp:
+   585                           
+   586                           ; 2 bytes @ 0x18
+   587     0058                     	ds	2
+   588                           
+   589                           	psect	maintext
+   590     0110                     __pmaintext:	
+   591 ;;
+   592 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   593 ;;
+   594 ;; *************** function _main *****************
+   595 ;; Defined at:
+   596 ;;		line 18 in file "main.c"
+   597 ;; Parameters:    Size  Location     Type
+   598 ;;		None
+   599 ;; Auto vars:     Size  Location     Type
+   600 ;;		None
+   601 ;; Return value:  Size  Location     Type
+   602 ;;                  1    wreg      void 
+   603 ;; Registers used:
+   604 ;;		wreg, status,2, status,0, pclath, cstack
+   605 ;; Tracked objects:
+   606 ;;		On entry : B00/0
+   607 ;;		On exit  : 0/0
+   608 ;;		Unchanged: 0/0
+   609 ;; Data sizes:     COMMON   BANK0
+   610 ;;      Params:         0       0
+   611 ;;      Locals:         0       0
+   612 ;;      Temps:          0       0
+   613 ;;      Totals:         0       0
+   614 ;;Total ram usage:        0 bytes
+   615 ;; Hardware stack levels required when called: 7
+   616 ;; This function calls:
+   617 ;;		_Button_Get_Sleep_Mode
+   618 ;;		_Button_Get_State
+   619 ;;		_Button_Init
+   620 ;;		_PWM_Clear_Execution_Status
+   621 ;;		_PWM_On_100_Percent_Duty_Cycle
+   622 ;;		_PWM_On_20_Percent_Duty_Cycle
+   623 ;;		_PWM_On_50_Percent_Duty_Cycle
+   624 ;;		_Sleep_Init
+   625 ;; This function is called by:
+   626 ;;		Startup code after reset
+   627 ;; This function uses a non-reentrant model
+   628 ;;
+   629                           
+   630     0110                     _main:	
+   631                           ;psect for function _main
+   632                           
+   633     0110                     l1032:	
+   634                           ;incstack = 0
+   635                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    636                           
-   637     005E                     _Sleep_Unused_GPIO_Config:	
-   638                           ;psect for function _Sleep_Unused_GPIO_Config
-   639                           
-   640     005E                     l803:	
-   641                           ;incstack = 0
-   642                           ; Regs used in _Sleep_Unused_GPIO_Config: [wreg+status,2+status,0]
-   643                           
+   637                           
+   638                           ;main.c: 20: Button_Init();
+   639     0110  21BB               	fcall	_Button_Init
+   640                           
+   641                           ;main.c: 21: Sleep_Init();
+   642     0111  21CF               	fcall	_Sleep_Init
+   643     0112                     l1034:
    644                           
-   645                           ;sleep.c: 75: LATA &=~ 1;
-   646     005E  30FE               	movlw	254
-   647     005F  00C6               	movwf	??_Sleep_Unused_GPIO_Config
-   648     0060  0846               	movf	??_Sleep_Unused_GPIO_Config,w
-   649     0061  0587               	andwf	7,f	;volatile
-   650     0062                     l105:
-   651     0062  0008               	return
-   652     0063                     __end_of_Sleep_Unused_GPIO_Config:
-   653                           
-   654                           	psect	text3
-   655     0045                     __ptext3:	
-   656 ;; *************** function _PWM_Off *****************
-   657 ;; Defined at:
-   658 ;;		line 93 in file "pwm.c"
-   659 ;; Parameters:    Size  Location     Type
-   660 ;;		None
-   661 ;; Auto vars:     Size  Location     Type
-   662 ;;		None
-   663 ;; Return value:  Size  Location     Type
-   664 ;;                  1    wreg      void 
-   665 ;; Registers used:
-   666 ;;		wreg, status,2, status,0, pclath, cstack
-   667 ;; Tracked objects:
-   668 ;;		On entry : 0/0
-   669 ;;		On exit  : 0/0
-   670 ;;		Unchanged: 0/0
-   671 ;; Data sizes:     COMMON   BANK0
-   672 ;;      Params:         0       0
-   673 ;;      Locals:         0       0
-   674 ;;      Temps:          0       0
-   675 ;;      Totals:         0       0
-   676 ;;Total ram usage:        0 bytes
-   677 ;; Hardware stack levels used: 1
-   678 ;; Hardware stack levels required when called: 3
-   679 ;; This function calls:
-   680 ;;		_PWM_Disable
-   681 ;;		_PWM_Get_Execution_Status
-   682 ;;		_PWM_Set_Execution_Status
-   683 ;; This function is called by:
-   684 ;;		_main
-   685 ;; This function uses a non-reentrant model
-   686 ;;
-   687                           
-   688     0045                     _PWM_Off:	
-   689                           ;psect for function _PWM_Off
-   690                           
-   691     0045                     l827:	
-   692                           ;incstack = 0
-   693                           ; Regs used in _PWM_Off: [wreg+status,2+status,0+pclath+cstack]
-   694                           
-   695                           
-   696                           ;pwm.c: 94: if(PWM_Get_Execution_Status()==0){
-   697     0045  2069               	fcall	_PWM_Get_Execution_Status
-   698     0046  3A00               	xorlw	0
-   699     0047  1D03               	skipz
-   700     0048  284A               	goto	u121
-   701     0049  284B               	goto	u120
-   702     004A                     u121:
-   703     004A  284D               	goto	l92
-   704     004B                     u120:
-   705     004B                     l829:
-   706                           
-   707                           ;pwm.c: 95: PWM_Disable();
-   708     004B  2026               	fcall	_PWM_Disable
-   709                           
-   710                           ;pwm.c: 96: PWM_Set_Execution_Status();
-   711     004C  2063               	fcall	_PWM_Set_Execution_Status
-   712     004D                     l92:
-   713     004D  0008               	return
-   714     004E                     __end_of_PWM_Off:
-   715                           
-   716                           	psect	text4
-   717     0063                     __ptext4:	
-   718 ;; *************** function _PWM_Set_Execution_Status *****************
-   719 ;; Defined at:
-   720 ;;		line 16 in file "pwm.c"
-   721 ;; Parameters:    Size  Location     Type
+   645                           ;main.c: 22: PWM_Clear_Execution_Status();
+   646     0112  21EF               	fcall	_PWM_Clear_Execution_Status
+   647     0113                     l1036:
+   648                           
+   649                           ;main.c: 26: if(Button_Get_Sleep_Mode()==0){
+   650     0113  21F3               	fcall	_Button_Get_Sleep_Mode
+   651     0114  3A00               	xorlw	0
+   652     0115  1D03               	skipz
+   653     0116  2918               	goto	u491
+   654     0117  2919               	goto	u490
+   655     0118                     u491:
+   656     0118  2931               	goto	l26
+   657     0119                     u490:
+   658     0119                     l1038:
+   659                           
+   660                           ;main.c: 27: if(Button_Get_State() == 1){
+   661     0119  21F1               	fcall	_Button_Get_State
+   662     011A  3A01               	xorlw	1
+   663     011B  1D03               	skipz
+   664     011C  291E               	goto	u501
+   665     011D  291F               	goto	u500
+   666     011E                     u501:
+   667     011E  2921               	goto	l1042
+   668     011F                     u500:
+   669     011F                     l1040:
+   670                           
+   671                           ;main.c: 28: PWM_On_20_Percent_Duty_Cycle();
+   672     011F  2197               	fcall	_PWM_On_20_Percent_Duty_Cycle
+   673                           
+   674                           ;main.c: 29: }else if(Button_Get_State() == 2){
+   675     0120  2913               	goto	l1036
+   676     0121                     l1042:
+   677     0121  21F1               	fcall	_Button_Get_State
+   678     0122  3A02               	xorlw	2
+   679     0123  1D03               	skipz
+   680     0124  2926               	goto	u511
+   681     0125  2927               	goto	u510
+   682     0126                     u511:
+   683     0126  2929               	goto	l1046
+   684     0127                     u510:
+   685     0127                     l1044:
+   686                           
+   687                           ;main.c: 30: PWM_On_50_Percent_Duty_Cycle();
+   688     0127  2185               	fcall	_PWM_On_50_Percent_Duty_Cycle
+   689                           
+   690                           ;main.c: 31: }else if(Button_Get_State() == 3){
+   691     0128  2913               	goto	l1036
+   692     0129                     l1046:
+   693     0129  21F1               	fcall	_Button_Get_State
+   694     012A  3A03               	xorlw	3
+   695     012B  1D03               	skipz
+   696     012C  292E               	goto	u521
+   697     012D  292F               	goto	u520
+   698     012E                     u521:
+   699     012E  2933               	goto	l32
+   700     012F                     u520:
+   701     012F                     l1048:
+   702                           
+   703                           ;main.c: 32: PWM_On_100_Percent_Duty_Cycle();
+   704     012F  21A9               	fcall	_PWM_On_100_Percent_Duty_Cycle
+   705     0130  2913               	goto	l1036
+   706     0131                     l26:
+   707     0131  0063               	sleep	;# 
+   708     0132  2913               	goto	l1036
+   709     0133                     l32:
+   710     0133  2913               	goto	l1036
+   711     0134  280A               	ljmp	start
+   712     0135                     __end_of_main:
+   713                           
+   714                           	psect	text1
+   715     01CF                     __ptext1:	
+   716 ;; *************** function _Sleep_Init *****************
+   717 ;; Defined at:
+   718 ;;		line 78 in file "sleep.c"
+   719 ;; Parameters:    Size  Location     Type
+   720 ;;		None
+   721 ;; Auto vars:     Size  Location     Type
    722 ;;		None
-   723 ;; Auto vars:     Size  Location     Type
-   724 ;;		None
-   725 ;; Return value:  Size  Location     Type
-   726 ;;                  1    wreg      void 
-   727 ;; Registers used:
-   728 ;;		wreg
-   729 ;; Tracked objects:
-   730 ;;		On entry : 0/0
-   731 ;;		On exit  : 0/0
-   732 ;;		Unchanged: 0/0
-   733 ;; Data sizes:     COMMON   BANK0
-   734 ;;      Params:         0       0
-   735 ;;      Locals:         0       0
-   736 ;;      Temps:          0       0
-   737 ;;      Totals:         0       0
-   738 ;;Total ram usage:        0 bytes
-   739 ;; Hardware stack levels used: 1
-   740 ;; Hardware stack levels required when called: 2
-   741 ;; This function calls:
-   742 ;;		Nothing
-   743 ;; This function is called by:
-   744 ;;		_PWM_Off
-   745 ;;		_PWM_On_20_Percent_Duty_Cycle
-   746 ;;		_PWM_On_50_Percent_Duty_Cycle
-   747 ;;		_PWM_On_100_Percent_Duty_Cycle
-   748 ;; This function uses a non-reentrant model
-   749 ;;
-   750                           
-   751     0063                     _PWM_Set_Execution_Status:	
-   752                           ;psect for function _PWM_Set_Execution_Status
+   723 ;; Return value:  Size  Location     Type
+   724 ;;                  1    wreg      void 
+   725 ;; Registers used:
+   726 ;;		wreg, status,2, status,0, pclath, cstack
+   727 ;; Tracked objects:
+   728 ;;		On entry : 0/0
+   729 ;;		On exit  : 0/0
+   730 ;;		Unchanged: 0/0
+   731 ;; Data sizes:     COMMON   BANK0
+   732 ;;      Params:         0       0
+   733 ;;      Locals:         0       0
+   734 ;;      Temps:          0       0
+   735 ;;      Totals:         0       0
+   736 ;;Total ram usage:        0 bytes
+   737 ;; Hardware stack levels used: 1
+   738 ;; Hardware stack levels required when called: 5
+   739 ;; This function calls:
+   740 ;;		_Sleep_Unused_GPIO_Config
+   741 ;; This function is called by:
+   742 ;;		_main
+   743 ;; This function uses a non-reentrant model
+   744 ;;
+   745                           
+   746     01CF                     _Sleep_Init:	
+   747                           ;psect for function _Sleep_Init
+   748                           
+   749     01CF                     l982:	
+   750                           ;incstack = 0
+   751                           ; Regs used in _Sleep_Init: [wreg+status,2+status,0+pclath+cstack]
+   752                           
    753                           
-   754     0063                     l791:	
-   755                           ;incstack = 0
-   756                           ; Regs used in _PWM_Set_Execution_Status: [wreg]
-   757                           
+   754                           ;sleep.c: 79: WPUA = (1<<3);
+   755     01CF  3008               	movlw	8
+   756     01D0  0089               	movwf	9	;volatile
+   757     01D1                     l984:
    758                           
-   759                           ;pwm.c: 17: executed=1;
-   760     0063  3001               	movlw	1
-   761     0064  00C2               	movwf	_executed	;volatile
-   762     0065                     l61:
-   763     0065  0008               	return
-   764     0066                     __end_of_PWM_Set_Execution_Status:
+   759                           ;sleep.c: 83: ADCON = 0x00;
+   760     01D1  019F               	clrf	31	;volatile
+   761     01D2                     l986:
+   762                           
+   763                           ;sleep.c: 84: FVRCON = 0x00;
+   764     01D2  019D               	clrf	29	;volatile
    765                           
-   766                           	psect	text5
-   767     0069                     __ptext5:	
-   768 ;; *************** function _PWM_Get_Execution_Status *****************
-   769 ;; Defined at:
-   770 ;;		line 12 in file "pwm.c"
-   771 ;; Parameters:    Size  Location     Type
-   772 ;;		None
-   773 ;; Auto vars:     Size  Location     Type
-   774 ;;		None
-   775 ;; Return value:  Size  Location     Type
-   776 ;;                  1    wreg      unsigned char 
-   777 ;; Registers used:
-   778 ;;		wreg
-   779 ;; Tracked objects:
-   780 ;;		On entry : 0/0
-   781 ;;		On exit  : 0/0
-   782 ;;		Unchanged: 0/0
-   783 ;; Data sizes:     COMMON   BANK0
-   784 ;;      Params:         0       0
-   785 ;;      Locals:         0       0
-   786 ;;      Temps:          0       0
-   787 ;;      Totals:         0       0
-   788 ;;Total ram usage:        0 bytes
-   789 ;; Hardware stack levels used: 1
-   790 ;; Hardware stack levels required when called: 2
-   791 ;; This function calls:
-   792 ;;		Nothing
-   793 ;; This function is called by:
-   794 ;;		_PWM_Off
-   795 ;;		_PWM_On_20_Percent_Duty_Cycle
-   796 ;;		_PWM_On_50_Percent_Duty_Cycle
-   797 ;;		_PWM_On_100_Percent_Duty_Cycle
-   798 ;; This function uses a non-reentrant model
-   799 ;;
-   800                           
-   801     0069                     _PWM_Get_Execution_Status:	
-   802                           ;psect for function _PWM_Get_Execution_Status
-   803                           
-   804     0069                     l787:	
-   805                           ;incstack = 0
-   806                           ; Regs used in _PWM_Get_Execution_Status: [wreg]
-   807                           
+   766                           ;sleep.c: 85: VREGCON = 0x02;
+   767     01D3  3002               	movlw	2
+   768     01D4  00BE               	movwf	62	;volatile
+   769     01D5                     l988:
+   770                           
+   771                           ;sleep.c: 86: Sleep_Unused_GPIO_Config();
+   772     01D5  21DF               	fcall	_Sleep_Unused_GPIO_Config
+   773     01D6                     l112:
+   774     01D6  0008               	return
+   775     01D7                     __end_of_Sleep_Init:
+   776                           
+   777                           	psect	text2
+   778     01DF                     __ptext2:	
+   779 ;; *************** function _Sleep_Unused_GPIO_Config *****************
+   780 ;; Defined at:
+   781 ;;		line 72 in file "sleep.c"
+   782 ;; Parameters:    Size  Location     Type
+   783 ;;		None
+   784 ;; Auto vars:     Size  Location     Type
+   785 ;;		None
+   786 ;; Return value:  Size  Location     Type
+   787 ;;                  1    wreg      void 
+   788 ;; Registers used:
+   789 ;;		wreg, status,2, status,0
+   790 ;; Tracked objects:
+   791 ;;		On entry : 0/0
+   792 ;;		On exit  : 0/0
+   793 ;;		Unchanged: 0/0
+   794 ;; Data sizes:     COMMON   BANK0
+   795 ;;      Params:         0       0
+   796 ;;      Locals:         0       0
+   797 ;;      Temps:          0       1
+   798 ;;      Totals:         0       1
+   799 ;;Total ram usage:        1 bytes
+   800 ;; Hardware stack levels used: 1
+   801 ;; Hardware stack levels required when called: 4
+   802 ;; This function calls:
+   803 ;;		Nothing
+   804 ;; This function is called by:
+   805 ;;		_Sleep_Init
+   806 ;; This function uses a non-reentrant model
+   807 ;;
    808                           
-   809                           ;pwm.c: 13: return executed;
-   810     0069  0842               	movf	_executed,w	;volatile
-   811     006A                     l58:
-   812     006A  0008               	return
-   813     006B                     __end_of_PWM_Get_Execution_Status:
-   814                           
-   815                           	psect	text6
-   816     0026                     __ptext6:	
-   817 ;; *************** function _PWM_Disable *****************
-   818 ;; Defined at:
-   819 ;;		line 53 in file "pwm.c"
-   820 ;; Parameters:    Size  Location     Type
-   821 ;;		None
-   822 ;; Auto vars:     Size  Location     Type
-   823 ;;		None
-   824 ;; Return value:  Size  Location     Type
-   825 ;;                  1    wreg      void 
-   826 ;; Registers used:
-   827 ;;		wreg, status,2, status,0
-   828 ;; Tracked objects:
-   829 ;;		On entry : 0/0
-   830 ;;		On exit  : 0/0
-   831 ;;		Unchanged: 0/0
-   832 ;; Data sizes:     COMMON   BANK0
-   833 ;;      Params:         0       0
-   834 ;;      Locals:         0       0
-   835 ;;      Temps:          0       1
-   836 ;;      Totals:         0       1
-   837 ;;Total ram usage:        1 bytes
-   838 ;; Hardware stack levels used: 1
-   839 ;; Hardware stack levels required when called: 2
-   840 ;; This function calls:
-   841 ;;		Nothing
-   842 ;; This function is called by:
-   843 ;;		_PWM_Off
-   844 ;; This function uses a non-reentrant model
-   845 ;;
-   846                           
-   847     0026                     _PWM_Disable:	
-   848                           ;psect for function _PWM_Disable
-   849                           
-   850     0026                     l793:	
-   851                           ;incstack = 0
-   852                           ; Regs used in _PWM_Disable: [wreg+status,2+status,0]
-   853                           
-   854                           
-   855                           ;pwm.c: 54: TRISA |= (1<<1);
-   856     0026  1486               	bsf	6,1	;volatile
-   857     0027                     l795:
-   858                           
-   859                           ;pwm.c: 55: PWM2DCH = 0;
-   860     0027  0198               	clrf	24	;volatile
-   861                           
-   862                           ;pwm.c: 56: PWM2DCL = 0;
-   863     0028  0197               	clrf	23	;volatile
-   864                           
-   865                           ;pwm.c: 57: PWM2CON = 0;
-   866     0029  0199               	clrf	25	;volatile
+   809     01DF                     _Sleep_Unused_GPIO_Config:	
+   810                           ;psect for function _Sleep_Unused_GPIO_Config
+   811                           
+   812     01DF                     l964:	
+   813                           ;incstack = 0
+   814                           ; Regs used in _Sleep_Unused_GPIO_Config: [wreg+status,2+status,0]
+   815                           
+   816                           
+   817                           ;sleep.c: 75: LATA &=~ 1;
+   818     01DF  30FE               	movlw	254
+   819     01E0  00C4               	movwf	??_Sleep_Unused_GPIO_Config
+   820     01E1  0844               	movf	??_Sleep_Unused_GPIO_Config,w
+   821     01E2  0587               	andwf	7,f	;volatile
+   822     01E3                     l109:
+   823     01E3  0008               	return
+   824     01E4                     __end_of_Sleep_Unused_GPIO_Config:
+   825                           
+   826                           	psect	text3
+   827     0185                     __ptext3:	
+   828 ;; *************** function _PWM_On_50_Percent_Duty_Cycle *****************
+   829 ;; Defined at:
+   830 ;;		line 70 in file "pwm.c"
+   831 ;; Parameters:    Size  Location     Type
+   832 ;;		None
+   833 ;; Auto vars:     Size  Location     Type
+   834 ;;		None
+   835 ;; Return value:  Size  Location     Type
+   836 ;;                  1    wreg      void 
+   837 ;; Registers used:
+   838 ;;		wreg, status,2, status,0, pclath, cstack
+   839 ;; Tracked objects:
+   840 ;;		On entry : 0/0
+   841 ;;		On exit  : 0/0
+   842 ;;		Unchanged: 0/0
+   843 ;; Data sizes:     COMMON   BANK0
+   844 ;;      Params:         0       0
+   845 ;;      Locals:         0       0
+   846 ;;      Temps:          0       0
+   847 ;;      Totals:         0       0
+   848 ;;Total ram usage:        0 bytes
+   849 ;; Hardware stack levels used: 1
+   850 ;; Hardware stack levels required when called: 6
+   851 ;; This function calls:
+   852 ;;		_PWM_Enable
+   853 ;;		_PWM_Get_Execution_Status
+   854 ;;		_PWM_Set_Duty
+   855 ;;		_PWM_Set_Execution_Status
+   856 ;; This function is called by:
+   857 ;;		_main
+   858 ;; This function uses a non-reentrant model
+   859 ;;
+   860                           
+   861     0185                     _PWM_On_50_Percent_Duty_Cycle:	
+   862                           ;psect for function _PWM_On_50_Percent_Duty_Cycle
+   863                           
+   864     0185                     l1004:	
+   865                           ;incstack = 0
+   866                           ; Regs used in _PWM_On_50_Percent_Duty_Cycle: [wreg+status,2+status,0+pclath+cstack]
    867                           
-   868                           ;pwm.c: 58: PR2 = 0;
-   869     002A  0192               	clrf	18	;volatile
-   870                           
-   871                           ;pwm.c: 59: TMR2 = 0;
-   872     002B  0191               	clrf	17	;volatile
-   873                           
-   874                           ;pwm.c: 60: T2CON = 0;
-   875     002C  0193               	clrf	19	;volatile
-   876     002D                     l797:
-   877                           
-   878                           ;pwm.c: 61: LATA &=~ (1<<1);
-   879     002D  30FD               	movlw	253
-   880     002E  00C6               	movwf	??_PWM_Disable
-   881     002F  0846               	movf	??_PWM_Disable,w
-   882     0030  0587               	andwf	7,f	;volatile
-   883     0031                     l799:
-   884                           
-   885                           ;pwm.c: 62: ANSELA &=~ (1<<1);
-   886     0031  30FD               	movlw	253
-   887     0032  00C6               	movwf	??_PWM_Disable
-   888     0033  0846               	movf	??_PWM_Disable,w
-   889     0034  0588               	andwf	8,f	;volatile
-   890     0035                     l801:
-   891                           
-   892                           ;pwm.c: 63: TRISA &=~ (1<<1);
-   893     0035  30FD               	movlw	253
-   894     0036  00C6               	movwf	??_PWM_Disable
-   895     0037  0846               	movf	??_PWM_Disable,w
-   896     0038  0586               	andwf	6,f	;volatile
-   897     0039                     l76:
-   898     0039  0008               	return
-   899     003A                     __end_of_PWM_Disable:
-   900                           
-   901                           	psect	text7
-   902     003A                     __ptext7:	
-   903 ;; *************** function _Button_Init *****************
-   904 ;; Defined at:
-   905 ;;		line 39 in file "button.c"
-   906 ;; Parameters:    Size  Location     Type
-   907 ;;		None
-   908 ;; Auto vars:     Size  Location     Type
-   909 ;;		None
-   910 ;; Return value:  Size  Location     Type
-   911 ;;                  1    wreg      void 
-   912 ;; Registers used:
-   913 ;;		wreg, status,2, status,0
-   914 ;; Tracked objects:
-   915 ;;		On entry : 0/0
-   916 ;;		On exit  : 0/0
-   917 ;;		Unchanged: 0/0
-   918 ;; Data sizes:     COMMON   BANK0
-   919 ;;      Params:         0       0
-   920 ;;      Locals:         0       0
-   921 ;;      Temps:          0       1
-   922 ;;      Totals:         0       1
-   923 ;;Total ram usage:        1 bytes
-   924 ;; Hardware stack levels used: 1
-   925 ;; Hardware stack levels required when called: 2
-   926 ;; This function calls:
-   927 ;;		Nothing
-   928 ;; This function is called by:
-   929 ;;		_main
-   930 ;; This function uses a non-reentrant model
-   931 ;;
-   932                           
-   933     003A                     _Button_Init:	
-   934                           ;psect for function _Button_Init
-   935                           
-   936     003A                     l805:	
-   937                           ;incstack = 0
-   938                           ; Regs used in _Button_Init: [wreg+status,2+status,0]
-   939                           
-   940                           
-   941                           ;button.c: 40: TRISA =(1<<2);
-   942     003A  3004               	movlw	4
-   943     003B  0086               	movwf	6	;volatile
-   944     003C                     l807:
-   945                           
-   946                           ;button.c: 41: ANSELA=0x00;
-   947     003C  0188               	clrf	8	;volatile
-   948     003D                     l809:
-   949                           
-   950                           ;button.c: 42: INTCON = 0;
-   951     003D  018B               	clrf	11	;volatile
-   952     003E                     l811:
+   868                           
+   869                           ;pwm.c: 71: if(PWM_Get_Execution_Status()==0){
+   870     0185  21ED               	fcall	_PWM_Get_Execution_Status
+   871     0186  3A00               	xorlw	0
+   872     0187  1D03               	skipz
+   873     0188  298A               	goto	u431
+   874     0189  298B               	goto	u430
+   875     018A                     u431:
+   876     018A  2996               	goto	l88
+   877     018B                     u430:
+   878     018B                     l1006:
+   879                           
+   880                           ;pwm.c: 73: PWM_Enable();
+   881     018B  2157               	fcall	_PWM_Enable
+   882                           
+   883                           ;pwm.c: 74: PWM_Set_Duty(50);
+   884     018C  3000               	movlw	0
+   885     018D  00D5               	movwf	PWM_Set_Duty@duty+3
+   886     018E  3000               	movlw	0
+   887     018F  00D4               	movwf	PWM_Set_Duty@duty+2
+   888     0190  3000               	movlw	0
+   889     0191  00D3               	movwf	PWM_Set_Duty@duty+1
+   890     0192  3032               	movlw	50
+   891     0193  00D2               	movwf	PWM_Set_Duty@duty
+   892     0194  2077               	fcall	_PWM_Set_Duty
+   893                           
+   894                           ;pwm.c: 75: PWM_Set_Execution_Status();
+   895     0195  21E4               	fcall	_PWM_Set_Execution_Status
+   896     0196                     l88:
+   897     0196  0008               	return
+   898     0197                     __end_of_PWM_On_50_Percent_Duty_Cycle:
+   899                           
+   900                           	psect	text4
+   901     0197                     __ptext4:	
+   902 ;; *************** function _PWM_On_20_Percent_Duty_Cycle *****************
+   903 ;; Defined at:
+   904 ;;		line 61 in file "pwm.c"
+   905 ;; Parameters:    Size  Location     Type
+   906 ;;		None
+   907 ;; Auto vars:     Size  Location     Type
+   908 ;;		None
+   909 ;; Return value:  Size  Location     Type
+   910 ;;                  1    wreg      void 
+   911 ;; Registers used:
+   912 ;;		wreg, status,2, status,0, pclath, cstack
+   913 ;; Tracked objects:
+   914 ;;		On entry : 0/0
+   915 ;;		On exit  : 0/0
+   916 ;;		Unchanged: 0/0
+   917 ;; Data sizes:     COMMON   BANK0
+   918 ;;      Params:         0       0
+   919 ;;      Locals:         0       0
+   920 ;;      Temps:          0       0
+   921 ;;      Totals:         0       0
+   922 ;;Total ram usage:        0 bytes
+   923 ;; Hardware stack levels used: 1
+   924 ;; Hardware stack levels required when called: 6
+   925 ;; This function calls:
+   926 ;;		_PWM_Enable
+   927 ;;		_PWM_Get_Execution_Status
+   928 ;;		_PWM_Set_Duty
+   929 ;;		_PWM_Set_Execution_Status
+   930 ;; This function is called by:
+   931 ;;		_main
+   932 ;; This function uses a non-reentrant model
+   933 ;;
+   934                           
+   935     0197                     _PWM_On_20_Percent_Duty_Cycle:	
+   936                           ;psect for function _PWM_On_20_Percent_Duty_Cycle
+   937                           
+   938     0197                     l1000:	
+   939                           ;incstack = 0
+   940                           ; Regs used in _PWM_On_20_Percent_Duty_Cycle: [wreg+status,2+status,0+pclath+cstack]
+   941                           
+   942                           
+   943                           ;pwm.c: 62: if(PWM_Get_Execution_Status()==0){
+   944     0197  21ED               	fcall	_PWM_Get_Execution_Status
+   945     0198  3A00               	xorlw	0
+   946     0199  1D03               	skipz
+   947     019A  299C               	goto	u421
+   948     019B  299D               	goto	u420
+   949     019C                     u421:
+   950     019C  29A8               	goto	l84
+   951     019D                     u420:
+   952     019D                     l1002:
    953                           
-   954                           ;button.c: 43: OPTION_REG&=~0xC0;
-   955     003E  303F               	movlw	63
-   956     003F  00C6               	movwf	??_Button_Init
-   957     0040  0846               	movf	??_Button_Init,w
-   958     0041  058E               	andwf	14,f	;volatile
-   959     0042                     l813:
-   960                           
-   961                           ;button.c: 44: INTCON=0x90;
-   962     0042  3090               	movlw	144
-   963     0043  008B               	movwf	11	;volatile
-   964     0044                     l127:
-   965     0044  0008               	return
-   966     0045                     __end_of_Button_Init:
+   954                           ;pwm.c: 64: PWM_Enable();
+   955     019D  2157               	fcall	_PWM_Enable
+   956                           
+   957                           ;pwm.c: 65: PWM_Set_Duty(20);
+   958     019E  3000               	movlw	0
+   959     019F  00D5               	movwf	PWM_Set_Duty@duty+3
+   960     01A0  3000               	movlw	0
+   961     01A1  00D4               	movwf	PWM_Set_Duty@duty+2
+   962     01A2  3000               	movlw	0
+   963     01A3  00D3               	movwf	PWM_Set_Duty@duty+1
+   964     01A4  3014               	movlw	20
+   965     01A5  00D2               	movwf	PWM_Set_Duty@duty
+   966     01A6  2077               	fcall	_PWM_Set_Duty
    967                           
-   968                           	psect	text8
-   969     006B                     __ptext8:	
-   970 ;; *************** function _Button_Get_Sleep_Mode *****************
-   971 ;; Defined at:
-   972 ;;		line 62 in file "button.c"
-   973 ;; Parameters:    Size  Location     Type
-   974 ;;		None
-   975 ;; Auto vars:     Size  Location     Type
-   976 ;;		None
-   977 ;; Return value:  Size  Location     Type
-   978 ;;                  1    wreg      unsigned char 
-   979 ;; Registers used:
-   980 ;;		wreg
-   981 ;; Tracked objects:
-   982 ;;		On entry : 0/0
-   983 ;;		On exit  : 0/0
-   984 ;;		Unchanged: 0/0
-   985 ;; Data sizes:     COMMON   BANK0
-   986 ;;      Params:         0       0
-   987 ;;      Locals:         0       0
-   988 ;;      Temps:          0       0
-   989 ;;      Totals:         0       0
-   990 ;;Total ram usage:        0 bytes
-   991 ;; Hardware stack levels used: 1
-   992 ;; Hardware stack levels required when called: 2
-   993 ;; This function calls:
-   994 ;;		Nothing
-   995 ;; This function is called by:
-   996 ;;		_main
-   997 ;; This function uses a non-reentrant model
-   998 ;;
-   999                           
-  1000     006B                     _Button_Get_Sleep_Mode:	
-  1001                           ;psect for function _Button_Get_Sleep_Mode
-  1002                           
-  1003     006B                     l823:	
-  1004                           ;incstack = 0
-  1005                           ; Regs used in _Button_Get_Sleep_Mode: [wreg]
-  1006                           
-  1007                           
-  1008                           ;button.c: 63: return sleep_mode;
-  1009     006B  0840               	movf	_sleep_mode,w	;volatile
-  1010     006C                     l140:
-  1011     006C  0008               	return
-  1012     006D                     __end_of_Button_Get_Sleep_Mode:
-  1013                           
-  1014                           	psect	text9
-  1015     0056                     __ptext9:	
-  1016 ;; *************** function _ISRs *****************
-  1017 ;; Defined at:
-  1018 ;;		line 37 in file "main.c"
-  1019 ;; Parameters:    Size  Location     Type
-  1020 ;;		None
-  1021 ;; Auto vars:     Size  Location     Type
-  1022 ;;		None
-  1023 ;; Return value:  Size  Location     Type
-  1024 ;;                  1    wreg      void 
-  1025 ;; Registers used:
-  1026 ;;		status,2, status,0, pclath, cstack
-  1027 ;; Tracked objects:
-  1028 ;;		On entry : 0/0
-  1029 ;;		On exit  : 0/0
-  1030 ;;		Unchanged: 0/0
-  1031 ;; Data sizes:     COMMON   BANK0
-  1032 ;;      Params:         0       0
-  1033 ;;      Locals:         0       0
-  1034 ;;      Temps:          0       2
-  1035 ;;      Totals:         0       2
-  1036 ;;Total ram usage:        2 bytes
-  1037 ;; Hardware stack levels used: 1
-  1038 ;; Hardware stack levels required when called: 1
-  1039 ;; This function calls:
-  1040 ;;		_Button_ISR_Executables
-  1041 ;; This function is called by:
-  1042 ;;		Interrupt level 1
-  1043 ;; This function uses a non-reentrant model
-  1044 ;;
-  1045                           
-  1046     0056                     _ISRs:	
-  1047                           ;psect for function _ISRs
-  1048                           
-  1049     0056                     i1l843:
-  1050                           
-  1051                           ;main.c: 38: Button_ISR_Executables();
-  1052     0056  2066               	fcall	_Button_ISR_Executables
-  1053     0057                     i1l33:
-  1054     0057  0845               	movf	??_ISRs+1,w
-  1055     0058  008A               	movwf	10
-  1056     0059  0E44               	swapf	??_ISRs,w
-  1057     005A  0083               	movwf	3
-  1058     005B  0EFE               	swapf	btemp,f
-  1059     005C  0E7E               	swapf	btemp,w
-  1060     005D  0009               	retfie
-  1061     005E                     __end_of_ISRs:
-  1062                           
-  1063                           	psect	intentry
-  1064     0004                     __pintentry:	
-  1065                           ;incstack = 0
-  1066                           ; Regs used in _ISRs: [status,2+status,0+pclath+cstack]
-  1067                           
-  1068     0004                     interrupt_function:
-  1069     007E                     saved_w	set	btemp
-  1070     0004  00FE               	movwf	btemp
-  1071     0005  0E03               	swapf	3,w
-  1072     0006  00C4               	movwf	??_ISRs
-  1073     0007  080A               	movf	10,w
-  1074     0008  00C5               	movwf	??_ISRs+1
-  1075     0009  2856               	ljmp	_ISRs
-  1076                           
-  1077                           	psect	text10
-  1078     0066                     __ptext10:	
-  1079 ;; *************** function _Button_ISR_Executables *****************
-  1080 ;; Defined at:
-  1081 ;;		line 66 in file "button.c"
-  1082 ;; Parameters:    Size  Location     Type
-  1083 ;;		None
-  1084 ;; Auto vars:     Size  Location     Type
-  1085 ;;		None
-  1086 ;; Return value:  Size  Location     Type
-  1087 ;;                  1    wreg      void 
-  1088 ;; Registers used:
-  1089 ;;		status,2
-  1090 ;; Tracked objects:
-  1091 ;;		On entry : 0/0
-  1092 ;;		On exit  : 0/0
-  1093 ;;		Unchanged: 0/0
-  1094 ;; Data sizes:     COMMON   BANK0
-  1095 ;;      Params:         0       0
-  1096 ;;      Locals:         0       0
-  1097 ;;      Temps:          0       0
-  1098 ;;      Totals:         0       0
-  1099 ;;Total ram usage:        0 bytes
-  1100 ;; Hardware stack levels used: 1
-  1101 ;; This function calls:
-  1102 ;;		Nothing
-  1103 ;; This function is called by:
-  1104 ;;		_ISRs
-  1105 ;; This function uses a non-reentrant model
-  1106 ;;
-  1107                           
-  1108     0066                     _Button_ISR_Executables:	
-  1109                           ;psect for function _Button_ISR_Executables
-  1110                           
-  1111     0066                     i1l831:	
-  1112                           ;incstack = 0
-  1113                           ; Regs used in _Button_ISR_Executables: [status,2]
-  1114                           
-  1115                           
-  1116                           ;button.c: 68: INTCON=0x00;
-  1117     0066  018B               	clrf	11	;volatile
-  1118                           
-  1119                           ;button.c: 69: sleep_mode=0;
-  1120     0067  01C0               	clrf	_sleep_mode	;volatile
-  1121     0068                     i1l143:
-  1122     0068  0008               	return
-  1123     0069                     __end_of_Button_ISR_Executables:
-  1124     007E                     btemp	set	126	;btemp
-  1125     007E                     wtemp0	set	126
-  1126                           
-  1127                           	psect	config
-  1128                           
-  1129                           ;Config register CONFIG @ 0x2007
-  1130                           ;	Oscillator Selection bits
-  1131                           ;	FOSC = INTOSC, INTOSC oscillator: CLKIN function disabled
-  1132                           ;	Brown-out Reset Enable
-  1133                           ;	BOREN = OFF, Brown-out Reset disabled
-  1134                           ;	Watchdog Timer Enable
-  1135                           ;	WDTE = OFF, WDT disabled
-  1136                           ;	Power-up Timer Enable bit
-  1137                           ;	PWRTE = OFF, PWRT disabled
-  1138                           ;	MCLR Pin Function Select bit
-  1139                           ;	MCLRE = ON, MCLR pin function is MCLR
-  1140                           ;	Code Protection bit
-  1141                           ;	CP = OFF, Program memory code protection is disabled
-  1142                           ;	Low-Voltage Programming Enable
-  1143                           ;	LVP = ON, Low-voltage programming enabled
-  1144                           ;	Brown-out Reset Selection bits
-  1145                           ;	LPBOR = OFF, BOR disabled
-  1146                           ;	Brown-out Reset Voltage Selection
-  1147                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
-  1148                           ;	Flash Memory Self-Write Protection
-  1149                           ;	WRT = OFF, Write protection off
-  1150     2007                     	org	8199
-  1151     2007  3DE0               	dw	15840
+   968                           ;pwm.c: 66: PWM_Set_Execution_Status();
+   969     01A7  21E4               	fcall	_PWM_Set_Execution_Status
+   970     01A8                     l84:
+   971     01A8  0008               	return
+   972     01A9                     __end_of_PWM_On_20_Percent_Duty_Cycle:
+   973                           
+   974                           	psect	text5
+   975     01A9                     __ptext5:	
+   976 ;; *************** function _PWM_On_100_Percent_Duty_Cycle *****************
+   977 ;; Defined at:
+   978 ;;		line 79 in file "pwm.c"
+   979 ;; Parameters:    Size  Location     Type
+   980 ;;		None
+   981 ;; Auto vars:     Size  Location     Type
+   982 ;;		None
+   983 ;; Return value:  Size  Location     Type
+   984 ;;                  1    wreg      void 
+   985 ;; Registers used:
+   986 ;;		wreg, status,2, status,0, pclath, cstack
+   987 ;; Tracked objects:
+   988 ;;		On entry : 0/0
+   989 ;;		On exit  : 0/0
+   990 ;;		Unchanged: 0/0
+   991 ;; Data sizes:     COMMON   BANK0
+   992 ;;      Params:         0       0
+   993 ;;      Locals:         0       0
+   994 ;;      Temps:          0       0
+   995 ;;      Totals:         0       0
+   996 ;;Total ram usage:        0 bytes
+   997 ;; Hardware stack levels used: 1
+   998 ;; Hardware stack levels required when called: 6
+   999 ;; This function calls:
+  1000 ;;		_PWM_Enable
+  1001 ;;		_PWM_Get_Execution_Status
+  1002 ;;		_PWM_Set_Duty
+  1003 ;;		_PWM_Set_Execution_Status
+  1004 ;; This function is called by:
+  1005 ;;		_main
+  1006 ;; This function uses a non-reentrant model
+  1007 ;;
+  1008                           
+  1009     01A9                     _PWM_On_100_Percent_Duty_Cycle:	
+  1010                           ;psect for function _PWM_On_100_Percent_Duty_Cycle
+  1011                           
+  1012     01A9                     l1008:	
+  1013                           ;incstack = 0
+  1014                           ; Regs used in _PWM_On_100_Percent_Duty_Cycle: [wreg+status,2+status,0+pclath+cstack]
+  1015                           
+  1016                           
+  1017                           ;pwm.c: 80: if(PWM_Get_Execution_Status()==0){
+  1018     01A9  21ED               	fcall	_PWM_Get_Execution_Status
+  1019     01AA  3A00               	xorlw	0
+  1020     01AB  1D03               	skipz
+  1021     01AC  29AE               	goto	u441
+  1022     01AD  29AF               	goto	u440
+  1023     01AE                     u441:
+  1024     01AE  29BA               	goto	l92
+  1025     01AF                     u440:
+  1026     01AF                     l1010:
+  1027                           
+  1028                           ;pwm.c: 82: PWM_Enable();
+  1029     01AF  2157               	fcall	_PWM_Enable
+  1030                           
+  1031                           ;pwm.c: 83: PWM_Set_Duty(95);
+  1032     01B0  3000               	movlw	0
+  1033     01B1  00D5               	movwf	PWM_Set_Duty@duty+3
+  1034     01B2  3000               	movlw	0
+  1035     01B3  00D4               	movwf	PWM_Set_Duty@duty+2
+  1036     01B4  3000               	movlw	0
+  1037     01B5  00D3               	movwf	PWM_Set_Duty@duty+1
+  1038     01B6  305F               	movlw	95
+  1039     01B7  00D2               	movwf	PWM_Set_Duty@duty
+  1040     01B8  2077               	fcall	_PWM_Set_Duty
+  1041                           
+  1042                           ;pwm.c: 84: PWM_Set_Execution_Status();
+  1043     01B9  21E4               	fcall	_PWM_Set_Execution_Status
+  1044     01BA                     l92:
+  1045     01BA  0008               	return
+  1046     01BB                     __end_of_PWM_On_100_Percent_Duty_Cycle:
+  1047                           
+  1048                           	psect	text6
+  1049     01E4                     __ptext6:	
+  1050 ;; *************** function _PWM_Set_Execution_Status *****************
+  1051 ;; Defined at:
+  1052 ;;		line 16 in file "pwm.c"
+  1053 ;; Parameters:    Size  Location     Type
+  1054 ;;		None
+  1055 ;; Auto vars:     Size  Location     Type
+  1056 ;;		None
+  1057 ;; Return value:  Size  Location     Type
+  1058 ;;                  1    wreg      void 
+  1059 ;; Registers used:
+  1060 ;;		wreg
+  1061 ;; Tracked objects:
+  1062 ;;		On entry : 0/0
+  1063 ;;		On exit  : 0/0
+  1064 ;;		Unchanged: 0/0
+  1065 ;; Data sizes:     COMMON   BANK0
+  1066 ;;      Params:         0       0
+  1067 ;;      Locals:         0       0
+  1068 ;;      Temps:          0       0
+  1069 ;;      Totals:         0       0
+  1070 ;;Total ram usage:        0 bytes
+  1071 ;; Hardware stack levels used: 1
+  1072 ;; Hardware stack levels required when called: 4
+  1073 ;; This function calls:
+  1074 ;;		Nothing
+  1075 ;; This function is called by:
+  1076 ;;		_PWM_On_20_Percent_Duty_Cycle
+  1077 ;;		_PWM_On_50_Percent_Duty_Cycle
+  1078 ;;		_PWM_On_100_Percent_Duty_Cycle
+  1079 ;; This function uses a non-reentrant model
+  1080 ;;
+  1081                           
+  1082     01E4                     _PWM_Set_Execution_Status:	
+  1083                           ;psect for function _PWM_Set_Execution_Status
+  1084                           
+  1085     01E4                     l926:	
+  1086                           ;incstack = 0
+  1087                           ; Regs used in _PWM_Set_Execution_Status: [wreg]
+  1088                           
+  1089                           
+  1090                           ;pwm.c: 17: executed=1;
+  1091     01E4  3001               	movlw	1
+  1092     01E5  00DC               	movwf	_executed	;volatile
+  1093     01E6                     l68:
+  1094     01E6  0008               	return
+  1095     01E7                     __end_of_PWM_Set_Execution_Status:
+  1096                           
+  1097                           	psect	text7
+  1098     0077                     __ptext7:	
+  1099 ;; *************** function _PWM_Set_Duty *****************
+  1100 ;; Defined at:
+  1101 ;;		line 24 in file "pwm.c"
+  1102 ;; Parameters:    Size  Location     Type
+  1103 ;;  duty            4   18[BANK0 ] unsigned long 
+  1104 ;; Auto vars:     Size  Location     Type
+  1105 ;;  temp            2   24[BANK0 ] unsigned int 
+  1106 ;; Return value:  Size  Location     Type
+  1107 ;;                  1    wreg      void 
+  1108 ;; Registers used:
+  1109 ;;		wreg, status,2, status,0, pclath, cstack
+  1110 ;; Tracked objects:
+  1111 ;;		On entry : 0/0
+  1112 ;;		On exit  : 0/0
+  1113 ;;		Unchanged: 0/0
+  1114 ;; Data sizes:     COMMON   BANK0
+  1115 ;;      Params:         0       4
+  1116 ;;      Locals:         0       2
+  1117 ;;      Temps:          0       2
+  1118 ;;      Totals:         0       8
+  1119 ;;Total ram usage:        8 bytes
+  1120 ;; Hardware stack levels used: 1
+  1121 ;; Hardware stack levels required when called: 5
+  1122 ;; This function calls:
+  1123 ;;		___lldiv
+  1124 ;;		___lmul
+  1125 ;; This function is called by:
+  1126 ;;		_PWM_On_20_Percent_Duty_Cycle
+  1127 ;;		_PWM_On_50_Percent_Duty_Cycle
+  1128 ;;		_PWM_On_100_Percent_Duty_Cycle
+  1129 ;; This function uses a non-reentrant model
+  1130 ;;
+  1131                           
+  1132     0077                     _PWM_Set_Duty:	
+  1133                           ;psect for function _PWM_Set_Duty
+  1134                           
+  1135     0077                     l928:	
+  1136                           ;incstack = 0
+  1137                           ; Regs used in _PWM_Set_Duty: [wreg+status,2+status,0+pclath+cstack]
+  1138                           
+  1139                           
+  1140                           ;pwm.c: 25: duty*=1023;
+  1141     0077  3000               	movlw	0
+  1142     0078  00C7               	movwf	___lmul@multiplier+3
+  1143     0079  3000               	movlw	0
+  1144     007A  00C6               	movwf	___lmul@multiplier+2
+  1145     007B  3003               	movlw	3
+  1146     007C  00C5               	movwf	___lmul@multiplier+1
+  1147     007D  30FF               	movlw	255
+  1148     007E  00C4               	movwf	___lmul@multiplier
+  1149     007F  0855               	movf	PWM_Set_Duty@duty+3,w
+  1150     0080  00CB               	movwf	___lmul@multiplicand+3
+  1151     0081  0854               	movf	PWM_Set_Duty@duty+2,w
+  1152     0082  00CA               	movwf	___lmul@multiplicand+2
+  1153     0083  0853               	movf	PWM_Set_Duty@duty+1,w
+  1154     0084  00C9               	movwf	___lmul@multiplicand+1
+  1155     0085  0852               	movf	PWM_Set_Duty@duty,w
+  1156     0086  00C8               	movwf	___lmul@multiplicand
+  1157     0087  20CA               	fcall	___lmul
+  1158     0088  0847               	movf	?___lmul+3,w
+  1159     0089  00D5               	movwf	PWM_Set_Duty@duty+3
+  1160     008A  0846               	movf	?___lmul+2,w
+  1161     008B  00D4               	movwf	PWM_Set_Duty@duty+2
+  1162     008C  0845               	movf	?___lmul+1,w
+  1163     008D  00D3               	movwf	PWM_Set_Duty@duty+1
+  1164     008E  0844               	movf	?___lmul,w
+  1165     008F  00D2               	movwf	PWM_Set_Duty@duty
+  1166                           
+  1167                           ;pwm.c: 26: duty/=100;
+  1168     0090  3000               	movlw	0
+  1169     0091  00C7               	movwf	___lldiv@divisor+3
+  1170     0092  3000               	movlw	0
+  1171     0093  00C6               	movwf	___lldiv@divisor+2
+  1172     0094  3000               	movlw	0
+  1173     0095  00C5               	movwf	___lldiv@divisor+1
+  1174     0096  3064               	movlw	100
+  1175     0097  00C4               	movwf	___lldiv@divisor
+  1176     0098  0855               	movf	PWM_Set_Duty@duty+3,w
+  1177     0099  00CB               	movwf	___lldiv@dividend+3
+  1178     009A  0854               	movf	PWM_Set_Duty@duty+2,w
+  1179     009B  00CA               	movwf	___lldiv@dividend+2
+  1180     009C  0853               	movf	PWM_Set_Duty@duty+1,w
+  1181     009D  00C9               	movwf	___lldiv@dividend+1
+  1182     009E  0852               	movf	PWM_Set_Duty@duty,w
+  1183     009F  00C8               	movwf	___lldiv@dividend
+  1184     00A0  2011               	fcall	___lldiv
+  1185     00A1  0847               	movf	?___lldiv+3,w
+  1186     00A2  00D5               	movwf	PWM_Set_Duty@duty+3
+  1187     00A3  0846               	movf	?___lldiv+2,w
+  1188     00A4  00D4               	movwf	PWM_Set_Duty@duty+2
+  1189     00A5  0845               	movf	?___lldiv+1,w
+  1190     00A6  00D3               	movwf	PWM_Set_Duty@duty+1
+  1191     00A7  0844               	movf	?___lldiv,w
+  1192     00A8  00D2               	movwf	PWM_Set_Duty@duty
+  1193     00A9                     l930:
+  1194                           
+  1195                           ;pwm.c: 28: uint16_t temp=duty;
+  1196     00A9  0853               	movf	PWM_Set_Duty@duty+1,w
+  1197     00AA  00D9               	movwf	PWM_Set_Duty@temp+1
+  1198     00AB  0852               	movf	PWM_Set_Duty@duty,w
+  1199     00AC  00D8               	movwf	PWM_Set_Duty@temp
+  1200     00AD                     l932:
+  1201                           
+  1202                           ;pwm.c: 29: temp&=0x3FF;
+  1203     00AD  30FF               	movlw	255
+  1204     00AE  05D8               	andwf	PWM_Set_Duty@temp,f
+  1205     00AF  3003               	movlw	3
+  1206     00B0  05D9               	andwf	PWM_Set_Duty@temp+1,f
+  1207     00B1                     l934:
+  1208                           
+  1209                           ;pwm.c: 30: PWM2DCH=(temp>>2);
+  1210     00B1  0859               	movf	PWM_Set_Duty@temp+1,w
+  1211     00B2  00D7               	movwf	??_PWM_Set_Duty+1
+  1212     00B3  0858               	movf	PWM_Set_Duty@temp,w
+  1213     00B4  00D6               	movwf	??_PWM_Set_Duty
+  1214     00B5  1003               	clrc
+  1215     00B6  0CD7               	rrf	??_PWM_Set_Duty+1,f
+  1216     00B7  0CD6               	rrf	??_PWM_Set_Duty,f
+  1217     00B8  1003               	clrc
+  1218     00B9  0CD7               	rrf	??_PWM_Set_Duty+1,f
+  1219     00BA  0CD6               	rrf	??_PWM_Set_Duty,f
+  1220     00BB  0856               	movf	??_PWM_Set_Duty,w
+  1221     00BC  0098               	movwf	24	;volatile
+  1222     00BD                     l936:
+  1223                           
+  1224                           ;pwm.c: 31: PWM2DCL=(temp&0x03)<<6;
+  1225     00BD  0858               	movf	PWM_Set_Duty@temp,w
+  1226     00BE  3903               	andlw	3
+  1227     00BF  00D6               	movwf	??_PWM_Set_Duty
+  1228     00C0  3005               	movlw	5
+  1229     00C1                     u405:
+  1230     00C1  1003               	clrc
+  1231     00C2  0DD6               	rlf	??_PWM_Set_Duty,f
+  1232     00C3  3EFF               	addlw	-1
+  1233     00C4  1D03               	skipz
+  1234     00C5  28C1               	goto	u405
+  1235     00C6  1003               	clrc
+  1236     00C7  0D56               	rlf	??_PWM_Set_Duty,w
+  1237     00C8  0097               	movwf	23	;volatile
+  1238     00C9                     l74:
+  1239     00C9  0008               	return
+  1240     00CA                     __end_of_PWM_Set_Duty:
+  1241                           
+  1242                           	psect	text8
+  1243     00CA                     __ptext8:	
+  1244 ;; *************** function ___lmul *****************
+  1245 ;; Defined at:
+  1246 ;;		line 15 in file "C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul32.c"
+  1247 ;; Parameters:    Size  Location     Type
+  1248 ;;  multiplier      4    4[BANK0 ] unsigned long 
+  1249 ;;  multiplicand    4    8[BANK0 ] unsigned long 
+  1250 ;; Auto vars:     Size  Location     Type
+  1251 ;;  product         4   13[BANK0 ] unsigned long 
+  1252 ;; Return value:  Size  Location     Type
+  1253 ;;                  4    4[BANK0 ] unsigned long 
+  1254 ;; Registers used:
+  1255 ;;		wreg, status,2, status,0
+  1256 ;; Tracked objects:
+  1257 ;;		On entry : 0/0
+  1258 ;;		On exit  : 0/0
+  1259 ;;		Unchanged: 0/0
+  1260 ;; Data sizes:     COMMON   BANK0
+  1261 ;;      Params:         0       8
+  1262 ;;      Locals:         0       4
+  1263 ;;      Temps:          0       1
+  1264 ;;      Totals:         0      13
+  1265 ;;Total ram usage:       13 bytes
+  1266 ;; Hardware stack levels used: 1
+  1267 ;; Hardware stack levels required when called: 4
+  1268 ;; This function calls:
+  1269 ;;		Nothing
+  1270 ;; This function is called by:
+  1271 ;;		_PWM_Set_Duty
+  1272 ;; This function uses a non-reentrant model
+  1273 ;;
+  1274                           
+  1275     00CA                     ___lmul:	
+  1276                           ;psect for function ___lmul
+  1277                           
+  1278     00CA                     l878:	
+  1279                           ;incstack = 0
+  1280                           ; Regs used in ___lmul: [wreg+status,2+status,0]
+  1281                           
+  1282     00CA  3000               	movlw	0
+  1283     00CB  00D0               	movwf	___lmul@product+3
+  1284     00CC  3000               	movlw	0
+  1285     00CD  00CF               	movwf	___lmul@product+2
+  1286     00CE  3000               	movlw	0
+  1287     00CF  00CE               	movwf	___lmul@product+1
+  1288     00D0  3000               	movlw	0
+  1289     00D1  00CD               	movwf	___lmul@product
+  1290     00D2                     l880:
+  1291     00D2  1C44               	btfss	___lmul@multiplier,0
+  1292     00D3  28D5               	goto	u281
+  1293     00D4  28D6               	goto	u280
+  1294     00D5                     u281:
+  1295     00D5  28ED               	goto	l884
+  1296     00D6                     u280:
+  1297     00D6                     l882:
+  1298     00D6  0848               	movf	___lmul@multiplicand,w
+  1299     00D7  07CD               	addwf	___lmul@product,f
+  1300     00D8  0849               	movf	___lmul@multiplicand+1,w
+  1301     00D9  1103               	clrz
+  1302     00DA  1803               	skipnc
+  1303     00DB  3E01               	addlw	1
+  1304     00DC  1903               	skipnz
+  1305     00DD  28DF               	goto	u291
+  1306     00DE  07CE               	addwf	___lmul@product+1,f
+  1307     00DF                     u291:
+  1308     00DF  084A               	movf	___lmul@multiplicand+2,w
+  1309     00E0  1103               	clrz
+  1310     00E1  1803               	skipnc
+  1311     00E2  3E01               	addlw	1
+  1312     00E3  1903               	skipnz
+  1313     00E4  28E6               	goto	u292
+  1314     00E5  07CF               	addwf	___lmul@product+2,f
+  1315     00E6                     u292:
+  1316     00E6  084B               	movf	___lmul@multiplicand+3,w
+  1317     00E7  1103               	clrz
+  1318     00E8  1803               	skipnc
+  1319     00E9  3E01               	addlw	1
+  1320     00EA  1903               	skipnz
+  1321     00EB  28ED               	goto	u293
+  1322     00EC  07D0               	addwf	___lmul@product+3,f
+  1323     00ED                     u293:
+  1324     00ED                     l884:
+  1325     00ED  3001               	movlw	1
+  1326     00EE  00CC               	movwf	??___lmul
+  1327     00EF                     u305:
+  1328     00EF  1003               	clrc
+  1329     00F0  0DC8               	rlf	___lmul@multiplicand,f
+  1330     00F1  0DC9               	rlf	___lmul@multiplicand+1,f
+  1331     00F2  0DCA               	rlf	___lmul@multiplicand+2,f
+  1332     00F3  0DCB               	rlf	___lmul@multiplicand+3,f
+  1333     00F4  0BCC               	decfsz	??___lmul,f
+  1334     00F5  28EF               	goto	u305
+  1335     00F6                     l886:
+  1336     00F6  3001               	movlw	1
+  1337     00F7                     u315:
+  1338     00F7  1003               	clrc
+  1339     00F8  0CC7               	rrf	___lmul@multiplier+3,f
+  1340     00F9  0CC6               	rrf	___lmul@multiplier+2,f
+  1341     00FA  0CC5               	rrf	___lmul@multiplier+1,f
+  1342     00FB  0CC4               	rrf	___lmul@multiplier,f
+  1343     00FC  3EFF               	addlw	-1
+  1344     00FD  1D03               	skipz
+  1345     00FE  28F7               	goto	u315
+  1346     00FF  0847               	movf	___lmul@multiplier+3,w
+  1347     0100  0446               	iorwf	___lmul@multiplier+2,w
+  1348     0101  0445               	iorwf	___lmul@multiplier+1,w
+  1349     0102  0444               	iorwf	___lmul@multiplier,w
+  1350     0103  1D03               	skipz
+  1351     0104  2906               	goto	u321
+  1352     0105  2907               	goto	u320
+  1353     0106                     u321:
+  1354     0106  28D2               	goto	l880
+  1355     0107                     u320:
+  1356     0107                     l888:
+  1357     0107  0850               	movf	___lmul@product+3,w
+  1358     0108  00C7               	movwf	?___lmul+3
+  1359     0109  084F               	movf	___lmul@product+2,w
+  1360     010A  00C6               	movwf	?___lmul+2
+  1361     010B  084E               	movf	___lmul@product+1,w
+  1362     010C  00C5               	movwf	?___lmul+1
+  1363     010D  084D               	movf	___lmul@product,w
+  1364     010E  00C4               	movwf	?___lmul
+  1365     010F                     l180:
+  1366     010F  0008               	return
+  1367     0110                     __end_of___lmul:
+  1368                           
+  1369                           	psect	text9
+  1370     0011                     __ptext9:	
+  1371 ;; *************** function ___lldiv *****************
+  1372 ;; Defined at:
+  1373 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\__lldiv.c"
+  1374 ;; Parameters:    Size  Location     Type
+  1375 ;;  divisor         4    4[BANK0 ] unsigned long 
+  1376 ;;  dividend        4    8[BANK0 ] unsigned long 
+  1377 ;; Auto vars:     Size  Location     Type
+  1378 ;;  quotient        4   13[BANK0 ] unsigned long 
+  1379 ;;  counter         1   17[BANK0 ] unsigned char 
+  1380 ;; Return value:  Size  Location     Type
+  1381 ;;                  4    4[BANK0 ] unsigned long 
+  1382 ;; Registers used:
+  1383 ;;		wreg, status,2, status,0
+  1384 ;; Tracked objects:
+  1385 ;;		On entry : 0/0
+  1386 ;;		On exit  : 0/0
+  1387 ;;		Unchanged: 0/0
+  1388 ;; Data sizes:     COMMON   BANK0
+  1389 ;;      Params:         0       8
+  1390 ;;      Locals:         0       5
+  1391 ;;      Temps:          0       1
+  1392 ;;      Totals:         0      14
+  1393 ;;Total ram usage:       14 bytes
+  1394 ;; Hardware stack levels used: 1
+  1395 ;; Hardware stack levels required when called: 4
+  1396 ;; This function calls:
+  1397 ;;		Nothing
+  1398 ;; This function is called by:
+  1399 ;;		_PWM_Set_Duty
+  1400 ;; This function uses a non-reentrant model
+  1401 ;;
+  1402                           
+  1403     0011                     ___lldiv:	
+  1404                           ;psect for function ___lldiv
+  1405                           
+  1406     0011                     l892:	
+  1407                           ;incstack = 0
+  1408                           ; Regs used in ___lldiv: [wreg+status,2+status,0]
+  1409                           
+  1410     0011  3000               	movlw	0
+  1411     0012  00D0               	movwf	___lldiv@quotient+3
+  1412     0013  3000               	movlw	0
+  1413     0014  00CF               	movwf	___lldiv@quotient+2
+  1414     0015  3000               	movlw	0
+  1415     0016  00CE               	movwf	___lldiv@quotient+1
+  1416     0017  3000               	movlw	0
+  1417     0018  00CD               	movwf	___lldiv@quotient
+  1418     0019  0847               	movf	___lldiv@divisor+3,w
+  1419     001A  0446               	iorwf	___lldiv@divisor+2,w
+  1420     001B  0445               	iorwf	___lldiv@divisor+1,w
+  1421     001C  0444               	iorwf	___lldiv@divisor,w
+  1422     001D  1903               	skipnz
+  1423     001E  2820               	goto	u331
+  1424     001F  2821               	goto	u330
+  1425     0020                     u331:
+  1426     0020  286E               	goto	l912
+  1427     0021                     u330:
+  1428     0021                     l894:
+  1429     0021  01D1               	clrf	___lldiv@counter
+  1430     0022  0AD1               	incf	___lldiv@counter,f
+  1431     0023  2831               	goto	l898
+  1432     0024                     l896:
+  1433     0024  3001               	movlw	1
+  1434     0025  00CC               	movwf	??___lldiv
+  1435     0026                     u345:
+  1436     0026  1003               	clrc
+  1437     0027  0DC4               	rlf	___lldiv@divisor,f
+  1438     0028  0DC5               	rlf	___lldiv@divisor+1,f
+  1439     0029  0DC6               	rlf	___lldiv@divisor+2,f
+  1440     002A  0DC7               	rlf	___lldiv@divisor+3,f
+  1441     002B  0BCC               	decfsz	??___lldiv,f
+  1442     002C  2826               	goto	u345
+  1443     002D  3001               	movlw	1
+  1444     002E  00CC               	movwf	??___lldiv
+  1445     002F  084C               	movf	??___lldiv,w
+  1446     0030  07D1               	addwf	___lldiv@counter,f
+  1447     0031                     l898:
+  1448     0031  1FC7               	btfss	___lldiv@divisor+3,7
+  1449     0032  2834               	goto	u351
+  1450     0033  2835               	goto	u350
+  1451     0034                     u351:
+  1452     0034  2824               	goto	l896
+  1453     0035                     u350:
+  1454     0035                     l900:
+  1455     0035  3001               	movlw	1
+  1456     0036  00CC               	movwf	??___lldiv
+  1457     0037                     u365:
+  1458     0037  1003               	clrc
+  1459     0038  0DCD               	rlf	___lldiv@quotient,f
+  1460     0039  0DCE               	rlf	___lldiv@quotient+1,f
+  1461     003A  0DCF               	rlf	___lldiv@quotient+2,f
+  1462     003B  0DD0               	rlf	___lldiv@quotient+3,f
+  1463     003C  0BCC               	decfsz	??___lldiv,f
+  1464     003D  2837               	goto	u365
+  1465     003E                     l902:
+  1466     003E  0847               	movf	___lldiv@divisor+3,w
+  1467     003F  024B               	subwf	___lldiv@dividend+3,w
+  1468     0040  1D03               	skipz
+  1469     0041  284C               	goto	u375
+  1470     0042  0846               	movf	___lldiv@divisor+2,w
+  1471     0043  024A               	subwf	___lldiv@dividend+2,w
+  1472     0044  1D03               	skipz
+  1473     0045  284C               	goto	u375
+  1474     0046  0845               	movf	___lldiv@divisor+1,w
+  1475     0047  0249               	subwf	___lldiv@dividend+1,w
+  1476     0048  1D03               	skipz
+  1477     0049  284C               	goto	u375
+  1478     004A  0844               	movf	___lldiv@divisor,w
+  1479     004B  0248               	subwf	___lldiv@dividend,w
+  1480     004C                     u375:
+  1481     004C  1C03               	skipc
+  1482     004D  284F               	goto	u371
+  1483     004E  2850               	goto	u370
+  1484     004F                     u371:
+  1485     004F  285F               	goto	l908
+  1486     0050                     u370:
+  1487     0050                     l904:
+  1488     0050  0844               	movf	___lldiv@divisor,w
+  1489     0051  02C8               	subwf	___lldiv@dividend,f
+  1490     0052  0845               	movf	___lldiv@divisor+1,w
+  1491     0053  1C03               	skipc
+  1492     0054  0F45               	incfsz	___lldiv@divisor+1,w
+  1493     0055  02C9               	subwf	___lldiv@dividend+1,f
+  1494     0056  0846               	movf	___lldiv@divisor+2,w
+  1495     0057  1C03               	skipc
+  1496     0058  0F46               	incfsz	___lldiv@divisor+2,w
+  1497     0059  02CA               	subwf	___lldiv@dividend+2,f
+  1498     005A  0847               	movf	___lldiv@divisor+3,w
+  1499     005B  1C03               	skipc
+  1500     005C  0F47               	incfsz	___lldiv@divisor+3,w
+  1501     005D  02CB               	subwf	___lldiv@dividend+3,f
+  1502     005E                     l906:
+  1503     005E  144D               	bsf	___lldiv@quotient,0
+  1504     005F                     l908:
+  1505     005F  3001               	movlw	1
+  1506     0060                     u385:
+  1507     0060  1003               	clrc
+  1508     0061  0CC7               	rrf	___lldiv@divisor+3,f
+  1509     0062  0CC6               	rrf	___lldiv@divisor+2,f
+  1510     0063  0CC5               	rrf	___lldiv@divisor+1,f
+  1511     0064  0CC4               	rrf	___lldiv@divisor,f
+  1512     0065  3EFF               	addlw	-1
+  1513     0066  1D03               	skipz
+  1514     0067  2860               	goto	u385
+  1515     0068                     l910:
+  1516     0068  3001               	movlw	1
+  1517     0069  02D1               	subwf	___lldiv@counter,f
+  1518     006A  1D03               	btfss	3,2
+  1519     006B  286D               	goto	u391
+  1520     006C  286E               	goto	u390
+  1521     006D                     u391:
+  1522     006D  2835               	goto	l900
+  1523     006E                     u390:
+  1524     006E                     l912:
+  1525     006E  0850               	movf	___lldiv@quotient+3,w
+  1526     006F  00C7               	movwf	?___lldiv+3
+  1527     0070  084F               	movf	___lldiv@quotient+2,w
+  1528     0071  00C6               	movwf	?___lldiv+2
+  1529     0072  084E               	movf	___lldiv@quotient+1,w
+  1530     0073  00C5               	movwf	?___lldiv+1
+  1531     0074  084D               	movf	___lldiv@quotient,w
+  1532     0075  00C4               	movwf	?___lldiv
+  1533     0076                     l202:
+  1534     0076  0008               	return
+  1535     0077                     __end_of___lldiv:
+  1536                           
+  1537                           	psect	text10
+  1538     01ED                     __ptext10:	
+  1539 ;; *************** function _PWM_Get_Execution_Status *****************
+  1540 ;; Defined at:
+  1541 ;;		line 12 in file "pwm.c"
+  1542 ;; Parameters:    Size  Location     Type
+  1543 ;;		None
+  1544 ;; Auto vars:     Size  Location     Type
+  1545 ;;		None
+  1546 ;; Return value:  Size  Location     Type
+  1547 ;;                  1    wreg      unsigned char 
+  1548 ;; Registers used:
+  1549 ;;		wreg
+  1550 ;; Tracked objects:
+  1551 ;;		On entry : 0/0
+  1552 ;;		On exit  : 0/0
+  1553 ;;		Unchanged: 0/0
+  1554 ;; Data sizes:     COMMON   BANK0
+  1555 ;;      Params:         0       0
+  1556 ;;      Locals:         0       0
+  1557 ;;      Temps:          0       0
+  1558 ;;      Totals:         0       0
+  1559 ;;Total ram usage:        0 bytes
+  1560 ;; Hardware stack levels used: 1
+  1561 ;; Hardware stack levels required when called: 4
+  1562 ;; This function calls:
+  1563 ;;		Nothing
+  1564 ;; This function is called by:
+  1565 ;;		_PWM_On_20_Percent_Duty_Cycle
+  1566 ;;		_PWM_On_50_Percent_Duty_Cycle
+  1567 ;;		_PWM_On_100_Percent_Duty_Cycle
+  1568 ;; This function uses a non-reentrant model
+  1569 ;;
+  1570                           
+  1571     01ED                     _PWM_Get_Execution_Status:	
+  1572                           ;psect for function _PWM_Get_Execution_Status
+  1573                           
+  1574     01ED                     l922:	
+  1575                           ;incstack = 0
+  1576                           ; Regs used in _PWM_Get_Execution_Status: [wreg]
+  1577                           
+  1578                           
+  1579                           ;pwm.c: 13: return executed;
+  1580     01ED  085C               	movf	_executed,w	;volatile
+  1581     01EE                     l65:
+  1582     01EE  0008               	return
+  1583     01EF                     __end_of_PWM_Get_Execution_Status:
+  1584                           
+  1585                           	psect	text11
+  1586     0157                     __ptext11:	
+  1587 ;; *************** function _PWM_Enable *****************
+  1588 ;; Defined at:
+  1589 ;;		line 34 in file "pwm.c"
+  1590 ;; Parameters:    Size  Location     Type
+  1591 ;;		None
+  1592 ;; Auto vars:     Size  Location     Type
+  1593 ;;		None
+  1594 ;; Return value:  Size  Location     Type
+  1595 ;;                  1    wreg      void 
+  1596 ;; Registers used:
+  1597 ;;		wreg, status,2, status,0
+  1598 ;; Tracked objects:
+  1599 ;;		On entry : 0/0
+  1600 ;;		On exit  : 0/0
+  1601 ;;		Unchanged: 0/0
+  1602 ;; Data sizes:     COMMON   BANK0
+  1603 ;;      Params:         0       0
+  1604 ;;      Locals:         0       0
+  1605 ;;      Temps:          0       1
+  1606 ;;      Totals:         0       1
+  1607 ;;Total ram usage:        1 bytes
+  1608 ;; Hardware stack levels used: 1
+  1609 ;; Hardware stack levels required when called: 4
+  1610 ;; This function calls:
+  1611 ;;		Nothing
+  1612 ;; This function is called by:
+  1613 ;;		_PWM_On_20_Percent_Duty_Cycle
+  1614 ;;		_PWM_On_50_Percent_Duty_Cycle
+  1615 ;;		_PWM_On_100_Percent_Duty_Cycle
+  1616 ;; This function uses a non-reentrant model
+  1617 ;;
+  1618                           
+  1619     0157                     _PWM_Enable:	
+  1620                           ;psect for function _PWM_Enable
+  1621                           
+  1622     0157                     l938:	
+  1623                           ;incstack = 0
+  1624                           ; Regs used in _PWM_Enable: [wreg+status,2+status,0]
+  1625                           
+  1626                           
+  1627                           ;pwm.c: 35: LATA &=~ (1<<1);
+  1628     0157  30FD               	movlw	253
+  1629     0158  00C4               	movwf	??_PWM_Enable
+  1630     0159  0844               	movf	??_PWM_Enable,w
+  1631     015A  0587               	andwf	7,f	;volatile
+  1632     015B                     l940:
+  1633                           
+  1634                           ;pwm.c: 36: TRISA |= (1<<1);
+  1635     015B  1486               	bsf	6,1	;volatile
+  1636     015C                     l942:
+  1637                           
+  1638                           ;pwm.c: 37: ANSELA |= (1<<1);
+  1639     015C  1488               	bsf	8,1	;volatile
+  1640     015D                     l944:
+  1641                           
+  1642                           ;pwm.c: 38: PWM2CON = (1<<6)|(1<<7);
+  1643     015D  30C0               	movlw	192
+  1644     015E  0099               	movwf	25	;volatile
+  1645     015F                     l946:
+  1646                           
+  1647                           ;pwm.c: 39: PWM2DCH = 0x7F;
+  1648     015F  307F               	movlw	127
+  1649     0160  0098               	movwf	24	;volatile
+  1650     0161                     l948:
+  1651                           
+  1652                           ;pwm.c: 40: PWM2DCL = 0xC0;
+  1653     0161  30C0               	movlw	192
+  1654     0162  0097               	movwf	23	;volatile
+  1655     0163                     l950:
+  1656                           
+  1657                           ;pwm.c: 41: PR2 = 0xFF;
+  1658     0163  30FF               	movlw	255
+  1659     0164  0092               	movwf	18	;volatile
+  1660     0165                     l952:
+  1661                           
+  1662                           ;pwm.c: 42: TMR2 = 0x00;
+  1663     0165  0191               	clrf	17	;volatile
+  1664     0166                     l954:
+  1665                           
+  1666                           ;pwm.c: 43: PIR1 &=~ (1<<1);
+  1667     0166  30FD               	movlw	253
+  1668     0167  00C4               	movwf	??_PWM_Enable
+  1669     0168  0844               	movf	??_PWM_Enable,w
+  1670     0169  058C               	andwf	12,f	;volatile
+  1671     016A                     l956:
+  1672                           
+  1673                           ;pwm.c: 44: T2CON = (1<<2);
+  1674     016A  3004               	movlw	4
+  1675     016B  0093               	movwf	19	;volatile
+  1676     016C                     l958:
+  1677                           
+  1678                           ;pwm.c: 45: TRISA &=~ (1<<1);
+  1679     016C  30FD               	movlw	253
+  1680     016D  00C4               	movwf	??_PWM_Enable
+  1681     016E  0844               	movf	??_PWM_Enable,w
+  1682     016F  0586               	andwf	6,f	;volatile
+  1683     0170                     l77:
+  1684     0170  0008               	return
+  1685     0171                     __end_of_PWM_Enable:
+  1686                           
+  1687                           	psect	text12
+  1688     01EF                     __ptext12:	
+  1689 ;; *************** function _PWM_Clear_Execution_Status *****************
+  1690 ;; Defined at:
+  1691 ;;		line 20 in file "pwm.c"
+  1692 ;; Parameters:    Size  Location     Type
+  1693 ;;		None
+  1694 ;; Auto vars:     Size  Location     Type
+  1695 ;;		None
+  1696 ;; Return value:  Size  Location     Type
+  1697 ;;                  1    wreg      void 
+  1698 ;; Registers used:
+  1699 ;;		status,2
+  1700 ;; Tracked objects:
+  1701 ;;		On entry : 0/0
+  1702 ;;		On exit  : 0/0
+  1703 ;;		Unchanged: 0/0
+  1704 ;; Data sizes:     COMMON   BANK0
+  1705 ;;      Params:         0       0
+  1706 ;;      Locals:         0       0
+  1707 ;;      Temps:          0       0
+  1708 ;;      Totals:         0       0
+  1709 ;;Total ram usage:        0 bytes
+  1710 ;; Hardware stack levels used: 1
+  1711 ;; Hardware stack levels required when called: 4
+  1712 ;; This function calls:
+  1713 ;;		Nothing
+  1714 ;; This function is called by:
+  1715 ;;		_main
+  1716 ;;		_Button_Pressed
+  1717 ;; This function uses a non-reentrant model
+  1718 ;;
+  1719                           
+  1720     01EF                     _PWM_Clear_Execution_Status:	
+  1721                           ;psect for function _PWM_Clear_Execution_Status
+  1722                           
+  1723     01EF                     l990:	
+  1724                           ;incstack = 0
+  1725                           ; Regs used in _PWM_Clear_Execution_Status: [status,2]
+  1726                           
+  1727                           
+  1728                           ;pwm.c: 21: executed=0;
+  1729     01EF  01DC               	clrf	_executed	;volatile
+  1730     01F0                     l71:
+  1731     01F0  0008               	return
+  1732     01F1                     __end_of_PWM_Clear_Execution_Status:
+  1733                           
+  1734                           	psect	text13
+  1735     01BB                     __ptext13:	
+  1736 ;; *************** function _Button_Init *****************
+  1737 ;; Defined at:
+  1738 ;;		line 39 in file "button.c"
+  1739 ;; Parameters:    Size  Location     Type
+  1740 ;;		None
+  1741 ;; Auto vars:     Size  Location     Type
+  1742 ;;		None
+  1743 ;; Return value:  Size  Location     Type
+  1744 ;;                  1    wreg      void 
+  1745 ;; Registers used:
+  1746 ;;		wreg, status,2, status,0
+  1747 ;; Tracked objects:
+  1748 ;;		On entry : 0/0
+  1749 ;;		On exit  : 0/0
+  1750 ;;		Unchanged: 0/0
+  1751 ;; Data sizes:     COMMON   BANK0
+  1752 ;;      Params:         0       0
+  1753 ;;      Locals:         0       0
+  1754 ;;      Temps:          0       1
+  1755 ;;      Totals:         0       1
+  1756 ;;Total ram usage:        1 bytes
+  1757 ;; Hardware stack levels used: 1
+  1758 ;; Hardware stack levels required when called: 4
+  1759 ;; This function calls:
+  1760 ;;		Nothing
+  1761 ;; This function is called by:
+  1762 ;;		_main
+  1763 ;; This function uses a non-reentrant model
+  1764 ;;
+  1765                           
+  1766     01BB                     _Button_Init:	
+  1767                           ;psect for function _Button_Init
+  1768                           
+  1769     01BB                     l972:	
+  1770                           ;incstack = 0
+  1771                           ; Regs used in _Button_Init: [wreg+status,2+status,0]
+  1772                           
+  1773                           
+  1774                           ;button.c: 40: TRISA =(1<<2);
+  1775     01BB  3004               	movlw	4
+  1776     01BC  0086               	movwf	6	;volatile
+  1777     01BD                     l974:
+  1778                           
+  1779                           ;button.c: 41: ANSELA=0x00;
+  1780     01BD  0188               	clrf	8	;volatile
+  1781     01BE                     l976:
+  1782                           
+  1783                           ;button.c: 42: INTCON = 0;
+  1784     01BE  018B               	clrf	11	;volatile
+  1785     01BF                     l978:
+  1786                           
+  1787                           ;button.c: 43: OPTION_REG&=~0xC0;
+  1788     01BF  303F               	movlw	63
+  1789     01C0  00C4               	movwf	??_Button_Init
+  1790     01C1  0844               	movf	??_Button_Init,w
+  1791     01C2  058E               	andwf	14,f	;volatile
+  1792     01C3                     l980:
+  1793                           
+  1794                           ;button.c: 44: INTCON=0x90;
+  1795     01C3  3090               	movlw	144
+  1796     01C4  008B               	movwf	11	;volatile
+  1797     01C5                     l133:
+  1798     01C5  0008               	return
+  1799     01C6                     __end_of_Button_Init:
+  1800                           
+  1801                           	psect	text14
+  1802     01F1                     __ptext14:	
+  1803 ;; *************** function _Button_Get_State *****************
+  1804 ;; Defined at:
+  1805 ;;		line 66 in file "button.c"
+  1806 ;; Parameters:    Size  Location     Type
+  1807 ;;		None
+  1808 ;; Auto vars:     Size  Location     Type
+  1809 ;;		None
+  1810 ;; Return value:  Size  Location     Type
+  1811 ;;                  1    wreg      unsigned char 
+  1812 ;; Registers used:
+  1813 ;;		wreg
+  1814 ;; Tracked objects:
+  1815 ;;		On entry : 0/0
+  1816 ;;		On exit  : 0/0
+  1817 ;;		Unchanged: 0/0
+  1818 ;; Data sizes:     COMMON   BANK0
+  1819 ;;      Params:         0       0
+  1820 ;;      Locals:         0       0
+  1821 ;;      Temps:          0       0
+  1822 ;;      Totals:         0       0
+  1823 ;;Total ram usage:        0 bytes
+  1824 ;; Hardware stack levels used: 1
+  1825 ;; Hardware stack levels required when called: 4
+  1826 ;; This function calls:
+  1827 ;;		Nothing
+  1828 ;; This function is called by:
+  1829 ;;		_main
+  1830 ;; This function uses a non-reentrant model
+  1831 ;;
+  1832                           
+  1833     01F1                     _Button_Get_State:	
+  1834                           ;psect for function _Button_Get_State
+  1835                           
+  1836     01F1                     l996:	
+  1837                           ;incstack = 0
+  1838                           ; Regs used in _Button_Get_State: [wreg]
+  1839                           
+  1840                           
+  1841                           ;button.c: 67: return Button_State;
+  1842     01F1  085B               	movf	_Button_State,w	;volatile
+  1843     01F2                     l149:
+  1844     01F2  0008               	return
+  1845     01F3                     __end_of_Button_Get_State:
+  1846                           
+  1847                           	psect	text15
+  1848     01F3                     __ptext15:	
+  1849 ;; *************** function _Button_Get_Sleep_Mode *****************
+  1850 ;; Defined at:
+  1851 ;;		line 70 in file "button.c"
+  1852 ;; Parameters:    Size  Location     Type
+  1853 ;;		None
+  1854 ;; Auto vars:     Size  Location     Type
+  1855 ;;		None
+  1856 ;; Return value:  Size  Location     Type
+  1857 ;;                  1    wreg      unsigned char 
+  1858 ;; Registers used:
+  1859 ;;		wreg
+  1860 ;; Tracked objects:
+  1861 ;;		On entry : 0/0
+  1862 ;;		On exit  : 0/0
+  1863 ;;		Unchanged: 0/0
+  1864 ;; Data sizes:     COMMON   BANK0
+  1865 ;;      Params:         0       0
+  1866 ;;      Locals:         0       0
+  1867 ;;      Temps:          0       0
+  1868 ;;      Totals:         0       0
+  1869 ;;Total ram usage:        0 bytes
+  1870 ;; Hardware stack levels used: 1
+  1871 ;; Hardware stack levels required when called: 4
+  1872 ;; This function calls:
+  1873 ;;		Nothing
+  1874 ;; This function is called by:
+  1875 ;;		_main
+  1876 ;; This function uses a non-reentrant model
+  1877 ;;
+  1878                           
+  1879     01F3                     _Button_Get_Sleep_Mode:	
+  1880                           ;psect for function _Button_Get_Sleep_Mode
+  1881                           
+  1882     01F3                     l992:	
+  1883                           ;incstack = 0
+  1884                           ; Regs used in _Button_Get_Sleep_Mode: [wreg]
+  1885                           
+  1886                           
+  1887                           ;button.c: 71: return sleep_mode;
+  1888     01F3  085A               	movf	_sleep_mode,w	;volatile
+  1889     01F4                     l152:
+  1890     01F4  0008               	return
+  1891     01F5                     __end_of_Button_Get_Sleep_Mode:
+  1892                           
+  1893                           	psect	text16
+  1894     01D7                     __ptext16:	
+  1895 ;; *************** function _ISRs *****************
+  1896 ;; Defined at:
+  1897 ;;		line 40 in file "main.c"
+  1898 ;; Parameters:    Size  Location     Type
+  1899 ;;		None
+  1900 ;; Auto vars:     Size  Location     Type
+  1901 ;;		None
+  1902 ;; Return value:  Size  Location     Type
+  1903 ;;                  1    wreg      void 
+  1904 ;; Registers used:
+  1905 ;;		wreg, status,2, status,0, pclath, cstack
+  1906 ;; Tracked objects:
+  1907 ;;		On entry : 0/0
+  1908 ;;		On exit  : 0/0
+  1909 ;;		Unchanged: 0/0
+  1910 ;; Data sizes:     COMMON   BANK0
+  1911 ;;      Params:         0       0
+  1912 ;;      Locals:         0       0
+  1913 ;;      Temps:          0       2
+  1914 ;;      Totals:         0       2
+  1915 ;;Total ram usage:        2 bytes
+  1916 ;; Hardware stack levels used: 1
+  1917 ;; Hardware stack levels required when called: 3
+  1918 ;; This function calls:
+  1919 ;;		_Button_ISR_Executables
+  1920 ;; This function is called by:
+  1921 ;;		Interrupt level 1
+  1922 ;; This function uses a non-reentrant model
+  1923 ;;
+  1924                           
+  1925     01D7                     _ISRs:	
+  1926                           ;psect for function _ISRs
+  1927                           
+  1928     01D7                     i1l1050:
+  1929                           
+  1930                           ;main.c: 41: Button_ISR_Executables();
+  1931     01D7  2135               	fcall	_Button_ISR_Executables
+  1932     01D8                     i1l40:
+  1933     01D8  0843               	movf	??_ISRs+1,w
+  1934     01D9  008A               	movwf	10
+  1935     01DA  0E42               	swapf	??_ISRs,w
+  1936     01DB  0083               	movwf	3
+  1937     01DC  0EFE               	swapf	btemp,f
+  1938     01DD  0E7E               	swapf	btemp,w
+  1939     01DE  0009               	retfie
+  1940     01DF                     __end_of_ISRs:
+  1941                           
+  1942                           	psect	intentry
+  1943     0004                     __pintentry:	
+  1944                           ;incstack = 0
+  1945                           ; Regs used in _ISRs: [wreg+status,2+status,0+pclath+cstack]
+  1946                           
+  1947     0004                     interrupt_function:
+  1948     007E                     saved_w	set	btemp
+  1949     0004  00FE               	movwf	btemp
+  1950     0005  0E03               	swapf	3,w
+  1951     0006  00C2               	movwf	??_ISRs
+  1952     0007  080A               	movf	10,w
+  1953     0008  00C3               	movwf	??_ISRs+1
+  1954     0009  29D7               	ljmp	_ISRs
+  1955                           
+  1956                           	psect	text17
+  1957     0135                     __ptext17:	
+  1958 ;; *************** function _Button_ISR_Executables *****************
+  1959 ;; Defined at:
+  1960 ;;		line 74 in file "button.c"
+  1961 ;; Parameters:    Size  Location     Type
+  1962 ;;		None
+  1963 ;; Auto vars:     Size  Location     Type
+  1964 ;;		None
+  1965 ;; Return value:  Size  Location     Type
+  1966 ;;                  1    wreg      void 
+  1967 ;; Registers used:
+  1968 ;;		wreg, status,2, status,0, pclath, cstack
+  1969 ;; Tracked objects:
+  1970 ;;		On entry : 0/0
+  1971 ;;		On exit  : 0/0
+  1972 ;;		Unchanged: 0/0
+  1973 ;; Data sizes:     COMMON   BANK0
+  1974 ;;      Params:         0       0
+  1975 ;;      Locals:         0       0
+  1976 ;;      Temps:          0       1
+  1977 ;;      Totals:         0       1
+  1978 ;;Total ram usage:        1 bytes
+  1979 ;; Hardware stack levels used: 1
+  1980 ;; Hardware stack levels required when called: 2
+  1981 ;; This function calls:
+  1982 ;;		_Button_Set_Active_Mode
+  1983 ;;		_Button_Set_Sleep_Mode
+  1984 ;;		_PWM_Off
+  1985 ;;		i1_PWM_Clear_Execution_Status
+  1986 ;; This function is called by:
+  1987 ;;		_ISRs
+  1988 ;; This function uses a non-reentrant model
+  1989 ;;
+  1990                           
+  1991     0135                     _Button_ISR_Executables:	
+  1992                           ;psect for function _Button_ISR_Executables
+  1993                           
+  1994     0135                     i1l1012:	
+  1995                           ;incstack = 0
+  1996                           ; Regs used in _Button_ISR_Executables: [wreg+status,2+status,0+pclath+cstack]
+  1997                           
+  1998                           
+  1999                           ;button.c: 75: if(INTCON & (1<<1)){
+  2000     0135  1C8B               	btfss	11,1	;volatile
+  2001     0136  2938               	goto	u45_21
+  2002     0137  2939               	goto	u45_20
+  2003     0138                     u45_21:
+  2004     0138  2956               	goto	i1l162
+  2005     0139                     u45_20:
+  2006     0139                     i1l156:
+  2007     0139  1905               	btfsc	5,2	;volatile
+  2008     013A  293C               	goto	u46_21
+  2009     013B  293D               	goto	u46_20
+  2010     013C                     u46_21:
+  2011     013C  2939               	goto	i1l156
+  2012     013D                     u46_20:
+  2013     013D                     i1l1016:
+  2014                           
+  2015                           ;button.c: 77: Button_State++;
+  2016     013D  3001               	movlw	1
+  2017     013E  00C1               	movwf	??_Button_ISR_Executables
+  2018     013F  0841               	movf	??_Button_ISR_Executables,w
+  2019     0140  07DB               	addwf	_Button_State,f	;volatile
+  2020     0141                     i1l1018:
+  2021                           
+  2022                           ;button.c: 78: if(Button_State>3){
+  2023     0141  3004               	movlw	4
+  2024     0142  025B               	subwf	_Button_State,w	;volatile
+  2025     0143  1C03               	skipc
+  2026     0144  2946               	goto	u47_21
+  2027     0145  2947               	goto	u47_20
+  2028     0146                     u47_21:
+  2029     0146  2948               	goto	i1l1022
+  2030     0147                     u47_20:
+  2031     0147                     i1l1020:
+  2032                           
+  2033                           ;button.c: 79: Button_State=0;
+  2034     0147  01DB               	clrf	_Button_State	;volatile
+  2035     0148                     i1l1022:
+  2036                           
+  2037                           ;button.c: 80: };button.c: 81: PWM_Clear_Execution_Status();
+  2038     0148  21F5               	fcall	i1_PWM_Clear_Execution_Status
+  2039     0149                     i1l1024:
+  2040                           
+  2041                           ;button.c: 82: if(Button_State==0){
+  2042     0149  085B               	movf	_Button_State,w	;volatile
+  2043     014A  1D03               	btfss	3,2
+  2044     014B  294D               	goto	u48_21
+  2045     014C  294E               	goto	u48_20
+  2046     014D                     u48_21:
+  2047     014D  2951               	goto	i1l1028
+  2048     014E                     u48_20:
+  2049     014E                     i1l1026:
+  2050                           
+  2051                           ;button.c: 83: PWM_Off();
+  2052     014E  21C6               	fcall	_PWM_Off
+  2053                           
+  2054                           ;button.c: 84: Button_Set_Sleep_Mode();
+  2055     014F  21EA               	fcall	_Button_Set_Sleep_Mode
+  2056                           
+  2057                           ;button.c: 85: }else{
+  2058     0150  2952               	goto	i1l1030
+  2059     0151                     i1l1028:
+  2060                           
+  2061                           ;button.c: 86: Button_Set_Active_Mode();
+  2062     0151  21F9               	fcall	_Button_Set_Active_Mode
+  2063     0152                     i1l1030:
+  2064                           
+  2065                           ;button.c: 87: };button.c: 89: INTCON&=~0x02;
+  2066     0152  30FD               	movlw	253
+  2067     0153  00C1               	movwf	??_Button_ISR_Executables
+  2068     0154  0841               	movf	??_Button_ISR_Executables,w
+  2069     0155  058B               	andwf	11,f	;volatile
+  2070     0156                     i1l162:
+  2071     0156  0008               	return
+  2072     0157                     __end_of_Button_ISR_Executables:
+  2073                           
+  2074                           	psect	text18
+  2075     01F5                     __ptext18:	
+  2076 ;; *************** function i1_PWM_Clear_Execution_Status *****************
+  2077 ;; Defined at:
+  2078 ;;		line 20 in file "pwm.c"
+  2079 ;; Parameters:    Size  Location     Type
+  2080 ;;		None
+  2081 ;; Auto vars:     Size  Location     Type
+  2082 ;;		None
+  2083 ;; Return value:  Size  Location     Type
+  2084 ;;                  1    wreg      void 
+  2085 ;; Registers used:
+  2086 ;;		status,2
+  2087 ;; Tracked objects:
+  2088 ;;		On entry : 0/0
+  2089 ;;		On exit  : 0/0
+  2090 ;;		Unchanged: 0/0
+  2091 ;; Data sizes:     COMMON   BANK0
+  2092 ;;      Params:         0       0
+  2093 ;;      Locals:         0       0
+  2094 ;;      Temps:          0       0
+  2095 ;;      Totals:         0       0
+  2096 ;;Total ram usage:        0 bytes
+  2097 ;; Hardware stack levels used: 1
+  2098 ;; This function calls:
+  2099 ;;		Nothing
+  2100 ;; This function is called by:
+  2101 ;;		_Button_ISR_Executables
+  2102 ;; This function uses a non-reentrant model
+  2103 ;;
+  2104                           
+  2105     01F5                     i1_PWM_Clear_Execution_Status:	
+  2106                           ;psect for function i1_PWM_Clear_Execution_Status
+  2107                           
+  2108     01F5                     i1l970:	
+  2109                           ;incstack = 0
+  2110                           ; Regs used in i1_PWM_Clear_Execution_Status: [status,2]
+  2111                           
+  2112                           
+  2113                           ;pwm.c: 21: executed=0;
+  2114     01F5  01DC               	clrf	_executed	;volatile
+  2115     01F6                     i1l71:
+  2116     01F6  0008               	return
+  2117     01F7                     __end_ofi1_PWM_Clear_Execution_Status:
+  2118                           
+  2119                           	psect	text19
+  2120     01C6                     __ptext19:	
+  2121 ;; *************** function _PWM_Off *****************
+  2122 ;; Defined at:
+  2123 ;;		line 88 in file "pwm.c"
+  2124 ;; Parameters:    Size  Location     Type
+  2125 ;;		None
+  2126 ;; Auto vars:     Size  Location     Type
+  2127 ;;		None
+  2128 ;; Return value:  Size  Location     Type
+  2129 ;;                  1    wreg      void 
+  2130 ;; Registers used:
+  2131 ;;		wreg, status,2, status,0, pclath, cstack
+  2132 ;; Tracked objects:
+  2133 ;;		On entry : 0/0
+  2134 ;;		On exit  : 0/0
+  2135 ;;		Unchanged: 0/0
+  2136 ;; Data sizes:     COMMON   BANK0
+  2137 ;;      Params:         0       0
+  2138 ;;      Locals:         0       0
+  2139 ;;      Temps:          0       0
+  2140 ;;      Totals:         0       0
+  2141 ;;Total ram usage:        0 bytes
+  2142 ;; Hardware stack levels used: 1
+  2143 ;; Hardware stack levels required when called: 1
+  2144 ;; This function calls:
+  2145 ;;		_PWM_Disable
+  2146 ;;		i1_PWM_Get_Execution_Status
+  2147 ;;		i1_PWM_Set_Execution_Status
+  2148 ;; This function is called by:
+  2149 ;;		_Button_ISR_Executables
+  2150 ;; This function uses a non-reentrant model
+  2151 ;;
+  2152                           
+  2153     01C6                     _PWM_Off:	
+  2154                           ;psect for function _PWM_Off
+  2155                           
+  2156     01C6                     i1l960:	
+  2157                           ;incstack = 0
+  2158                           ; Regs used in _PWM_Off: [wreg+status,2+status,0+pclath+cstack]
+  2159                           
+  2160                           
+  2161                           ;pwm.c: 89: if(PWM_Get_Execution_Status()==0){
+  2162     01C6  21F7               	fcall	i1_PWM_Get_Execution_Status
+  2163     01C7  3A00               	xorlw	0
+  2164     01C8  1D03               	skipz
+  2165     01C9  29CB               	goto	u41_21
+  2166     01CA  29CC               	goto	u41_20
+  2167     01CB                     u41_21:
+  2168     01CB  29CE               	goto	i1l96
+  2169     01CC                     u41_20:
+  2170     01CC                     i1l962:
+  2171                           
+  2172                           ;pwm.c: 90: PWM_Disable();
+  2173     01CC  2171               	fcall	_PWM_Disable
+  2174                           
+  2175                           ;pwm.c: 91: PWM_Set_Execution_Status();
+  2176     01CD  21E7               	fcall	i1_PWM_Set_Execution_Status
+  2177     01CE                     i1l96:
+  2178     01CE  0008               	return
+  2179     01CF                     __end_of_PWM_Off:
+  2180                           
+  2181                           	psect	text20
+  2182     01E7                     __ptext20:	
+  2183 ;; *************** function i1_PWM_Set_Execution_Status *****************
+  2184 ;; Defined at:
+  2185 ;;		line 16 in file "pwm.c"
+  2186 ;; Parameters:    Size  Location     Type
+  2187 ;;		None
+  2188 ;; Auto vars:     Size  Location     Type
+  2189 ;;		None
+  2190 ;; Return value:  Size  Location     Type
+  2191 ;;                  1    wreg      void 
+  2192 ;; Registers used:
+  2193 ;;		wreg
+  2194 ;; Tracked objects:
+  2195 ;;		On entry : 0/0
+  2196 ;;		On exit  : 0/0
+  2197 ;;		Unchanged: 0/0
+  2198 ;; Data sizes:     COMMON   BANK0
+  2199 ;;      Params:         0       0
+  2200 ;;      Locals:         0       0
+  2201 ;;      Temps:          0       0
+  2202 ;;      Totals:         0       0
+  2203 ;;Total ram usage:        0 bytes
+  2204 ;; Hardware stack levels used: 1
+  2205 ;; This function calls:
+  2206 ;;		Nothing
+  2207 ;; This function is called by:
+  2208 ;;		_PWM_Off
+  2209 ;; This function uses a non-reentrant model
+  2210 ;;
+  2211                           
+  2212     01E7                     i1_PWM_Set_Execution_Status:	
+  2213                           ;psect for function i1_PWM_Set_Execution_Status
+  2214                           
+  2215     01E7                     i1l920:	
+  2216                           ;incstack = 0
+  2217                           ; Regs used in i1_PWM_Set_Execution_Status: [wreg]
+  2218                           
+  2219                           
+  2220                           ;pwm.c: 17: executed=1;
+  2221     01E7  3001               	movlw	1
+  2222     01E8  00DC               	movwf	_executed	;volatile
+  2223     01E9                     i1l68:
+  2224     01E9  0008               	return
+  2225     01EA                     __end_ofi1_PWM_Set_Execution_Status:
+  2226                           
+  2227                           	psect	text21
+  2228     01F7                     __ptext21:	
+  2229 ;; *************** function i1_PWM_Get_Execution_Status *****************
+  2230 ;; Defined at:
+  2231 ;;		line 12 in file "pwm.c"
+  2232 ;; Parameters:    Size  Location     Type
+  2233 ;;		None
+  2234 ;; Auto vars:     Size  Location     Type
+  2235 ;;		None
+  2236 ;; Return value:  Size  Location     Type
+  2237 ;;                  1    wreg      unsigned char 
+  2238 ;; Registers used:
+  2239 ;;		wreg
+  2240 ;; Tracked objects:
+  2241 ;;		On entry : 0/0
+  2242 ;;		On exit  : 0/0
+  2243 ;;		Unchanged: 0/0
+  2244 ;; Data sizes:     COMMON   BANK0
+  2245 ;;      Params:         0       0
+  2246 ;;      Locals:         0       0
+  2247 ;;      Temps:          0       0
+  2248 ;;      Totals:         0       0
+  2249 ;;Total ram usage:        0 bytes
+  2250 ;; Hardware stack levels used: 1
+  2251 ;; This function calls:
+  2252 ;;		Nothing
+  2253 ;; This function is called by:
+  2254 ;;		_PWM_Off
+  2255 ;; This function uses a non-reentrant model
+  2256 ;;
+  2257                           
+  2258     01F7                     i1_PWM_Get_Execution_Status:	
+  2259                           ;psect for function i1_PWM_Get_Execution_Status
+  2260                           
+  2261     01F7                     i1l916:	
+  2262                           ;incstack = 0
+  2263                           ; Regs used in i1_PWM_Get_Execution_Status: [wreg]
+  2264                           
+  2265                           
+  2266                           ;pwm.c: 13: return executed;
+  2267     01F7  085C               	movf	_executed,w	;volatile
+  2268     01F8                     i1l65:
+  2269     01F8  0008               	return
+  2270     01F9                     __end_ofi1_PWM_Get_Execution_Status:
+  2271                           
+  2272                           	psect	text22
+  2273     0171                     __ptext22:	
+  2274 ;; *************** function _PWM_Disable *****************
+  2275 ;; Defined at:
+  2276 ;;		line 48 in file "pwm.c"
+  2277 ;; Parameters:    Size  Location     Type
+  2278 ;;		None
+  2279 ;; Auto vars:     Size  Location     Type
+  2280 ;;		None
+  2281 ;; Return value:  Size  Location     Type
+  2282 ;;                  1    wreg      void 
+  2283 ;; Registers used:
+  2284 ;;		wreg, status,2, status,0
+  2285 ;; Tracked objects:
+  2286 ;;		On entry : 0/0
+  2287 ;;		On exit  : 0/0
+  2288 ;;		Unchanged: 0/0
+  2289 ;; Data sizes:     COMMON   BANK0
+  2290 ;;      Params:         0       0
+  2291 ;;      Locals:         0       0
+  2292 ;;      Temps:          0       1
+  2293 ;;      Totals:         0       1
+  2294 ;;Total ram usage:        1 bytes
+  2295 ;; Hardware stack levels used: 1
+  2296 ;; This function calls:
+  2297 ;;		Nothing
+  2298 ;; This function is called by:
+  2299 ;;		_PWM_Off
+  2300 ;; This function uses a non-reentrant model
+  2301 ;;
+  2302                           
+  2303     0171                     _PWM_Disable:	
+  2304                           ;psect for function _PWM_Disable
+  2305                           
+  2306     0171                     i1l868:	
+  2307                           ;incstack = 0
+  2308                           ; Regs used in _PWM_Disable: [wreg+status,2+status,0]
+  2309                           
+  2310                           
+  2311                           ;pwm.c: 49: TRISA |= (1<<1);
+  2312     0171  1486               	bsf	6,1	;volatile
+  2313     0172                     i1l870:
+  2314                           
+  2315                           ;pwm.c: 50: PWM2CON = 0;
+  2316     0172  0199               	clrf	25	;volatile
+  2317                           
+  2318                           ;pwm.c: 51: T2CON = 0;
+  2319     0173  0193               	clrf	19	;volatile
+  2320                           
+  2321                           ;pwm.c: 52: PR2 = 0;
+  2322     0174  0192               	clrf	18	;volatile
+  2323                           
+  2324                           ;pwm.c: 53: TMR2 = 0;
+  2325     0175  0191               	clrf	17	;volatile
+  2326                           
+  2327                           ;pwm.c: 54: PWM2DCH = 0;
+  2328     0176  0198               	clrf	24	;volatile
+  2329                           
+  2330                           ;pwm.c: 55: PWM2DCL = 0;
+  2331     0177  0197               	clrf	23	;volatile
+  2332     0178                     i1l872:
+  2333                           
+  2334                           ;pwm.c: 56: LATA &=~ (1<<1);
+  2335     0178  30FD               	movlw	253
+  2336     0179  00C0               	movwf	??_PWM_Disable
+  2337     017A  0840               	movf	??_PWM_Disable,w
+  2338     017B  0587               	andwf	7,f	;volatile
+  2339     017C                     i1l874:
+  2340                           
+  2341                           ;pwm.c: 57: ANSELA &=~ (1<<1);
+  2342     017C  30FD               	movlw	253
+  2343     017D  00C0               	movwf	??_PWM_Disable
+  2344     017E  0840               	movf	??_PWM_Disable,w
+  2345     017F  0588               	andwf	8,f	;volatile
+  2346     0180                     i1l876:
+  2347                           
+  2348                           ;pwm.c: 58: TRISA &=~ (1<<1);
+  2349     0180  30FD               	movlw	253
+  2350     0181  00C0               	movwf	??_PWM_Disable
+  2351     0182  0840               	movf	??_PWM_Disable,w
+  2352     0183  0586               	andwf	6,f	;volatile
+  2353     0184                     i1l80:
+  2354     0184  0008               	return
+  2355     0185                     __end_of_PWM_Disable:
+  2356                           
+  2357                           	psect	text23
+  2358     01EA                     __ptext23:	
+  2359 ;; *************** function _Button_Set_Sleep_Mode *****************
+  2360 ;; Defined at:
+  2361 ;;		line 58 in file "button.c"
+  2362 ;; Parameters:    Size  Location     Type
+  2363 ;;		None
+  2364 ;; Auto vars:     Size  Location     Type
+  2365 ;;		None
+  2366 ;; Return value:  Size  Location     Type
+  2367 ;;                  1    wreg      void 
+  2368 ;; Registers used:
+  2369 ;;		wreg
+  2370 ;; Tracked objects:
+  2371 ;;		On entry : 0/0
+  2372 ;;		On exit  : 0/0
+  2373 ;;		Unchanged: 0/0
+  2374 ;; Data sizes:     COMMON   BANK0
+  2375 ;;      Params:         0       0
+  2376 ;;      Locals:         0       0
+  2377 ;;      Temps:          0       0
+  2378 ;;      Totals:         0       0
+  2379 ;;Total ram usage:        0 bytes
+  2380 ;; Hardware stack levels used: 1
+  2381 ;; This function calls:
+  2382 ;;		Nothing
+  2383 ;; This function is called by:
+  2384 ;;		_Button_ISR_Executables
+  2385 ;; This function uses a non-reentrant model
+  2386 ;;
+  2387                           
+  2388     01EA                     _Button_Set_Sleep_Mode:	
+  2389                           ;psect for function _Button_Set_Sleep_Mode
+  2390                           
+  2391     01EA                     i1l966:	
+  2392                           ;incstack = 0
+  2393                           ; Regs used in _Button_Set_Sleep_Mode: [wreg]
+  2394                           
+  2395                           
+  2396                           ;button.c: 59: sleep_mode = 1;
+  2397     01EA  3001               	movlw	1
+  2398     01EB  00DA               	movwf	_sleep_mode	;volatile
+  2399     01EC                     i1l143:
+  2400     01EC  0008               	return
+  2401     01ED                     __end_of_Button_Set_Sleep_Mode:
+  2402                           
+  2403                           	psect	text24
+  2404     01F9                     __ptext24:	
+  2405 ;; *************** function _Button_Set_Active_Mode *****************
+  2406 ;; Defined at:
+  2407 ;;		line 62 in file "button.c"
+  2408 ;; Parameters:    Size  Location     Type
+  2409 ;;		None
+  2410 ;; Auto vars:     Size  Location     Type
+  2411 ;;		None
+  2412 ;; Return value:  Size  Location     Type
+  2413 ;;                  1    wreg      void 
+  2414 ;; Registers used:
+  2415 ;;		status,2
+  2416 ;; Tracked objects:
+  2417 ;;		On entry : 0/0
+  2418 ;;		On exit  : 0/0
+  2419 ;;		Unchanged: 0/0
+  2420 ;; Data sizes:     COMMON   BANK0
+  2421 ;;      Params:         0       0
+  2422 ;;      Locals:         0       0
+  2423 ;;      Temps:          0       0
+  2424 ;;      Totals:         0       0
+  2425 ;;Total ram usage:        0 bytes
+  2426 ;; Hardware stack levels used: 1
+  2427 ;; This function calls:
+  2428 ;;		Nothing
+  2429 ;; This function is called by:
+  2430 ;;		_Button_ISR_Executables
+  2431 ;; This function uses a non-reentrant model
+  2432 ;;
+  2433                           
+  2434     01F9                     _Button_Set_Active_Mode:	
+  2435                           ;psect for function _Button_Set_Active_Mode
+  2436                           
+  2437     01F9                     i1l968:	
+  2438                           ;incstack = 0
+  2439                           ; Regs used in _Button_Set_Active_Mode: [status,2]
+  2440                           
+  2441                           
+  2442                           ;button.c: 63: sleep_mode = 0;
+  2443     01F9  01DA               	clrf	_sleep_mode	;volatile
+  2444     01FA                     i1l146:
+  2445     01FA  0008               	return
+  2446     01FB                     __end_of_Button_Set_Active_Mode:
+  2447     007E                     btemp	set	126	;btemp
+  2448     007E                     wtemp0	set	126
+  2449                           
+  2450                           	psect	config
+  2451                           
+  2452                           ;Config register CONFIG @ 0x2007
+  2453                           ;	Oscillator Selection bits
+  2454                           ;	FOSC = INTOSC, INTOSC oscillator: CLKIN function disabled
+  2455                           ;	Brown-out Reset Enable
+  2456                           ;	BOREN = OFF, Brown-out Reset disabled
+  2457                           ;	Watchdog Timer Enable
+  2458                           ;	WDTE = OFF, WDT disabled
+  2459                           ;	Power-up Timer Enable bit
+  2460                           ;	PWRTE = OFF, PWRT disabled
+  2461                           ;	MCLR Pin Function Select bit
+  2462                           ;	MCLRE = ON, MCLR pin function is MCLR
+  2463                           ;	Code Protection bit
+  2464                           ;	CP = OFF, Program memory code protection is disabled
+  2465                           ;	Low-Voltage Programming Enable
+  2466                           ;	LVP = ON, Low-voltage programming enabled
+  2467                           ;	Brown-out Reset Selection bits
+  2468                           ;	LPBOR = OFF, BOR disabled
+  2469                           ;	Brown-out Reset Voltage Selection
+  2470                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  2471                           ;	Flash Memory Self-Write Protection
+  2472                           ;	WRT = OFF, Write protection off
+  2473     2007                     	org	8199
+  2474     2007  3DE0               	dw	15840
 
 Data Sizes:
     Strings     0
@@ -1175,7 +2498,7 @@ Data Sizes:
 Auto Spaces:
     Space          Size  Autos    Used
     COMMON            0      0       0
-    BANK0            62      3       7
+    BANK0            62     26      30
 
 Pointer List with Targets:
 
@@ -1191,75 +2514,155 @@ Critical Paths under _ISRs in COMMON
 
 Critical Paths under _main in BANK0
 
-    _main->_Button_Init
     _Sleep_Init->_Sleep_Unused_GPIO_Config
-    _PWM_Off->_PWM_Disable
+    _PWM_On_50_Percent_Duty_Cycle->_PWM_Set_Duty
+    _PWM_On_20_Percent_Duty_Cycle->_PWM_Set_Duty
+    _PWM_On_100_Percent_Duty_Cycle->_PWM_Set_Duty
+    _PWM_Set_Duty->___lldiv
 
 Critical Paths under _ISRs in BANK0
 
-    None.
+    _ISRs->_Button_ISR_Executables
+    _PWM_Off->_PWM_Disable
 
 Call Graph Tables:
 
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0       0
+ (0) _main                                                 0     0      0    2700
               _Button_Get_Sleep_Mode
+                   _Button_Get_State
                         _Button_Init
-                            _PWM_Off
+         _PWM_Clear_Execution_Status
+      _PWM_On_100_Percent_Duty_Cycle
+       _PWM_On_20_Percent_Duty_Cycle
+       _PWM_On_50_Percent_Duty_Cycle
                          _Sleep_Init
  ---------------------------------------------------------------------------------
  (1) _Sleep_Init                                           0     0      0       0
            _Sleep_Unused_GPIO_Config
  ---------------------------------------------------------------------------------
  (2) _Sleep_Unused_GPIO_Config                             1     1      0       0
-                                              2 BANK0      1     1      0
+                                              4 BANK0      1     1      0
  ---------------------------------------------------------------------------------
- (1) _PWM_Off                                              0     0      0       0
-                        _PWM_Disable
+ (1) _PWM_On_50_Percent_Duty_Cycle                         0     0      0     900
+                         _PWM_Enable
            _PWM_Get_Execution_Status
+                       _PWM_Set_Duty
+           _PWM_Set_Execution_Status
+ ---------------------------------------------------------------------------------
+ (1) _PWM_On_20_Percent_Duty_Cycle                         0     0      0     900
+                         _PWM_Enable
+           _PWM_Get_Execution_Status
+                       _PWM_Set_Duty
+           _PWM_Set_Execution_Status
+ ---------------------------------------------------------------------------------
+ (1) _PWM_On_100_Percent_Duty_Cycle                        0     0      0     900
+                         _PWM_Enable
+           _PWM_Get_Execution_Status
+                       _PWM_Set_Duty
            _PWM_Set_Execution_Status
  ---------------------------------------------------------------------------------
  (2) _PWM_Set_Execution_Status                             0     0      0       0
  ---------------------------------------------------------------------------------
+ (2) _PWM_Set_Duty                                         8     4      4     900
+                                             18 BANK0      8     4      4
+                            ___lldiv
+                             ___lmul
+ ---------------------------------------------------------------------------------
+ (3) ___lmul                                              13     5      8     244
+                                              4 BANK0     13     5      8
+ ---------------------------------------------------------------------------------
+ (3) ___lldiv                                             14     6      8     314
+                                              4 BANK0     14     6      8
+ ---------------------------------------------------------------------------------
  (2) _PWM_Get_Execution_Status                             0     0      0       0
  ---------------------------------------------------------------------------------
- (2) _PWM_Disable                                          1     1      0       0
-                                              2 BANK0      1     1      0
+ (2) _PWM_Enable                                           1     1      0       0
+                                              4 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _PWM_Clear_Execution_Status                           0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _Button_Init                                          1     1      0       0
-                                              2 BANK0      1     1      0
+                                              4 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _Button_Get_State                                     0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _Button_Get_Sleep_Mode                                0     0      0       0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 2
+ Estimated maximum stack depth 3
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (3) _ISRs                                                 2     2      0       0
-                                              0 BANK0      2     2      0
+ (4) _ISRs                                                 2     2      0       0
+                                              2 BANK0      2     2      0
              _Button_ISR_Executables
  ---------------------------------------------------------------------------------
- (4) _Button_ISR_Executables                               0     0      0       0
+ (5) _Button_ISR_Executables                               1     1      0       0
+                                              1 BANK0      1     1      0
+             _Button_Set_Active_Mode
+              _Button_Set_Sleep_Mode
+                            _PWM_Off
+       i1_PWM_Clear_Execution_Status
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 4
+ (6) i1_PWM_Clear_Execution_Status                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (6) _PWM_Off                                              0     0      0       0
+                        _PWM_Disable
+         i1_PWM_Get_Execution_Status
+         i1_PWM_Set_Execution_Status
+ ---------------------------------------------------------------------------------
+ (7) i1_PWM_Set_Execution_Status                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (7) i1_PWM_Get_Execution_Status                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (7) _PWM_Disable                                          1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (6) _Button_Set_Sleep_Mode                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ (6) _Button_Set_Active_Mode                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 7
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
    _Button_Get_Sleep_Mode
+   _Button_Get_State
    _Button_Init
-   _PWM_Off
-     _PWM_Disable
+   _PWM_Clear_Execution_Status
+   _PWM_On_100_Percent_Duty_Cycle
+     _PWM_Enable
      _PWM_Get_Execution_Status
+     _PWM_Set_Duty
+       ___lldiv
+       ___lmul
+     _PWM_Set_Execution_Status
+   _PWM_On_20_Percent_Duty_Cycle
+     _PWM_Enable
+     _PWM_Get_Execution_Status
+     _PWM_Set_Duty
+     _PWM_Set_Execution_Status
+   _PWM_On_50_Percent_Duty_Cycle
+     _PWM_Enable
+     _PWM_Get_Execution_Status
+     _PWM_Set_Duty
      _PWM_Set_Execution_Status
    _Sleep_Init
      _Sleep_Unused_GPIO_Config
 
  _ISRs (ROOT)
    _Button_ISR_Executables
+     _Button_Set_Active_Mode
+     _Button_Set_Sleep_Mode
+     _PWM_Off
+       _PWM_Disable
+       i1_PWM_Get_Execution_Status
+       i1_PWM_Set_Execution_Status
+     i1_PWM_Clear_Execution_Status
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
@@ -1270,58 +2673,177 @@ BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
 COMMON               0      0       0       1        0.0%
 STACK                0      0       0       2        0.0%
-BANK0               3E      3       7       3       11.3%
-ABS                  0      0       7       4        0.0%
-DATA                 0      0       7       5        0.0%
+BANK0               3E     1A      1E       3       48.4%
+ABS                  0      0      1E       4        0.0%
+DATA                 0      0      1E       5        0.0%
 BITBANK0            3E      0       0       6        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                   Wed Jun 21 19:15:07 2023
+Symbol Table                                                                                   Thu Jun 22 11:30:59 2023
 
-          _Button_ISR_Executables 0066                                l22 001D                                l61 0065  
-                              l58 006A                                l76 0039                                l92 004D  
-                     _PWM_Disable 0026                               l105 0062                               l140 006C  
-                             l108 0055                               l127 0044                               l801 0035  
-                             l811 003E                               l803 005E                               l813 0042  
-                             l805 003A                               l821 0054                               l823 006B  
-                             l807 003C                               l815 004E                               l809 003D  
-                             l817 0050                               l841 0022                               l833 0011  
-                             l827 0045                               l819 0051                               l835 0013  
-                             l829 004B                               l837 0019                               l791 0063  
-                             l793 0026                               l795 0027                               l787 0069  
-                             l797 002D                               l799 0031                               u120 004B  
-                             u121 004A                               u130 0019                               u131 0018  
-                             u140 001D                               u141 001C                               u150 0021  
-                             u151 0020                               _PR2 0012           ??_Button_Get_Sleep_Mode 0000  
-                            _LATA 0007                              i1l33 0057                              _PIR1 000C  
-                            _TMR2 0011                              _ISRs 0056                              _WPUA 0009  
-                            _main 0011                              btemp 007E                   __end_of_PWM_Off 004E  
-                            start 000A                             ?_ISRs 0044                     ??_Button_Init 0046  
-                           ?_main 0044                             _ADCON 001F                             _T2CON 0013  
-                           i1l143 0068                             i1l831 0066                             i1l843 0056  
-                           _PORTA 0005                             _TRISA 0006                             pclath 000A  
-                           status 0003                             wtemp0 007E                      __end_of_ISRs 005E  
-                 __initialization 000B                      __end_of_main 0026                            ??_ISRs 0044  
-                          ??_main 0000               __end_of_Button_Init 0045                            _ANSELA 0008  
-                       ??_PWM_Off 0000        ??_Sleep_Unused_GPIO_Config 0046                            _INTCON 000B  
-                          _FVRCON 001D                        _Sleep_Init 004E                            saved_w 007E  
-         __end_of__initialization 000F           ?_Button_ISR_Executables 0044                    __pcstackCOMMON 0000  
-       ?_PWM_Get_Execution_Status 0044         ?_PWM_Set_Execution_Status 0044                      ?_PWM_Disable 0044  
-                     _Button_Init 003A                        __pbssBANK0 0040     __end_of_Button_Get_Sleep_Mode 006D  
-  __end_of_Button_ISR_Executables 0069                       ?_Sleep_Init 0044                        __pmaintext 0011  
-                      __pintentry 0004                           _PWM2DCH 0018                           _PWM2DCL 0017  
-                         _PWM2CON 0019                           _VREGCON 003E                           _PWM_Off 0045  
-                         __ptext1 004E                           __ptext2 005E                           __ptext3 0045  
-                         __ptext4 0063                           __ptext5 0069                           __ptext6 0026  
-                         __ptext7 003A                           __ptext8 006B                           __ptext9 0056  
-            end_of_initialization 000F                        _sleep_mode 0040  __end_of_PWM_Get_Execution_Status 006B  
-__end_of_PWM_Set_Execution_Status 0066         ?_Sleep_Unused_GPIO_Config 0044                      ?_Button_Init 0044  
-             start_initialization 000B                      _Button_State 0041                      ??_Sleep_Init 0000  
-                       ___latbits 0000                     __pcstackBANK0 0044                __end_of_Sleep_Init 0056  
-                        ?_PWM_Off 0044             _Button_Get_Sleep_Mode 006B                      _button_state 0043  
-        _PWM_Get_Execution_Status 0069          _PWM_Set_Execution_Status 0063                 interrupt_function 0004  
-        ??_Button_ISR_Executables 0000  __end_of_Sleep_Unused_GPIO_Config 0063            ?_Button_Get_Sleep_Mode 0044  
-                   ??_PWM_Disable 0046                          __ptext10 0066                          _executed 0042  
-             __end_of_PWM_Disable 003A        ??_PWM_Get_Execution_Status 0000                          intlevel1 0000  
-      ??_PWM_Set_Execution_Status 0000          _Sleep_Unused_GPIO_Config 005E                        _OPTION_REG 000E  
+               _Button_ISR_Executables 0135                             _PWM_Enable 0157  
+                                   l32 0133                                     l26 0131  
+                                   l71 01F0                                     l65 01EE  
+                                   l74 00C9                                     l68 01E6  
+                                   l92 01BA                                     l84 01A8  
+                                   l77 0170                                     l88 0196  
+                          _PWM_Disable 0171                                    l112 01D6  
+                                  l202 0076                                    l133 01C5  
+                                  l109 01E3                                    l152 01F4  
+                                  l180 010F                                    l149 01F2  
+                                  l900 0035                                    l910 0068  
+                                  l902 003E                                    l904 0050  
+                                  l912 006E                                    l922 01ED  
+                                  l906 005E                                    l930 00A9  
+                                  l940 015B                                    l908 005F  
+                                  l932 00AD                                    l950 0163  
+                                  l942 015C                                    l934 00B1  
+                                  l926 01E4                                    l952 0165  
+                                  l944 015D                                    l880 00D2  
+                                  l936 00BD                                    l928 0077  
+                                  l954 0166                                    l946 015F  
+                                  l938 0157                                    l882 00D6  
+                                  l980 01C3                                    l972 01BB  
+                                  l956 016A                                    l948 0161  
+                                  l892 0011                                    l884 00ED  
+                                  l964 01DF                                    l974 01BD  
+                                  l990 01EF                                    l958 016C  
+                                  l894 0021                                    l886 00F6  
+                                  l878 00CA                                    l982 01CF  
+                                  l992 01F3                                    l976 01BE  
+                                  l896 0024                                    l888 0107  
+                                  l984 01D1                                    l978 01BF  
+                                  l898 0031                                    l986 01D2  
+                                  l996 01F1                                    l988 01D5  
+                                  u320 0107                                    u321 0106  
+                                  u305 00EF                                    u330 0021  
+                                  u331 0020                                    u315 00F7  
+                                  u420 019D                                    u500 011F  
+                                  u405 00C1                                    u421 019C  
+                                  u501 011E                                    u350 0035  
+                                  u430 018B                                    u510 0127  
+                                  _PR2 0012                                    u351 0034  
+                                  u431 018A                                    u511 0126  
+                                  u280 00D6                                    u440 01AF  
+                                  u520 012F                                    u345 0026  
+                                  u281 00D5                                    u441 01AE  
+                                  u521 012E                                    u370 0050  
+                                  u371 004F                                    u291 00DF  
+                                  u292 00E6                                    u365 0037  
+                                  u293 00ED                                    u390 006E  
+                                  u391 006D                                    u375 004C  
+                                  u385 0060                                    u490 0119  
+                                  u491 0118               ??_Button_Set_Active_Mode 0000  
+                                 l1000 0197                                   l1010 01AF  
+                                 l1002 019D                                   l1004 0185  
+                                 l1006 018B                                   l1008 01A9  
+                                 l1040 011F                                   l1032 0110  
+                                 l1042 0121                                   l1034 0112  
+                                 l1044 0127                                   l1036 0113  
+                                 l1046 0129                                   l1038 0119  
+                                 l1048 012F                ??_Button_Get_Sleep_Mode 0000  
+                                 _LATA 0007                                   i1l40 01D8  
+                                 i1l71 01F6                                   i1l80 0184  
+                                 i1l65 01F8                                   _PIR1 000C  
+                                 i1l68 01E9                                   i1l96 01CE  
+                                 _TMR2 0011                                   _ISRs 01D7  
+                                 _WPUA 0009                                   _main 0110  
+                                 btemp 007E                        __end_of_PWM_Off 01CF  
+                                 start 000A                           _PWM_Set_Duty 0077  
+ __end_of_PWM_On_20_Percent_Duty_Cycle 01A9           _PWM_On_20_Percent_Duty_Cycle 0197  
+ __end_of_PWM_On_50_Percent_Duty_Cycle 0197           _PWM_On_50_Percent_Duty_Cycle 0185  
+                                ?_ISRs 0040                          ??_Button_Init 0044  
+                     _Button_Get_State 01F1                                  ?_main 0040  
+                                _ADCON 001F                        __end_of___lldiv 0077  
+                                _T2CON 0013                       PWM_Set_Duty@duty 0052  
+                                i1l143 01EC                                  i1l146 01FA  
+                                i1l162 0156                                  i1l156 0139  
+                     PWM_Set_Duty@temp 0058                                  i1l920 01E7  
+                                i1l916 01F7                                  i1l870 0172  
+                                i1l872 0178                                  i1l960 01C6  
+                                i1l874 017C                                  i1l962 01CC  
+                                i1l970 01F5                                  i1l876 0180  
+                                i1l868 0171                                  i1l966 01EA  
+                                i1l968 01F9                                  u41_20 01CC  
+                                u41_21 01CB                                  _PORTA 0005  
+                                u45_20 0139                                  u45_21 0138  
+                                u46_20 013D                                  u46_21 013C  
+                                u47_20 0147                                  u47_21 0146  
+                                u48_20 014E                                  u48_21 014D  
+                                _TRISA 0006                    ___lmul@multiplicand 0048  
+                                pclath 000A                                  status 0003  
+                                wtemp0 007E                           __end_of_ISRs 01DF  
+      ??_PWM_On_100_Percent_Duty_Cycle 0000                        __initialization 000B  
+                         __end_of_main 0135                            ?_PWM_Enable 0040  
+                               ??_ISRs 0042                                 ??_main 0000  
+                  __end_of_Button_Init 01C6     __end_of_PWM_Clear_Execution_Status 01F1  
+           _PWM_Clear_Execution_Status 01EF                                 _ANSELA 0008  
+                            ??_PWM_Off 0000             ??_Sleep_Unused_GPIO_Config 0044  
+                               i1l1020 0147                                 i1l1012 0135  
+                               i1l1030 0152                                 i1l1022 0148  
+                               i1l1024 0149                                 i1l1016 013D  
+                               i1l1026 014E                                 i1l1018 0141  
+                               i1l1050 01D7                                 i1l1028 0151  
+                               _INTCON 000B                                 _FVRCON 001D  
+                           _Sleep_Init 01CF                                 ___lmul 00CA  
+                            ??___lldiv 004C                                 saved_w 007E  
+              __end_of__initialization 000F                ?_Button_ISR_Executables 0040  
+                       __pcstackCOMMON 0000                 _Button_Set_Active_Mode 01F9  
+            ?_PWM_Get_Execution_Status 0040  __end_of_PWM_On_100_Percent_Duty_Cycle 01BB  
+        _PWM_On_100_Percent_Duty_Cycle 01A9              ?_PWM_Set_Execution_Status 0040  
+                         ?_PWM_Disable 0040                            _Button_Init 01BB  
+                _Button_Set_Sleep_Mode 01EA                             __pbssBANK0 005A  
+             __end_of_Button_Get_State 01F3          __end_of_Button_Get_Sleep_Mode 01F5  
+       __end_of_Button_ISR_Executables 0157                            ?_Sleep_Init 0040  
+                           __pmaintext 0110                                ?___lmul 0044  
+                           __pintentry 0004                         ___lmul@product 004D  
+ __end_ofi1_PWM_Clear_Execution_Status 01F7           i1_PWM_Clear_Execution_Status 01F5  
+                              _PWM2DCH 0018                                _PWM2DCL 0017  
+                              _PWM2CON 0019                                _VREGCON 003E  
+                              _PWM_Off 01C6                           ??_PWM_Enable 0044  
+                              ___lldiv 0011                 ?_Button_Set_Sleep_Mode 0040  
+                              __ptext1 01CF                                __ptext2 01DF  
+                              __ptext3 0185                                __ptext4 0197  
+                              __ptext5 01A9                                __ptext6 01E4  
+                              __ptext7 0077                                __ptext8 00CA  
+                              __ptext9 0011          ?i1_PWM_Clear_Execution_Status 0040  
+          ?_PWM_Clear_Execution_Status 0040                   end_of_initialization 000F  
+                   __end_of_PWM_Enable 0171                        ___lldiv@divisor 0044  
+                      ___lldiv@counter 0051                             _sleep_mode 005A  
+     __end_of_PWM_Get_Execution_Status 01EF           ??i1_PWM_Get_Execution_Status 0000  
+     __end_of_PWM_Set_Execution_Status 01E7           ??i1_PWM_Set_Execution_Status 0000  
+              ?_Button_Set_Active_Mode 0040                         __end_of___lmul 0110  
+            ?_Sleep_Unused_GPIO_Config 0040                           ?_Button_Init 0040  
+        ?_PWM_On_20_Percent_Duty_Cycle 0040          ?_PWM_On_50_Percent_Duty_Cycle 0040  
+                  start_initialization 000B                           _Button_State 005B  
+       ??i1_PWM_Clear_Execution_Status 0000                      ?_Button_Get_State 0040  
+       __end_of_Button_Set_Active_Mode 01FB                          ?_PWM_Set_Duty 0052  
+                         ??_Sleep_Init 0000                     ??_Button_Get_State 0000  
+                             ??___lmul 004C                              ___latbits 0000  
+                        __pcstackBANK0 0040                     __end_of_Sleep_Init 01D7  
+                             ?_PWM_Off 0040                         ??_PWM_Set_Duty 0056  
+                _Button_Get_Sleep_Mode 01F3                           _button_state 005D  
+             _PWM_Get_Execution_Status 01ED               _PWM_Set_Execution_Status 01E4  
+              ??_Button_Set_Sleep_Mode 0000                               ?___lldiv 0044  
+       ??_PWM_On_20_Percent_Duty_Cycle 0000         ??_PWM_On_50_Percent_Duty_Cycle 0000  
+   __end_ofi1_PWM_Get_Execution_Status 01F9             i1_PWM_Get_Execution_Status 01F7  
+   __end_ofi1_PWM_Set_Execution_Status 01EA             i1_PWM_Set_Execution_Status 01E7  
+                    interrupt_function 0004               ??_Button_ISR_Executables 0041  
+                    ___lmul@multiplier 0044       __end_of_Sleep_Unused_GPIO_Config 01E4  
+               ?_Button_Get_Sleep_Mode 0040                          ??_PWM_Disable 0040  
+                 __end_of_PWM_Set_Duty 00CA         ?_PWM_On_100_Percent_Duty_Cycle 0040  
+                             __ptext10 01ED                               __ptext11 0157  
+                             __ptext20 01E7                               __ptext12 01EF  
+                             __ptext21 01F7                               __ptext13 01BB  
+                             __ptext22 0171                               __ptext14 01F1  
+                             __ptext23 01EA                               __ptext15 01F3  
+                             __ptext24 01F9                               __ptext16 01D7  
+                             __ptext17 0135                               __ptext18 01F5  
+                             __ptext19 01C6                               _executed 005C  
+                  __end_of_PWM_Disable 0185             ??_PWM_Get_Execution_Status 0000  
+                             intlevel1 0000             ??_PWM_Set_Execution_Status 0000  
+                     ___lldiv@dividend 0048               _Sleep_Unused_GPIO_Config 01DF  
+        __end_of_Button_Set_Sleep_Mode 01ED                             _OPTION_REG 000E  
+                     ___lldiv@quotient 004D           ??_PWM_Clear_Execution_Status 0000  
+          ?i1_PWM_Get_Execution_Status 0040            ?i1_PWM_Set_Execution_Status 0040  
